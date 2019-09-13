@@ -1,0 +1,10 @@
+﻿/*
+	Roman Garanin
+*/
+
+int main()
+{
+
+}
+
+
