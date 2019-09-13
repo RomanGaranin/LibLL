@@ -3,6 +3,9 @@
 */
 #include "../Inc/Node.h"
 
+
+NODE* NodeStub = 0;
+
 void Node_Add(NODE** List, NODE* node)
 {
 	if ((!node)&&(!List))
@@ -47,7 +50,7 @@ void Node_Del(NODE** List, NODE* node)
 			{
 				if (nd->next == *List)// Only one node in the list.
 				{
-					*List = 0;
+					*List = NodeStub;
 				}
 				else
 				{
@@ -61,7 +64,6 @@ void Node_Del(NODE** List, NODE* node)
 			}
 			node->next->prev = node->prev;
 			node->prev->next = node->next;
-
 			node->next = node;
 			node->prev = node;
 			return;
@@ -83,7 +85,7 @@ void Node_Del_First(NODE** List, NODE** deleted_node)
 	if ((*List)->next == *List)
 	{
 		*deleted_node = *List;
-		*List = 0;
+		*List = NodeStub;
 		return;
 	}
 	else
@@ -125,7 +127,7 @@ void Node_Change_List(NODE** SrcList, NODE** DestList, NODE* node)
 void Node_Clear_List(NODE** List)
 {
 	NODE* delete_node = 0;
-	while (*List)
+	while (*List!=NodeStub)
 	{
 		Node_Del_First(List, &delete_node);
 		free(delete_node);

@@ -14,7 +14,7 @@ typedef struct _node
 	struct _node* next;
 	struct _node* prev;
 }NODE;
-
+extern NODE* NodeStub;
 void Node_Add(NODE** List,  NODE* node);
 void Node_Del(NODE** List, NODE* node);
 void Node_Del_First(NODE** List, NODE** deleted_node);

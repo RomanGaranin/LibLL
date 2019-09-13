@@ -30,28 +30,31 @@ GO_HEADER GO_Stub =
 {
 	{
 		0, 
-		&GO_Stub,
-		&GO_Stub
+		(NODE*)&GO_Stub,
+		(NODE*)&GO_Stub
 	},
 	0, 
 	GO_Stubf,
 	0
 };
 
+
+
 void DrawStub(void* go)
 {
 	printf("Draw\r\n");
-	Node_Change_List((NODE*)&DrawList, (NODE*)&GrapicsList, (NODE *)go);
+	Node_Change_List((NODE * *)& DrawList, (NODE * *)& GrapicsList, (NODE*)DrawList);
 }
 
 void GO_Stubf(void* go)
 {
-	printf("Stub\r\n");
+	return;
 }
 
 
 int main()
 {
+	NodeStub = (NODE*)& GO_Stub;
 	//Create List (10 nodes)
 	for (uint16_t i = 0; i < 10; i++)
 	{
@@ -61,38 +64,27 @@ int main()
 	}
 
 	//Change List (Move nodes from main list to erase list)
-	while (MainList)
+	while (MainList!=NodeStub)
 	{
 		Node_Change_List(&MainList, &EraseList, MainList);
 	}
-
 	Node_Clear_List(&EraseList);
 
 	GO_HEADER* GO;
-	for (uint16_t i = 0; i < 10; i++)
+	for (uint16_t i = 0; i < 5; i++)
 	{
 		GO = (GO_HEADER*)malloc(sizeof(GO_HEADER));
 		GO->Action = 0;
 		GO->Draw = DrawStub;
 		GO->ID = i;
 		GO->node.ID = i;
-		Node_Add((NODE*)&DrawList, (NODE*)GO);
-	}
-
-
-	for (uint16_t i = 0; i < 10; i++)
-	{
-		GO = DrawList;
-		GO->Draw((void*)GO);
-		GO = GO->node.next;
+		Node_Add((NODE**)&DrawList, (NODE*)GO);
 	}
 
 	while (1)
 	{
-		GO->Draw((void*)GO);
-		GO = GO->node.next;
+		DrawList->Draw((void*) DrawList);	
 	}
-
 }
 
 
