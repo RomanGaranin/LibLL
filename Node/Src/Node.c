@@ -3,7 +3,6 @@
 */
 #include "../Inc/Node.h"
 
-
 NODE* NodeStub = 0;
 
 void Node_Add(NODE** List, NODE* node)
@@ -33,7 +32,11 @@ void Node_Add(NODE** List, NODE* node)
 
 void Node_Del(NODE** List, NODE* node)
 {
-	if ((!node) && (!List))
+	if ((!node))
+	{
+		return;
+	}
+	if (!List)
 	{
 		return;
 	}
@@ -61,9 +64,9 @@ void Node_Del(NODE** List, NODE* node)
 				node->next = node;
 				node->prev = node;
 				return;
-			}
-			node->next->prev = node->prev;
+			}			
 			node->prev->next = node->next;
+			node->next->prev = node->prev;
 			node->next = node;
 			node->prev = node;
 			return;
@@ -112,7 +115,7 @@ void Node_Change_List(NODE** SrcList, NODE** DestList, NODE* node)
 	{
 		return;
 	}
-	if ((!*SrcList) && (!*DestList))
+	if ((!*SrcList) && (*DestList))
 	{
 		return;
 	}
@@ -134,3 +137,24 @@ void Node_Clear_List(NODE** List)
 	}
 	return;
 }
+
+NODE* NodeFind(NODE* List, bool (*pCheckSign)(void* obj, void* sign), uint16_t sign)
+{
+	NODE* node = List;
+	if (!pCheckSign)
+	{
+		return;
+	}
+	do
+	{
+		if (pCheckSign((void*)node, sign))
+		{
+			return node;
+		}
+
+		node = node->next;
+	} while (node!=List);
+	return NULL;
+}
+
+

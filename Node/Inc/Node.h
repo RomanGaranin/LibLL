@@ -6,6 +6,7 @@
 #define NODE_H
 #include "stdint.h"
 #include "stdlib.h"
+#include "stdbool.h"
 
 
 typedef struct _node
@@ -20,6 +21,8 @@ void Node_Del(NODE** List, NODE* node);
 void Node_Del_First(NODE** List, NODE** deleted_node);
 void Node_Change_List(NODE** SrcList, NODE** DestList, NODE* node);
 void Node_Clear_List(NODE** List);
+
+NODE* NodeFind(NODE* List, bool (*pCheckSign)(void* obj, void* sign), uint16_t sign);
 
 
 
