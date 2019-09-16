@@ -22,7 +22,8 @@ void Node_Del_First(NODE** List, NODE** deleted_node);
 void Node_Change_List(NODE** SrcList, NODE** DestList, NODE* node);
 void Node_Clear_List(NODE** List);
 
-NODE* NodeFind(NODE* List, bool (*pCheckSign)(void* obj, void* sign), uint16_t sign);
+NODE* NodeGoNext(NODE* List, NODE* node);
+NODE* NodeFind(NODE* List, bool (*pCheckSign)(void* obj, uint16_t sign), uint16_t sign);
 
 
 

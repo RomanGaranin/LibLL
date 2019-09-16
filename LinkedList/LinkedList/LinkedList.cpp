@@ -1,11 +1,15 @@
 ﻿/*
 	Roman Garanin
 */
+#define _CRT_SECURE_NO_WARNINGS
+
 #include "stdlib.h"
 #include "stdio.h"
 #include "stdbool.h"
 #include "stdarg.h"
+#include "string.h"
 #include "../../Node/Inc/Node.h"
+
 
 #define GO_DRAW				(uint16_t)0x02
 #define GO_FOCUS			(uint16_t)0x04
@@ -30,27 +34,6 @@ NODE* ActionList = 0;
 void DrawStub(void* go);
 void GO_Stubf(void* go);
 
-
-typedef struct go_states
-{
-	unsigned global_draw : 1;
-	unsigned draw : 1;
-	unsigned focus : 1;
-	unsigned press : 1;
-	unsigned longPress : 1;
-	unsigned border : 1;
-	unsigned state : 1;
-	unsigned onoff : 1;
-	unsigned Light : 1;
-	unsigned switchable : 1;
-	unsigned holdable : 1;
-	unsigned longPressAvailable : 1;
-	unsigned lock : 1;
-	unsigned OffHoldable : 1;
-	unsigned touchable : 1;
-	unsigned selected : 1;
-}GO_STATES;
-
 typedef struct go_header
 {
 	NODE node;
@@ -74,7 +57,7 @@ bool GO_Check(void* obj, uint8_t* format_str, uint16_t sign, ...)
 	va_list args;
 	uint16_t p;
 	strcpy(fstr, format_str);
-	uint8_t* str = strtok(fstr, " ");
+	uint8_t* str = (uint8_t*)strtok(fstr, " ");
 	
 	bool ID = true;
 	bool group = true;
@@ -115,9 +98,9 @@ bool GO_Check(void* obj, uint8_t* format_str, uint16_t sign, ...)
 		}
 		else
 		{
-			return;
+			return false;
 		}
-		str = strtok(NULL, " ");
+		str = (uint8_t*)strtok(NULL, " ");
 		
 	}
 	va_end(args);
@@ -211,10 +194,9 @@ int main()
 	}
 
 
-	GO = (GO_HEADER*)NodeFind(DrawList, CheckSign, 3);
+	GO = (GO_HEADER*)NodeFind((NODE*)DrawList, CheckSign, 3);
 	GO->state = (GO_ONOFF| GO_SWITCHABLE| GO_DRAW);
 	GO->GroupID = 1;
-
 	GO_Check((void*) GO, "id st", 3, (GO_SWITCHABLE | GO_DRAW));
 
 

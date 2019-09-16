@@ -138,12 +138,19 @@ void Node_Clear_List(NODE** List)
 	return;
 }
 
-NODE* NodeFind(NODE* List, bool (*pCheckSign)(void* obj, void* sign), uint16_t sign)
+NODE* NodeGoNext(NODE* List, NODE* node)
+{
+	NODE* nd = node;
+	nd = node->next;
+	return nd;
+}
+
+NODE* NodeFind(NODE* List, bool (*pCheckSign)(void* obj, uint16_t sign), uint16_t sign)
 {
 	NODE* node = List;
 	if (!pCheckSign)
 	{
-		return;
+		return NULL;
 	}
 	do
 	{
