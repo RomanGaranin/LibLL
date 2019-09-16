@@ -7,6 +7,7 @@
 #include "stdint.h"
 #include "stdlib.h"
 #include "stdbool.h"
+#include "stdarg.h"
 
 
 typedef struct _node
@@ -23,7 +24,7 @@ void Node_Change_List(NODE** SrcList, NODE** DestList, NODE* node);
 void Node_Clear_List(NODE** List);
 
 NODE* NodeGoNext(NODE* List, NODE* node);
-NODE* NodeFind(NODE* List, bool (*pCheckSign)(void* obj, uint16_t sign), uint16_t sign);
+NODE* NodeFind(NODE* List, bool (*pCheckSign)(void* obj, uint8_t* fstring, va_list args), uint8_t* fstring, ...);
 
 
 

@@ -47,14 +47,13 @@ typedef struct go_header
 
 bool CheckSign (void* obj, uint16_t sign);
 
-bool GO_Check(void* obj, uint8_t* format_str, uint16_t sign, ...);
+bool GO_Check(void* obj, uint8_t* format_str, va_list* args);
 
-bool GO_Check(void* obj, uint8_t* format_str, uint16_t sign, ...)
+bool GO_Check(void* obj, uint8_t* format_str, va_list* args)
 {
 	GO_HEADER* go = (GO_HEADER*)obj;
 	uint8_t fstr[100]; 
 
-	va_list args;
 	uint16_t p;
 	strcpy(fstr, format_str);
 	uint8_t* str = (uint8_t*)strtok(fstr, " ");
@@ -63,8 +62,7 @@ bool GO_Check(void* obj, uint8_t* format_str, uint16_t sign, ...)
 	bool group = true;
 	bool state = true;
 
-	va_start(args, sign);
-	p = sign;
+	p = (uint16_t*)args;
 	
 
 	while (str)
@@ -145,12 +143,12 @@ GO_HEADER GO_Stub =
 };
 
 
-
 void DrawStub(void* go)
-{
+{   
 	printf("Draw\r\n");
-	Node_Change_List((NODE * *)& DrawList, (NODE * *)& GrapicsList, (NODE*)DrawList);
+	Node_Change_List((NODE **)& DrawList, (NODE **)& GrapicsList, (NODE*)DrawList);
 }
+
 
 void GO_Stubf(void* go)
 {
@@ -186,18 +184,16 @@ int main()
 		GO = (GO_HEADER*)malloc(sizeof(GO_HEADER));
 		GO->Action = 0;
 		GO->Draw = DrawStub;
-		GO->GroupID = 0;
-		GO->state = GO_DRAW;
+		GO->GroupID = 3;
+		GO->state = GO_SWITCHABLE | GO_DRAW;
 		GO->ID = i;
 		GO->node.ID = i;
 		Node_Add((NODE**)&DrawList, (NODE*)GO);
 	}
 
 
-	GO = (GO_HEADER*)NodeFind((NODE*)DrawList, CheckSign, 3);
-	GO->state = (GO_ONOFF| GO_SWITCHABLE| GO_DRAW);
-	GO->GroupID = 1;
-	GO_Check((void*) GO, "id st", 3, (GO_SWITCHABLE | GO_DRAW));
+	GO = (GO_HEADER*)NodeFind((NODE*)DrawList, GO_Check, "id st", 3, (GO_SWITCHABLE | GO_DRAW));
+
 
 
 	printf("%d\n", GO->ID);

@@ -145,16 +145,21 @@ NODE* NodeGoNext(NODE* List, NODE* node)
 	return nd;
 }
 
-NODE* NodeFind(NODE* List, bool (*pCheckSign)(void* obj, uint16_t sign), uint16_t sign)
+NODE* NodeFind(NODE* List, bool (*pCheckSign)(void* obj, uint8_t* fstring, va_list args), uint8_t* fstring, ...)
 {
 	NODE* node = List;
+
+	va_list args;
+	va_start(args, fstring);
+	args = va_arg(args, uint16_t);
+
 	if (!pCheckSign)
 	{
 		return NULL;
 	}
 	do
 	{
-		if (pCheckSign((void*)node, sign))
+		if (pCheckSign((void*)node, fstring, &args))
 		{
 			return node;
 		}
