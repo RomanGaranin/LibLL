@@ -47,9 +47,9 @@ typedef struct go_header
 
 bool CheckSign (void* obj, uint16_t sign);
 
-bool GO_Check(void* obj, uint8_t* format_str, va_list* args);
+bool GO_Check(void* obj, uint8_t* format_str, va_list args);
 
-bool GO_Check(void* obj, uint8_t* format_str, va_list* args)
+bool GO_Check(void* obj, uint8_t* format_str, va_list args)
 {
 	GO_HEADER* go = (GO_HEADER*)obj;
 	uint8_t fstr[100]; 
@@ -62,7 +62,7 @@ bool GO_Check(void* obj, uint8_t* format_str, va_list* args)
 	bool group = true;
 	bool state = true;
 
-	p = (uint16_t*)args;
+	p = va_arg(args, uint16_t);
 	
 
 	while (str)
@@ -156,8 +156,32 @@ void GO_Stubf(void* go)
 }
 
 
+
+void f1(uint16_t a, ...);
+void f2(va_list args);
+
+
+void f1(uint16_t a, ...)
+{
+	va_list args;
+	va_start(args, a);
+
+	f2(args);
+}
+void f2(va_list args)
+{
+	uint16_t p;
+	p = va_arg(args, uint16_t);
+	p = va_arg(args, uint16_t);
+	p = va_arg(args, uint16_t);
+	p = va_arg(args, uint16_t);
+
+}
+
 int main()
 {
+	f1(34, 55, 56, 67, 78, 0);
+	
 	NodeStub = (NODE*)& GO_Stub;
 	//Create List (10 nodes)
 	for (uint16_t i = 0; i < 10; i++)
@@ -192,7 +216,7 @@ int main()
 	}
 
 
-	GO = (GO_HEADER*)NodeFind((NODE*)DrawList, GO_Check, "id st", 3, (GO_SWITCHABLE | GO_DRAW));
+	GO = (GO_HEADER*)NodeFind((NODE*)DrawList, GO_Check, "id gr st", 3, 3, (GO_SWITCHABLE | GO_DRAW));
 
 
 
