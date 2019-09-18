@@ -12,18 +12,25 @@ PROCESS ProcessStub =
 		.next = (NODE*)& ProcessStub,
 		.prev = (NODE*)& ProcessStub,
 	},
-	.Process = ProcessStubFunc, 
+	.Process = &ProcessStubFunc, 
 };
 
 
 void ProcessStubFunc(void* obj)
 { 
 	static bool lock = true;
+	PROCESS* pr = (PROCESS*)obj;
 	if (lock)
 	{
 		printf("No processes...\r\n");
 		lock = false;
 	}
+
+	if (pr->node.next != pr)
+	{
+
+	}
+
 	return;
 }
 
@@ -32,8 +39,7 @@ PROCESS* process = &ProcessStub;
 
 void Processes()
 {
-	process->Process(process);
-	//process = (PROCESS*)process->node.next;
+	process->Process(&process);
 }
 
  

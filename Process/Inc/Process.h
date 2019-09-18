@@ -10,7 +10,7 @@
 typedef struct _process
 {
 	NODE node;
-	void(*Process)(void* obj);
+	void(*Process)(struct _process** obj);
 	uint32_t ProcessID;
 }PROCESS;
 

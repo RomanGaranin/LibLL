@@ -5,19 +5,15 @@
 
 #include "../Inc/ForExampleGraphis.h"
 
-
-
-
-
-static void DrawStub(void* go);
+static void DrawStub(struct _process** go);
 static void GO_Stubf(void* go);
 
-static void DrawStub(void* go)
+static void DrawStub(struct _process** go)
 {
 	printf("Draw\r\n");
-	Node_Change_List((NODE **)& ProcessList, (NODE * *)& GrapicsList, (NODE*)ProcessList);
+	Node_Change_List((NODE **)&ProcessList, (NODE **)&GrapicsList, (NODE*)ProcessList);
+	*go = ProcessList;
 }
-
 
 static void GO_Stubf(void* go)
 {
@@ -96,11 +92,7 @@ bool GO_Check(void* obj, va_list args)
 			return false;
 		}
 		str = (uint8_t*)strtok(NULL, " ");
-
 	}
 	va_end(args);
-
 	return (ID && group && state);
-
-
 }
