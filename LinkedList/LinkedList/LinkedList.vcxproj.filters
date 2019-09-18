@@ -19,6 +19,18 @@
     <Filter Include="Файлы заголовков\Node">
       <UniqueIdentifier>{bd5055a3-37d8-48ad-a8d0-0631c428925f}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Исходные файлы\ForExampleGraphics">
+      <UniqueIdentifier>{23774692-1cba-4c5f-9d81-4272cbccdf32}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Файлы заголовков\ForExampleGraphics">
+      <UniqueIdentifier>{487df864-6f32-440f-a0af-23362ef9b4db}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Исходные файлы\Process">
+      <UniqueIdentifier>{ca487c16-2d48-482d-bf5a-1a72b949c1c6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Файлы заголовков\Process">
+      <UniqueIdentifier>{2daedd5a-81a8-4b0c-980d-99335ff14256}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="LinkedList.cpp">
@@ -27,10 +39,22 @@
     <ClCompile Include="..\..\Node\Src\Node.c">
       <Filter>Исходные файлы\Node</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\ForExampleGraphics\Src\ForExampleGraphics.c">
+      <Filter>Исходные файлы\ForExampleGraphics</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Process\Src\Process.c">
+      <Filter>Исходные файлы\Process</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\Node\Inc\Node.h">
       <Filter>Файлы заголовков\Node</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\ForExampleGraphics\Inc\ForExampleGraphis.h">
+      <Filter>Файлы заголовков\ForExampleGraphics</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Process\Inc\Process.h">
+      <Filter>Файлы заголовков\Process</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

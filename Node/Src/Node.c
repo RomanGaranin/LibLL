@@ -3,21 +3,29 @@
 */
 #include "../Inc/Node.h"
 
-NODE* NodeStub = 0;
 
-void Node_Add(NODE** List, NODE* node)
+NODE* Stub;
+
+void Node_Init_Stub(NODE* stub)
+{
+	Stub = stub;
+}
+
+
+void Node_Connect(NODE** List, NODE* node)
 {
 	if ((!node)&&(!List))
 	{
 		return;
 	}
-	if (!*List)
+	if (*List == Stub)
 	{
 		*List = node;
 		node->next = node;
 		node->prev = node;
 		return;
 	}
+
 	NODE* nd = *List;
 	do
 	{
@@ -30,7 +38,7 @@ void Node_Add(NODE** List, NODE* node)
 	return;
 }
 
-void Node_Del(NODE** List, NODE* node)
+void Node_Disconnect(NODE** List, NODE* node)
 {
 	if ((!node))
 	{
@@ -53,7 +61,7 @@ void Node_Del(NODE** List, NODE* node)
 			{
 				if (nd->next == *List)// Only one node in the list.
 				{
-					*List = NodeStub;
+					*List = Stub;
 				}
 				else
 				{
@@ -75,7 +83,7 @@ void Node_Del(NODE** List, NODE* node)
 	} while (nd!=*List);
 }
 
-void Node_Del_First(NODE** List, NODE** deleted_node)
+void Node_Disconnect_First(NODE** List, NODE** deleted_node)
 {
 	if (!List)
 	{
@@ -85,10 +93,10 @@ void Node_Del_First(NODE** List, NODE** deleted_node)
 	{
 		return;
 	}
-	if ((*List)->next == *List)
+	if ((*List)->next == *List) //We have only one node
 	{
 		*deleted_node = *List;
-		*List = NodeStub;
+		*List = Stub;
 		return;
 	}
 	else
@@ -98,13 +106,9 @@ void Node_Del_First(NODE** List, NODE** deleted_node)
 		(*List)->prev->next = (*List)->next; // Connect last node in the list to the second node in the list
 		*List = (*List)->next;				 // The second node in the list becomes first  
 
-		if ((*List)->next == *deleted_node)  //We have the last node in List
-		{
-			(*List)->next = *List;
-		}
-		//(*List)->prev = *List;
 		(*deleted_node)->next = *deleted_node;
 		(*deleted_node)->prev = *deleted_node;
+
 		return;
 	}
 }
@@ -123,46 +127,68 @@ void Node_Change_List(NODE** SrcList, NODE** DestList, NODE* node)
 	{
 		return;
 	}
-	Node_Del(SrcList, node);
-	Node_Add(DestList, node);
+	Node_Disconnect(SrcList, node);
+	Node_Connect(DestList, node);
+	return;
 }
 
 void Node_Clear_List(NODE** List)
 {
-	NODE* delete_node = 0;
-	while (*List!=NodeStub)
+	if ((!List)&&(!*List))
 	{
-		Node_Del_First(List, &delete_node);
+		return;
+	}
+	NODE* delete_node = 0;
+	while (*List!= Stub)
+	{
+		Node_Disconnect_First(List, &delete_node);
 		free(delete_node);
 	}
+	*List = Stub;
 	return;
 }
 
-NODE* NodeGoNext(NODE* List, NODE* node)
+NODE* NodeGoNext(NODE* node)
 {
+	if (!node)
+	{
+		return;
+	}
 	NODE* nd = node;
 	nd = node->next;
 	return nd;
 }
 
-NODE* NodeFind(NODE* List, bool (*pCheckSign)(void* obj, uint8_t* fstring, va_list args), uint8_t* fstring, ...)
+NODE* NodeFind(NODE* List, bool (*pCheckSign)(void* obj, va_list args), ...)
 {
+	if (!List)
+	{
+		return;
+	}
+	if (!pCheckSign)
+	{
+		return;
+	}
+
 	NODE* node = List;
 	va_list args;
-	va_start(args, fstring);
+	va_start(args, pCheckSign);
+
 	if (!pCheckSign)
 	{
 		return NULL;
 	}
 	do
 	{
-		if (pCheckSign((void*)node, fstring, args))
+		if (pCheckSign((void*)node, args))
 		{
 			return node;
 		}
-
 		node = node->next;
 	} while (node!=List);
+
+	va_end(args);
+
 	return NULL;
 }
 
