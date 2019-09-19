@@ -31,6 +31,12 @@
     <Filter Include="Файлы заголовков\Process">
       <UniqueIdentifier>{2daedd5a-81a8-4b0c-980d-99335ff14256}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Исходные файлы\Module">
+      <UniqueIdentifier>{3c88ec4f-4d55-4530-9e8c-4eed8e34374f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Файлы заголовков\Module">
+      <UniqueIdentifier>{7975deb2-6839-4468-8531-9d404f7ac388}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="LinkedList.cpp">

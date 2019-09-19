@@ -4,14 +4,14 @@
 */
 
 #include "../Inc/ForExampleGraphis.h"
-
 static void DrawStub(struct _process** go);
 static void GO_Stubf(void* go);
 
 static void DrawStub(struct _process** go)
 {
-	printf("Draw\r\n");
-	Node_Change_List((NODE **)&ProcessList, (NODE **)&GrapicsList, (NODE*)ProcessList);
+	GO_HEADER* hdr = (GO_HEADER*)
+	printf("Draw %d \r\n", (*go)->ProcessID);
+	Node_Change_List((NODE **)&ProcessList, (NODE **)&GrapicsList, (NODE*)*go);
 	*go = ProcessList;
 }
 

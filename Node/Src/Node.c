@@ -93,7 +93,7 @@ void Node_Disconnect_First(NODE** List, NODE** deleted_node)
 	{
 		return;
 	}
-	if ((*List)->next == *List) //We have only one node
+	if ((*List)->next == *List) // We have only one node
 	{
 		*deleted_node = *List;
 		*List = Stub;
@@ -128,6 +128,7 @@ void Node_Change_List(NODE** SrcList, NODE** DestList, NODE* node)
 		return;
 	}
 	Node_Disconnect(SrcList, node);
+
 	Node_Connect(DestList, node);
 	return;
 }

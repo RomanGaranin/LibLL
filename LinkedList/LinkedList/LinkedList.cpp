@@ -20,6 +20,7 @@ int main()
 	{
 		GO_HEADER* go = (GO_HEADER*)malloc(sizeof(GO_HEADER));
 		go->ID = i;
+		go->process.ProcessID = i;
 		go->process.node.ID = i;
 		GO_Add(go);
 		
