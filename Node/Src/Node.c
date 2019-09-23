@@ -12,6 +12,7 @@ void Node_Init_Stub(NODE* stub)
 }
 
 
+
 void Node_Connect(NODE** List, NODE* node)
 {
 	if ((!node)&&(!List))
@@ -57,9 +58,9 @@ void Node_Disconnect(NODE** List, NODE* node)
 	{
 		if (node == nd)
 		{
-			if (nd == *List)// The node is the first in the list.
+			if (nd == *List)							 // The node is the first in the list.
 			{
-				if (nd->next == *List)// Only one node in the list.
+				if (nd->next == *List)					 // Only one node in the list.
 				{
 					*List = Stub;
 				}
@@ -93,7 +94,7 @@ void Node_Disconnect_First(NODE** List, NODE** deleted_node)
 	{
 		return;
 	}
-	if ((*List)->next == *List) // We have only one node
+	if ((*List)->next == *List)		// We have only one node
 	{
 		*deleted_node = *List;
 		*List = Stub;
@@ -102,13 +103,12 @@ void Node_Disconnect_First(NODE** List, NODE** deleted_node)
 	else
 	{
 		*deleted_node = *List;
-		(*List)->next->prev = (*List)->prev; // Connect next node (second in the list) to the last 
-		(*List)->prev->next = (*List)->next; // Connect last node in the list to the second node in the list
-		*List = (*List)->next;				 // The second node in the list becomes first  
+		(*List)->next->prev = (*List)->prev;	// Connect next node (second in the list) to the last 
+		(*List)->prev->next = (*List)->next;	// Connect last node in the list to the second node in the list
+		*List = (*List)->next;					// The second node in the list becomes first  
 
 		(*deleted_node)->next = *deleted_node;
 		(*deleted_node)->prev = *deleted_node;
-
 		return;
 	}
 }
@@ -127,9 +127,14 @@ void Node_Change_List(NODE** SrcList, NODE** DestList, NODE* node)
 	{
 		return;
 	}
-	Node_Disconnect(SrcList, node);
 
-	Node_Connect(DestList, node);
+		Node_Disconnect(SrcList, node);
+		Node_Connect(DestList, node);
+
+	if (*SrcList == Stub)
+	{
+		node = Stub;
+	}
 	return;
 }
 
@@ -157,6 +162,10 @@ NODE* NodeGoNext(NODE* node)
 	}
 	NODE* nd = node;
 	nd = node->next;
+	if (nd == nd->next)
+	{
+		nd = Stub;
+	}
 	return nd;
 }
 

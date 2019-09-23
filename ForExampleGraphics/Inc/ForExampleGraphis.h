@@ -40,7 +40,6 @@ typedef struct go_header
 	void(*Action)();
 }GO_HEADER;
 
-GO_HEADER GO_Stub;
 GO_HEADER* GrapicsList;
 
 bool GO_Check(void* obj, va_list args);

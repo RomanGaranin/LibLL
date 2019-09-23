@@ -156,12 +156,14 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="..\..\ForExampleGraphics\Src\ForExampleGraphics.c" />
+    <ClCompile Include="..\..\ForExampleModule\Src\ForExampleModule.c" />
     <ClCompile Include="..\..\Node\Src\Node.c" />
     <ClCompile Include="..\..\Process\Src\Process.c" />
     <ClCompile Include="LinkedList.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\ForExampleGraphics\Inc\ForExampleGraphis.h" />
+    <ClInclude Include="..\..\ForExampleModule\Inc\ForExampleModule.h" />
     <ClInclude Include="..\..\Node\Inc\Node.h" />
     <ClInclude Include="..\..\Process\Inc\Process.h" />
   </ItemGroup>

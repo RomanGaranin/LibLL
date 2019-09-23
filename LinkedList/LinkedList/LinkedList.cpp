@@ -9,22 +9,57 @@
 #include "stdarg.h"
 #include "string.h"
 #include "../../Node/Inc/Node.h"
-#include "../../ForExampleGraphics/Inc/ForExampleGraphis.h"
 #include "..//..//Process/Inc/Process.h"
+#include "../../ForExampleGraphics/Inc/ForExampleGraphis.h"
+#include "..//..//ForExampleModule/Inc/ForExampleModule.h"
 
 int main()
 {
-	Node_Init_Stub(ProcessList);
-	GrapicsList = ProcessList;
+	Node_Init_Stub(ProcessList); //Init Stub for nodes
+	GrapicsList = ProcessList; //Graphics list to stub
+	ModuleList = ProcessList;  //Module list to stub
+	
+
+	for (uint8_t i = 0; i < 5; i++)
+	{
+		MODULE* mdl = (MODULE*)malloc(sizeof(MODULE));
+		if (!mdl)
+		{
+			return;
+		}
+		mdl->NameID = i;
+		mdl->process.ProcessID = i;
+		mdl->process.node.ID = i;
+		ModuleAdd(mdl);
+	}
 	for (uint8_t i = 0; i < 5; i++)
 	{
 		GO_HEADER* go = (GO_HEADER*)malloc(sizeof(GO_HEADER));
+		if (!go)
+		{
+			return;
+		}
 		go->ID = i;
 		go->process.ProcessID = i;
 		go->process.node.ID = i;
 		GO_Add(go);
-		
 	}
+
+	for (uint8_t i = 0; i < 5; i++)
+	{
+		MODULE* mdl = (MODULE*)malloc(sizeof(MODULE));
+		if (!mdl)
+		{
+			return;
+		}
+		mdl->NameID = i;
+		mdl->process.ProcessID = i;
+		mdl->process.node.ID = i;
+		ModuleAdd(mdl);
+	}
+
+
+
 	process = ProcessList;
 	while (1)
 	{

@@ -17,7 +17,9 @@ typedef struct _node
 	uint16_t ID;
 }NODE;
 
+
 void Node_Init_Stub(NODE* stub);
+
 void Node_Connect(NODE** List,  NODE* node);
 void Node_Disconnect(NODE** List, NODE* node);
 void Node_Disconnect_First(NODE** List, NODE** deleted_node);

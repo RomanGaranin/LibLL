@@ -3,7 +3,6 @@
 	18.09.2019
 */
 #include "../Inc/Process.h"
-
 void ProcessStubFunc(void* obj);
 
 PROCESS ProcessStub =
@@ -14,7 +13,6 @@ PROCESS ProcessStub =
 	},
 	.Process = &ProcessStubFunc, 
 };
-
 
 void ProcessStubFunc(void* obj)
 { 
@@ -39,7 +37,10 @@ PROCESS* process = &ProcessStub;
 
 void Processes()
 {
-	process->Process(&process);
+	static PROCESS* prc;
+	prc = NodeGoNext((NODE*)process);
+	process->Process(process);
+	process = prc;
 }
 
  

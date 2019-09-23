@@ -4,15 +4,18 @@
 */
 
 #include "../Inc/ForExampleGraphis.h"
-static void DrawStub(struct _process** go);
-static void GO_Stubf(void* go);
+static void DrawStub(struct _process* go_prc);
 
-static void DrawStub(struct _process** go)
+
+static void DrawStub(struct _process* go_prc)
 {
 	GO_HEADER* hdr = (GO_HEADER*)
-	printf("Draw %d \r\n", (*go)->ProcessID);
-	Node_Change_List((NODE **)&ProcessList, (NODE **)&GrapicsList, (NODE*)*go);
-	*go = ProcessList;
+	printf("Draw %d \r\n", (go_prc)->ProcessID);
+	/*
+		Draw...
+	*/
+
+	Node_Change_List((NODE **)&ProcessList, (NODE **)&GrapicsList, (NODE*) go_prc);
 }
 
 static void GO_Stubf(void* go)
@@ -20,20 +23,6 @@ static void GO_Stubf(void* go)
 	return;
 }
 
-GO_HEADER GO_Stub =
-{
-		{
-			{
-			.next = (NODE*)& GO_Stub,
-			.prev = (NODE*)& GO_Stub,
-			}, 
-		.Process = DrawStub, 
-		},
-	.ID			= 0,
-	.GroupID	= 0,
-	.state		= 0,
-	.Action		= 0
-};
 
 void GO_Add(GO_HEADER* go)
 {

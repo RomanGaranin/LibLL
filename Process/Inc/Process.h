@@ -7,10 +7,11 @@
 #define PROCESS_H
 #include "../../Node/Inc/Node.h"
 
+
 typedef struct _process
 {
 	NODE node;
-	void(*Process)(struct _process** obj);
+	void(*Process)(struct _process* prc);
 	uint32_t ProcessID;
 }PROCESS;
 
