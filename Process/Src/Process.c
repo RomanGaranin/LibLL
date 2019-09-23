@@ -38,8 +38,9 @@ PROCESS* process = &ProcessStub;
 void Processes()
 {
 	static PROCESS* prc;
-	prc = NodeGoNext((NODE*)process);
+	prc = NodeGoNext(ProcessList, (NODE*)process);
 	process->Process(process);
+	NodeCheckList(ProcessList, &prc);
 	process = prc;
 }
 

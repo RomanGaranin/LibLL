@@ -153,8 +153,14 @@ void Node_Clear_List(NODE** List)
 	*List = Stub;
 	return;
 }
-
-NODE* NodeGoNext(NODE* node)
+void NodeCheckList(NODE* List, NODE** node)
+{
+	if (List == Stub)
+	{
+		*node = Stub;
+	}
+}
+NODE* NodeGoNext(NODE* List, NODE* node)
 {
 	if (!node)
 	{
@@ -162,10 +168,6 @@ NODE* NodeGoNext(NODE* node)
 	}
 	NODE* nd = node;
 	nd = node->next;
-	if (nd == nd->next)
-	{
-		nd = Stub;
-	}
 	return nd;
 }
 

@@ -27,8 +27,8 @@ void Node_Change_List(NODE** SrcList, NODE** DestList, NODE* node);
 void Node_Clear_List(NODE** List);
 
 
-
-NODE* NodeGoNext(NODE* node);
+void NodeCheckList(NODE* List, NODE** node);
+NODE* NodeGoNext(NODE* List, NODE* node);
 NODE* NodeFind(NODE* List, bool (*pCheckSign)(void* obj, va_list args), ...);
 
 

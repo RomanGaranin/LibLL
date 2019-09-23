@@ -58,9 +58,20 @@ int main()
 		ModuleAdd(mdl);
 	}
 
-
+	MODULE* mdl = (MODULE*)malloc(sizeof(MODULE));
+	if (!mdl)
+	{
+		return;
+	}
+	mdl->NameID = 50;
+	mdl->process.ProcessID = 50;
+	mdl->process.node.ID = 50;
+	mdl->process.Process = ModuleProcessStub1;
+	ModuleAdd(mdl);
+	mdl->process.Process = ModuleProcessStub1;
 
 	process = ProcessList;
+
 	while (1)
 	{
 		Processes();

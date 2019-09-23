@@ -18,7 +18,7 @@ MODULE* ModuleList;
 
 void ModuleAdd(MODULE* module);
 
-
+void ModuleProcessStub1(struct _process* mdl_prc);
 
 
 
