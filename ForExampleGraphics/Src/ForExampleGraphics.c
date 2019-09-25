@@ -4,8 +4,11 @@
 */
 
 #include "../Inc/ForExampleGraphis.h"
-static void DrawStub(struct _process* go_prc);
 
+
+GO_HEADER* GrapicsList = (GO_HEADER*)& ProcessStub;
+
+static void DrawStub(struct _process* go_prc);
 
 static void DrawStub(struct _process* go_prc)
 {
@@ -14,8 +17,7 @@ static void DrawStub(struct _process* go_prc)
 	/*
 		Draw...
 	*/
-
-	Node_Change_List((NODE **)&ProcessList, (NODE **)&GrapicsList, (NODE*) go_prc);
+	Process_Stop((PROCESS**)& ProcessList, (PROCESS**)& GrapicsList, (PROCESS*)go_prc);
 }
 
 static void GO_Stubf(void* go)
@@ -29,7 +31,8 @@ void GO_Add(GO_HEADER* go)
 	go->Action = 0;
 	go->process.Process = DrawStub;
 	go->state = GO_SWITCHABLE | GO_DRAW;
-	Node_Connect((NODE **)& ProcessList, (NODE*)go);
+
+	Process_Start((PROCESS **)& ProcessList, (PROCESS*)go);
 }
 
 bool GO_Check(void* obj, va_list args)

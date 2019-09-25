@@ -3,6 +3,7 @@
 	18.09.2019
 */
 #include "../Inc/Process.h"
+
 void ProcessStubFunc(void* obj);
 
 PROCESS ProcessStub =
@@ -23,25 +24,82 @@ void ProcessStubFunc(void* obj)
 		printf("No processes...\r\n");
 		lock = false;
 	}
-
-	if (pr->node.next != pr)
-	{
-
-	}
-
 	return;
 }
 
-PROCESS* ProcessList = &ProcessStub;
-PROCESS* process = &ProcessStub;
+PROCESS* ProcessList	= &ProcessStub;
+PROCESS* ProcessNext	= &ProcessStub;
+PROCESS* Process		= &ProcessStub;
+
+void Process_Start(PROCESS** process_list, PROCESS* process_to_start)
+{
+	if ((!process_list))
+	{
+		return;
+	}
+	else
+	{
+		if ((!*process_list) && (!process_to_start))
+		{
+			return;
+		}
+	}
+
+
+	if (*process_list == &ProcessStub)
+	{
+		Node_Connect((NODE **) process_list, (NODE*)process_to_start);
+		Process = *process_list;
+	}
+	else
+	{
+		Node_Connect((NODE * *)process_list, (NODE*)process_to_start);
+	}
+	return;
+}
+
+
+void Process_Stop(PROCESS** process_list, PROCESS** process_stop_list, PROCESS* process_to_stop)
+{
+	if (!process_list)
+	{
+		return;
+	}
+	else
+	{
+		if (!*process_list)
+		{
+			return;
+		}
+	}
+	if ((!*process_stop_list))
+	{
+		return;
+	}
+	else
+	{
+		if ((!*process_stop_list) && (!process_to_stop))
+		{
+			return;
+		}
+	}
+
+
+	Node_Change_List((NODE**)process_list,(NODE**)process_stop_list,(NODE*)process_to_stop);
+
+	if (*process_list == &ProcessStub)
+	{
+		ProcessNext = &ProcessStub;
+	}
+	return;
+}
 
 void Processes()
 {
-	static PROCESS* prc;
-	prc = NodeGoNext(ProcessList, (NODE*)process);
-	process->Process(process);
-	NodeCheckList(ProcessList, &prc);
-	process = prc;
+
+	ProcessNext = (PROCESS*)Process->node.next;
+	Process->Process(Process);
+	Process = ProcessNext;
 }
 
  

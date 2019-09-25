@@ -13,12 +13,34 @@
 #include "../../ForExampleGraphics/Inc/ForExampleGraphis.h"
 #include "..//..//ForExampleModule/Inc/ForExampleModule.h"
 
+#include "windows.h"
+
+
+uint8_t* GetTime();
+
+uint32_t GetSysTick();
+
+
 int main()
 {
-	Node_Init_Stub(ProcessList); //Init Stub for nodes
-	GrapicsList = ProcessList; //Graphics list to stub
-	ModuleList = ProcessList;  //Module list to stub
-	
+/*
+Connecting platform dependent functions to platform independent functions.
+
+		 +-------------------------+------------------------+
+		 |    Windows depenednt    |       Independet       |
+		 +--------------------------------------------------+
+		 |                         |                        |
+		 |       GetTime     <-----------+ pGetTime         |
+		 |                         |                        |
+				 GetSysTick  <-----------+ pGetSysTick
+		 |                         |                        |
+		 +-------------------------+------------------------+            */
+
+	InitGetTime(GetTime);			
+	InitGetSysTick(GetSysTick);
+
+
+	Node_Init_Stub(ProcessList);						//Init Stub for nodes
 
 	for (uint8_t i = 0; i < 5; i++)
 	{
@@ -45,7 +67,7 @@ int main()
 		GO_Add(go);
 	}
 
-	for (uint8_t i = 0; i < 5; i++)
+	for (uint8_t i = 10; i < 15; i++)
 	{
 		MODULE* mdl = (MODULE*)malloc(sizeof(MODULE));
 		if (!mdl)
@@ -70,12 +92,25 @@ int main()
 	ModuleAdd(mdl);
 	mdl->process.Process = ModuleProcessStub1;
 
-	process = ProcessList;
-
 	while (1)
 	{
 		Processes();
 	}
 }
 
+uint8_t* GetTime()
+{
+	static uint8_t timestr[100];
+	SYSTEMTIME t;
+	LPSYSTEMTIME lpSystemTime = &t;
+	GetSystemTime(lpSystemTime);
+	sprintf(timestr, "%d:%d:%d", lpSystemTime->wHour, lpSystemTime->wMinute, lpSystemTime->wSecond);
+	return timestr;
+}
 
+
+uint32_t GetSysTick()
+{
+	uint32_t tick = (uint32_t)GetTickCount();
+	return tick;
+}

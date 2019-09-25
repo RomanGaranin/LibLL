@@ -1,23 +1,67 @@
 /*
 	Roman Garanin
-*/
+
++-----------------------------------------------Linked-list-example----------------------------------------------+
+
+																										  next
+	  next                            +-----------------------------------------------------------------------+
+  +----------+                        |                                                                       |
+  |          |                        |                                                                       |
+  |  +----+  |         +-----+        |    +----+  next  +----+  next  +----+  next  +----+  next  +----+     |
+  +->+    +--+         |     |        +--->+    +------->+    +------->+    +------->+    +------->+    +-----+
+	 |Stub| <--  --  --+*List+---->        |Node|        |Node|        |Node|        |Node|        |Node|
+  +--+    +<-+         |     |        +----+    +<-------+    +<-------+    +<-------+    +<-------+    +<----+
+  |  +----+  |         +-----+        |    +----+  prev  +----+  prev  +----+  prev  +----+  prev  +----+     |
+  |          |                        |                                                                       |
+  +----------+                        |                                                                       |
+	  prev                            +-----------------------------------------------------------------------+
+											       prev
+	
+
+   *List - a pointer to the linked list.
+
+	Nodes - a structures the linked list contains from.
+
+	next - a pointer to the next node.
+
+	prev - a pointer to the prev node.
+
+	Stub - the Stub node . If the linked list is empty, the List pointer point to the Stub node.
+
+	*Scan - a pointer that point to the current node in the list.
+
+*********************************************************************************************************************/
 #include "../Inc/Node.h"
 
-
-NODE* Stub;
+NODE* Stub = 0;
 
 void Node_Init_Stub(NODE* stub)
 {
 	Stub = stub;
 }
 
-
+void Node_Connect_to_Stub(NODE** node, NODE* stub)
+{
+	*node = stub;
+}
 
 void Node_Connect(NODE** List, NODE* node)
 {
-	if ((!node)&&(!List))
+	if (!node)
 	{
 		return;
+	}
+
+	if (!List)
+	{
+		return;
+	}
+	else
+	{
+		if ((!*List))
+		{
+			return;
+		}
 	}
 	if (*List == Stub)
 	{
@@ -26,7 +70,6 @@ void Node_Connect(NODE** List, NODE* node)
 		node->prev = node;
 		return;
 	}
-
 	NODE* nd = *List;
 	do
 	{
@@ -63,6 +106,7 @@ void Node_Disconnect(NODE** List, NODE* node)
 				if (nd->next == *List)					 // Only one node in the list.
 				{
 					*List = Stub;
+		
 				}
 				else
 				{
@@ -98,6 +142,7 @@ void Node_Disconnect_First(NODE** List, NODE** deleted_node)
 	{
 		*deleted_node = *List;
 		*List = Stub;
+
 		return;
 	}
 	else
@@ -115,34 +160,49 @@ void Node_Disconnect_First(NODE** List, NODE** deleted_node)
 
 void Node_Change_List(NODE** SrcList, NODE** DestList, NODE* node)
 {
-	if ((!SrcList) && (!DestList))
+	if (!SrcList)
 	{
 		return;
 	}
-	if ((!*SrcList) && (*DestList))
+	else
+	{
+		if (!*SrcList)
+		{
+			return;
+		}
+	}
+	if(!DestList)
 	{
 		return;
+	}
+	else
+	{
+		if (!*DestList)
+		{
+			return;
+		}
 	}
 	if (!node)
 	{
 		return;
 	}
-
 		Node_Disconnect(SrcList, node);
 		Node_Connect(DestList, node);
-
-	if (*SrcList == Stub)
-	{
-		node = Stub;
-	}
 	return;
 }
 
 void Node_Clear_List(NODE** List)
 {
-	if ((!List)&&(!*List))
+	if (!List)
 	{
 		return;
+	}
+	else
+	{
+		if (!*List)
+		{
+			return;
+		}
 	}
 	NODE* delete_node = 0;
 	while (*List!= Stub)
@@ -153,33 +213,16 @@ void Node_Clear_List(NODE** List)
 	*List = Stub;
 	return;
 }
-void NodeCheckList(NODE* List, NODE** node)
-{
-	if (List == Stub)
-	{
-		*node = Stub;
-	}
-}
-NODE* NodeGoNext(NODE* List, NODE* node)
-{
-	if (!node)
-	{
-		return;
-	}
-	NODE* nd = node;
-	nd = node->next;
-	return nd;
-}
 
 NODE* NodeFind(NODE* List, bool (*pCheckSign)(void* obj, va_list args), ...)
 {
 	if (!List)
 	{
-		return;
+		return NULL;
 	}
 	if (!pCheckSign)
 	{
-		return;
+		return NULL;
 	}
 
 	NODE* node = List;

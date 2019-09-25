@@ -14,12 +14,12 @@ typedef struct module
 }MODULE;
 
 
-MODULE* ModuleList;
-
 void ModuleAdd(MODULE* module);
 
 void ModuleProcessStub1(struct _process* mdl_prc);
 
+void InitGetTime(uint8_t* (*ppGetTime)());
+void InitGetSysTick(uint32_t (*ppGetSysTick)());
 
 
 #endif
