@@ -4,7 +4,7 @@
 */
 
 #include "../Inc/ForExampleGraphis.h"
-
+#include "string.h"
 
 GO_HEADER* GrapicsList = (GO_HEADER*)& ProcessStub;
 

@@ -10,16 +10,6 @@
 #include "stdarg.h"
 #include "stdio.h"
 
-typedef struct _node_header
-{
-	uint16_t NameID;
-	struct _node* List;
-	struct _node* Tail;
-	struct _node* ScanNext;
-	struct _node* Scan;
-}NODE_HEADER;
-
-
 typedef struct _node
 {
 	struct _node* next;

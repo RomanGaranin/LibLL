@@ -28,8 +28,6 @@
 
 	Stub - the Stub node . If the linked list is empty, the List pointer point to the Stub node.
 
-	*Scan - a pointer that point to the current node in the list.
-
 *********************************************************************************************************************/
 #include "../Inc/Node.h"
 

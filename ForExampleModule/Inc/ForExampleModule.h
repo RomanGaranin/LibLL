@@ -1,6 +1,5 @@
 #ifndef  FOR_EXAMPLE_MODULE_H
 #define  FOR_EXAMPLE_MODULE_H
-#include "../../Node/Inc/Node.h"
 #include "../../Process/Inc/Process.h"
 
 typedef struct module
@@ -12,7 +11,6 @@ typedef struct module
 	uint16_t ProviderNameID1;
 	uint16_t ProviderNameID2;
 }MODULE;
-
 
 void ModuleAdd(MODULE* module);
 

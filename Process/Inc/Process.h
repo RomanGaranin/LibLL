@@ -15,7 +15,6 @@ typedef struct _process
 	uint32_t ProcessID;
 }PROCESS;
 
-
 extern PROCESS ProcessStub;
 extern PROCESS* ProcessList;
 

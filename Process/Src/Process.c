@@ -4,7 +4,7 @@
 */
 #include "../Inc/Process.h"
 
-void ProcessStubFunc(void* obj);
+void ProcessStubFunc(struct _process* prc);
 
 PROCESS ProcessStub =
 {
@@ -15,15 +15,9 @@ PROCESS ProcessStub =
 	.Process = &ProcessStubFunc, 
 };
 
-void ProcessStubFunc(void* obj)
+void ProcessStubFunc(struct _process* prc)
 { 
-	static bool lock = true;
-	PROCESS* pr = (PROCESS*)obj;
-	if (lock)
-	{
-		printf("No processes...\r\n");
-		lock = false;
-	}
+	printf("No processes...\r");
 	return;
 }
 
