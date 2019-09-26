@@ -84,7 +84,6 @@ void Process_Stop(PROCESS** process_list, PROCESS** process_stop_list, PROCESS* 
 		}
 	}
 
-
 	Node_Change_List((NODE**)process_list,(NODE**)process_stop_list,(NODE*)process_to_stop);
 	if (*process_list == &ProcessStub)
 	{
@@ -92,6 +91,42 @@ void Process_Stop(PROCESS** process_list, PROCESS** process_stop_list, PROCESS* 
 	}
 	return;
 }
+
+void Process_Restart(PROCESS** process_stop_list, PROCESS** process_list, PROCESS* process_to_restart)
+{
+	if (!process_list)
+	{
+		return;
+	}
+	else
+	{
+		if (!*process_list)
+		{
+			return;
+		}
+	}
+	if ((!*process_stop_list))
+	{
+		return;
+	}
+	else
+	{
+		if ((!*process_stop_list) && (!process_to_restart))
+		{
+			return;
+		}
+	}
+	if (*process_list == &ProcessStub)
+	{
+		Node_Change_List((NODE * *)process_stop_list, (NODE * *)process_list, (NODE*)process_to_restart);
+		ProcessNext = *process_list;
+	}
+	else
+	{
+		Node_Change_List((NODE * *)process_stop_list, (NODE * *)process_list, (NODE*)process_to_restart);
+	}
+}
+
 
 void Processes()
 {

@@ -24,6 +24,8 @@ void Process_Repeat(PROCESS* process_to_repeat);
 
 void Process_Stop(PROCESS** process_list, PROCESS** process_stop_list, PROCESS* process_to_stop);
 
+void Process_Restart(PROCESS** process_stop_list, PROCESS** process_list, PROCESS* process_to_restart);
+
 void Processes();
 
 
