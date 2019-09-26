@@ -19,7 +19,6 @@ typedef struct _node
 
 
 void Node_Init_Stub(NODE* stub);
-
 void Node_Connect_to_Stub(NODE** node, NODE* stub);
 
 
@@ -30,12 +29,6 @@ void Node_Change_List(NODE** SrcList, NODE** DestList, NODE* node);
 void Node_Clear_List(NODE** List);
 
 NODE* NodeFind(NODE* List, bool (*pCheckSign)(void* obj, va_list args), ...);
-
-
-
-
-
-
 
 
 

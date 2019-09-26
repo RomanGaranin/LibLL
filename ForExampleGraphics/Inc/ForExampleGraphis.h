@@ -40,8 +40,6 @@ typedef struct go_header
 	void(*Action)();
 }GO_HEADER;
 
-
-
 bool GO_Check(void* obj, va_list args);
 
 #endif

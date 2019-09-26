@@ -2,8 +2,8 @@
 	Roman Garanin
 	18.09.2019
 */
-#include "../Inc/Process.h"
 
+#include "../Inc/Process.h"
 void ProcessStubFunc(struct _process* prc);
 
 PROCESS ProcessStub =
@@ -38,20 +38,26 @@ void Process_Start(PROCESS** process_list, PROCESS* process_to_start)
 			return;
 		}
 	}
-
-
 	if (*process_list == &ProcessStub)
 	{
-		Node_Connect((NODE **) process_list, (NODE*)process_to_start);
+		Node_Connect((NODE **)process_list, (NODE*)process_to_start);
 		Process = *process_list;
 	}
 	else
 	{
-		Node_Connect((NODE * *)process_list, (NODE*)process_to_start);
+		Node_Connect((NODE **)process_list, (NODE*)process_to_start);
 	}
 	return;
 }
 
+void Process_Repeat(PROCESS* process_to_repeat)
+{
+	if (!process_to_repeat)
+	{
+		return;
+	}
+	ProcessNext = process_to_repeat;
+}
 
 void Process_Stop(PROCESS** process_list, PROCESS** process_stop_list, PROCESS* process_to_stop)
 {
@@ -80,7 +86,6 @@ void Process_Stop(PROCESS** process_list, PROCESS** process_stop_list, PROCESS* 
 
 
 	Node_Change_List((NODE**)process_list,(NODE**)process_stop_list,(NODE*)process_to_stop);
-
 	if (*process_list == &ProcessStub)
 	{
 		ProcessNext = &ProcessStub;
@@ -90,7 +95,6 @@ void Process_Stop(PROCESS** process_list, PROCESS** process_stop_list, PROCESS* 
 
 void Processes()
 {
-
 	ProcessNext = (PROCESS*)Process->node.next;
 	Process->Process(Process);
 	Process = ProcessNext;

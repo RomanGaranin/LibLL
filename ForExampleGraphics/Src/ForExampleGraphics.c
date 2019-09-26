@@ -17,7 +17,18 @@ static void DrawStub(struct _process* go_prc)
 	/*
 		Draw...
 	*/
-	Process_Stop((PROCESS**)& ProcessList, (PROCESS**)& GrapicsList, (PROCESS*)go_prc);
+	static bool lock = true;
+
+	if (lock)
+	{
+		Process_Repeat(go_prc);
+		lock = false;
+	}
+	else
+	{
+		Process_Stop((PROCESS * *)& ProcessList, (PROCESS * *)& GrapicsList, (PROCESS*)go_prc);
+		lock = true;
+	}
 }
 
 static void GO_Stubf(void* go)
