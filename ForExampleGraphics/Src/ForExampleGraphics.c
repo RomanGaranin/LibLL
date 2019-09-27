@@ -84,7 +84,7 @@ bool GO_Check(void* obj, va_list args)
 		else if (!strcmp("st", str))
 		{
 			state = false;
-			if (p == go->state)
+			if (p & go->state)
 			{
 				state = true;
 			}

@@ -1,35 +1,8 @@
 /*
 	Roman Garanin
-
-+-----------------------------------------------Linked-list-example----------------------------------------------+
-
-																										  next
-	  next                            +-----------------------------------------------------------------------+
-  +----------+                        |                                                                       |
-  |          |                        |                                                                       |
-  |  +----+  |         +-----+        |    +----+  next  +----+  next  +----+  next  +----+  next  +----+     |
-  +->+    +--+         |     |        +--->+    +------->+    +------->+    +------->+    +------->+    +-----+
-	 |Stub| <--  --  --+*List+---->        |Node|        |Node|        |Node|        |Node|        |Node|
-  +--+    +<-+         |     |        +----+    +<-------+    +<-------+    +<-------+    +<-------+    +<----+
-  |  +----+  |         +-----+        |    +----+  prev  +----+  prev  +----+  prev  +----+  prev  +----+     |
-  |          |                        |                                                                       |
-  +----------+                        |                                                                       |
-	  prev                            +-----------------------------------------------------------------------+
-											       prev
-	
-
-   *List - a pointer to the linked list.
-
-	Nodes - a structures the linked list contains from.
-
-	next - a pointer to the next node.
-
-	prev - a pointer to the prev node.
-
-	Stub - the Stub node . If the linked list is empty, the List pointer point to the Stub node.
-
-*********************************************************************************************************************/
+*/
 #include "../Inc/Node.h"
+
 
 NODE* Stub = 0;
 
@@ -212,9 +185,9 @@ void Node_Clear_List(NODE** List)
 	return;
 }
 
-NODE* NodeFind(NODE* List, bool (*pCheckSign)(void* obj, va_list args), ...)
+NODE* NodeFind(NODE* start_node, enum dir direction, bool (*pCheckSign)(void* obj, va_list args), ...)
 {
-	if (!List)
+	if (!start_node)
 	{
 		return NULL;
 	}
@@ -223,7 +196,7 @@ NODE* NodeFind(NODE* List, bool (*pCheckSign)(void* obj, va_list args), ...)
 		return NULL;
 	}
 
-	NODE* node = List;
+	NODE* node = start_node;
 	va_list args;
 	va_start(args, pCheckSign);
 
@@ -237,8 +210,7 @@ NODE* NodeFind(NODE* List, bool (*pCheckSign)(void* obj, va_list args), ...)
 		{
 			return node;
 		}
-		node = node->next;
-	} while (node!=List);
+	} while (node = NodeGoTo(start_node, node, direction));
 
 	va_end(args);
 
@@ -246,3 +218,45 @@ NODE* NodeFind(NODE* List, bool (*pCheckSign)(void* obj, va_list args), ...)
 }
 
 
+NODE* NodeGoTo(NODE* start_node, NODE* node, enum dir direction)
+{
+	if (node == start_node)
+	{
+		return NULL;
+	}
+	if (direction == Next)
+	{
+		node = node->next;
+		return node;
+	}
+	else if (direction == Prev)
+	{
+		node = node->prev;
+		return node;
+	}
+	else
+	{
+		return NULL;
+	}
+}
+
+
+NODE* NodeNext(NODE* start_node, NODE* node)
+{
+	if (node == start_node)
+	{
+		return NULL;
+	}
+	node = node->next;
+	return node;
+}
+
+NODE* NodePrev(NODE* start_node, NODE* node)
+{
+	if (node == start_node)
+	{
+		return NULL;
+	}
+	node = node->prev;
+	return node;
+}

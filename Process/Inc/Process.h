@@ -8,6 +8,10 @@
 #include "../../Node/Inc/Node.h"
 
 
+#ifdef __cplusplus
+{
+#endif
+
 typedef struct _process
 {
 	NODE node;
@@ -18,7 +22,7 @@ typedef struct _process
 extern PROCESS ProcessStub;
 extern PROCESS* ProcessList;
 
-void Process_Start(PROCESS** process_list,  PROCESS* process_to_start);
+void Process_Start(PROCESS** process_list, PROCESS* process_to_start);
 
 void Process_Repeat(PROCESS* process_to_repeat);
 
@@ -28,5 +32,8 @@ void Process_Restart(PROCESS** process_stop_list, PROCESS** process_list, PROCES
 
 void Processes();
 
+#ifdef __cplusplus
+}
+#endif
 
 #endif

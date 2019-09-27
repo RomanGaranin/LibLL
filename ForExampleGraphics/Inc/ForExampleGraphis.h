@@ -7,9 +7,14 @@
 #include "../../Node/Inc/Node.h"
 #include "../../Process/Inc/Process.h"
 
-/******************************************
-*	Graphics objects states
-*/
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+	/******************************************
+	*	Graphics objects states
+	*/
 #define GO_DRAW				(uint16_t)0x02
 #define GO_FOCUS			(uint16_t)0x04
 #define GO_PRESS			(uint16_t)0x08
@@ -26,20 +31,25 @@
 #define GO_TOUCHABLE		(uint16_t)0x4000
 #define GO_SELECTED			(uint16_t)0x8000
 
-typedef struct go_header
-{
-	PROCESS process;
-	uint16_t ID;
-	uint16_t GroupID;
-	uint16_t state;
-	uint16_t type;
-	uint16_t x;
-	uint16_t y;
-	uint16_t x_size;
-	uint16_t y_Size;
-	void(*Action)();
-}GO_HEADER;
+	typedef struct go_header
+	{
+		PROCESS process;
+		uint16_t ID;
+		uint16_t GroupID;
+		uint16_t state;
+		uint16_t type;
+		uint16_t x;
+		uint16_t y;
+		uint16_t x_size;
+		uint16_t y_Size;
+		void(*Action)();
+	}GO_HEADER;
 
-bool GO_Check(void* obj, va_list args);
+	bool GO_Check(void* obj, va_list args);
+
+
+#ifdef __cplusplus
+}
+#endif
 
 #endif

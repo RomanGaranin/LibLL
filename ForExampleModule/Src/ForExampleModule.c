@@ -69,7 +69,7 @@ void ModuleProcessStub1(struct _process* mdl_prc)
 			printf("\nStop Module process ID %d  Time: %s \n", (mdl_prc)->ProcessID, pGetTime());
 			Process_Stop((PROCESS * *)& ProcessList, (PROCESS * *)& ModuleList, (PROCESS*)mdl_prc);
 
-			Process_Restart((PROCESS * *)& ModuleList, (PROCESS * *)& ProcessList, (PROCESS*)mdl_prc);
+			Process_Restart((PROCESS * *)& ModuleList, &ProcessList, (PROCESS*)mdl_prc);
 		}
 	}
 }
