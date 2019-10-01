@@ -45,7 +45,8 @@ void ModuleProcessStub(struct _process* mdl_prc)
 	/*
 		Module process...
 	*/
-	Process_Stop((PROCESS**)& ProcessList, (PROCESS**)& ModuleList, (PROCESS*)mdl_prc);
+
+	NodeStopProcess((NODE* *)& ProcessList, (NODE * *)& ModuleList, (NODE*)mdl_prc);
 }
 
 void ModuleProcessStub1(struct _process* mdl_prc)
@@ -63,13 +64,16 @@ void ModuleProcessStub1(struct _process* mdl_prc)
 	}
 	else
 	{
-		if (pGetSysTick() - time > 2000)
+		if (pGetSysTick() - time > 500)
 		{
 			lock = true;
 			printf("\nStop Module process ID %d  Time: %s \n", (mdl_prc)->ProcessID, pGetTime());
-			Process_Stop((PROCESS * *)& ProcessList, (PROCESS * *)& ModuleList, (PROCESS*)mdl_prc);
+			NodeStopProcess((NODE**)&ProcessList, (NODE**)& ModuleList, (NODE*)mdl_prc);
 
-			Process_Restart((PROCESS * *)& ModuleList, &ProcessList, (PROCESS*)mdl_prc);
+			//Process_Stop((PROCESS * *)& ProcessList, (PROCESS * *)& ModuleList, (PROCESS*)mdl_prc);
+
+			//Process_Restart((PROCESS * *)& ModuleList, &ProcessList, (PROCESS*)mdl_prc);
+			NodeRestartProcess((NODE * *)& ModuleList, (NODE * *)& ProcessList, (NODE*)mdl_prc);
 		}
 	}
 }

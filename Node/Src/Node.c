@@ -4,8 +4,8 @@
 #include "../Inc/Node.h"
 
 
-NODE* Stub = 0;
-
+static NODE* Stub = 0;
+static NODE* next_node = 0;
 void Node_Init_Stub(NODE* stub)
 {
 	Stub = stub;
@@ -77,7 +77,6 @@ void Node_Disconnect(NODE** List, NODE* node)
 				if (nd->next == *List)					 // Only one node in the list.
 				{
 					*List = Stub;
-		
 				}
 				else
 				{
@@ -158,7 +157,7 @@ void Node_Change_List(NODE** SrcList, NODE** DestList, NODE* node)
 		return;
 	}
 		Node_Disconnect(SrcList, node);
-		Node_Connect(DestList, node);
+		Node_Connect(DestList, node);	
 	return;
 }
 
@@ -217,7 +216,6 @@ NODE* NodeFind(NODE* start_node, enum dir direction, bool (*pCheckSign)(void* ob
 	return NULL;
 }
 
-
 NODE* NodeGoTo(NODE* start_node, NODE* node, enum dir direction)
 {
 	if (node == start_node)
@@ -240,7 +238,6 @@ NODE* NodeGoTo(NODE* start_node, NODE* node, enum dir direction)
 	}
 }
 
-
 NODE* NodeNext(NODE* start_node, NODE* node)
 {
 	if (node == start_node)
@@ -259,4 +256,52 @@ NODE* NodePrev(NODE* start_node, NODE* node)
 	}
 	node = node->prev;
 	return node;
+}
+
+
+void NodeStopProcess(NODE** process_list, NODE** process_stop_list, NODE* process_to_stop)
+{
+	Node_Change_List((NODE **)process_list, (NODE **)process_stop_list, (NODE*)process_to_stop);
+	if (*process_list == Stub)
+	{
+		next_node = Stub;
+	}
+}
+void NodeRestartProcess(NODE** process_stop_list, NODE** process_list, NODE* process_to_restart)
+{
+	if (*process_list == Stub)
+	{
+		Node_Change_List((NODE**)process_stop_list, (NODE**)process_list, (NODE*)process_to_restart);
+		next_node = *process_list;
+	}
+	else
+	{
+		Node_Change_List((NODE**)process_stop_list, (NODE**)process_list, (NODE*)process_to_restart);
+	}
+}
+
+
+void NodeProcessRepeat(NODE* process_to_repeat)
+{
+	if (!process_to_repeat)
+	{
+		return;
+	}
+	next_node = process_to_repeat;
+}
+
+void NodeDo(NODE** node, void (pProcess)(NODE* nd))
+{
+	if (!node)
+	{
+		return;
+	}
+	next_node = (*node)->next;
+
+	if (pProcess)
+	{
+		pProcess(*node);
+	}
+	*node = next_node;
+	return;
 }

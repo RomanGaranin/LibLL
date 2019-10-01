@@ -22,7 +22,6 @@ void ProcessStubFunc(struct _process* prc)
 }
 
 PROCESS* ProcessList	= &ProcessStub;
-PROCESS* ProcessNext	= &ProcessStub;
 PROCESS* Process		= &ProcessStub;
 
 void Process_Start(PROCESS** process_list, PROCESS* process_to_start)
@@ -50,89 +49,9 @@ void Process_Start(PROCESS** process_list, PROCESS* process_to_start)
 	return;
 }
 
-void Process_Repeat(PROCESS* process_to_repeat)
-{
-	if (!process_to_repeat)
-	{
-		return;
-	}
-	ProcessNext = process_to_repeat;
-}
-
-void Process_Stop(PROCESS** process_list, PROCESS** process_stop_list, PROCESS* process_to_stop)
-{
-	if (!process_list)
-	{
-		return;
-	}
-	else
-	{
-		if (!*process_list)
-		{
-			return;
-		}
-	}
-	if ((!*process_stop_list))
-	{
-		return;
-	}
-	else
-	{
-		if ((!*process_stop_list) && (!process_to_stop))
-		{
-			return;
-		}
-	}
-
-	Node_Change_List((NODE**)process_list,(NODE**)process_stop_list,(NODE*)process_to_stop);
-	if (*process_list == &ProcessStub)
-	{
-		ProcessNext = &ProcessStub;
-	}
-	return;
-}
-
-void Process_Restart(PROCESS** process_stop_list, PROCESS** process_list, PROCESS* process_to_restart)
-{
-	if (!process_list)
-	{
-		return;
-	}
-	else
-	{
-		if (!*process_list)
-		{
-			return;
-		}
-	}
-	if ((!*process_stop_list))
-	{
-		return;
-	}
-	else
-	{
-		if ((!*process_stop_list) && (!process_to_restart))
-		{
-			return;
-		}
-	}
-	if (*process_list == &ProcessStub)
-	{
-		Node_Change_List((NODE * *)process_stop_list, (NODE * *)process_list, (NODE*)process_to_restart);
-		ProcessNext = *process_list;
-	}
-	else
-	{
-		Node_Change_List((NODE * *)process_stop_list, (NODE * *)process_list, (NODE*)process_to_restart);
-	}
-}
-
-
 void Processes()
 {
-	ProcessNext = (PROCESS*)Process->node.next;
-	Process->Process(Process);
-	Process = ProcessNext;
+    NodeDo(&Process, Process->Process);
 }
 
  

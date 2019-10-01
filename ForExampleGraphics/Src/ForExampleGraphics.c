@@ -21,12 +21,12 @@ static void DrawStub(struct _process* go_prc)
 
 	if (lock)
 	{
-		Process_Repeat(go_prc);
+		NodeProcessRepeat(go_prc);
 		lock = false;
 	}
 	else
 	{
-		Process_Stop((PROCESS * *)& ProcessList, (PROCESS * *)& GrapicsList, (PROCESS*)go_prc);
+	 NodeStopProcess((NODE * *)&ProcessList, (NODE * *)&GrapicsList, (NODE*)go_prc);
 		lock = true;
 	}
 }

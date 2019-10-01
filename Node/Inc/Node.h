@@ -42,6 +42,11 @@ extern "C" {
 	NODE* NodeNext(NODE* start_node, NODE* node);
 	NODE* NodePrev(NODE* start_node, NODE* node);
 
+	void NodeStopProcess(NODE** process_list, NODE** process_stop_list, NODE* process_to_stop);
+	void NodeRestartProcess(NODE** process_stop_list, NODE** process_list, NODE* process_to_restart);
+
+	void NodeDo(NODE** node, void (pProcess)(NODE* nd));
+
 #ifdef __cplusplus
 }
 #endif
