@@ -40,7 +40,7 @@ Connecting platform dependent functions to platform independent functions.
 	InitGetSysTick(GetSysTick);
 
 
-	Node_Init_Stub(ProcessList);						//Init Stub for nodes
+	Node_Init_Stub((NODE*)ProcessList);						//Init Stub for nodes
 
 	for (uint8_t i = 0; i < 5; i++)
 	{

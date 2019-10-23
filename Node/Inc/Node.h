@@ -35,14 +35,16 @@ extern "C" {
 
 	void Node_Connect(NODE** List, NODE* node, NODE** iterator);
 
+	void Node_Insert(NODE* node, NODE* insert_node, NODE** iterator);
+
 	void Node_Disconnect(NODE** List, NODE* node, NODE** iterator);
 	void Node_Disconnect_First(NODE** List, NODE** deleted_node);
 
 	void Node_Change_List(NODE** SrcList,
-		NODE** DestList,
-		NODE* node,
-		NODE** sl_iterator,
-		NODE** dl_iterator);
+						  NODE** DestList,
+						  NODE* node,
+						  NODE** sl_iterator,
+						  NODE** dl_iterator);
 
 	void Node_Clear_List(NODE** List);
 

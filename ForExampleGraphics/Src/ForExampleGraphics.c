@@ -45,6 +45,7 @@ void GO_Add(GO_HEADER* go)
 	go->state = GO_SWITCHABLE | GO_DRAW;
 
 	uProcessStart(go);
+	printf("GO object ID %d added to process list...\n", go->ID);
 }
 
 bool GO_Check(void* obj, va_list args)

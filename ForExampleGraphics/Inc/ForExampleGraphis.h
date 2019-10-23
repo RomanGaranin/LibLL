@@ -46,7 +46,7 @@ extern "C" {
 	}GO_HEADER;
 
 	bool GO_Check(void* obj, va_list args);
-
+	void GO_Add(GO_HEADER* go);
 
 #ifdef __cplusplus
 }

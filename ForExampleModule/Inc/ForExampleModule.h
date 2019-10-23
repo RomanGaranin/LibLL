@@ -17,8 +17,9 @@ extern "C" {
 	}MODULE;
 
 	void ModuleAdd(MODULE* module);
-
-	void ModuleProcessStub1(struct _process* mdl_prc);
+	
+	void ModuleProcessStub(NODE* mdl_prc);
+	void ModuleProcessStub1(NODE* mdl_prc);
 
 	void InitGetTime(uint8_t* (*ppGetTime)());
 	void InitGetSysTick(uint32_t(*ppGetSysTick)());

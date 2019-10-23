@@ -37,7 +37,7 @@ void InitGetSysTick(uint32_t (*ppGetSysTick)())
 	pGetSysTick = ppGetSysTick;
 }
 
-void ModuleProcessStub(NODE* mdl_prc);
+
 
 void ModuleProcessStub(NODE* mdl_prc)
 {
@@ -51,9 +51,11 @@ void ModuleProcessStub(NODE* mdl_prc)
 
 }
 
-void ModuleProcessStub1(struct _process* mdl_prc)
+
+void ModuleProcessStub1(NODE* mdl_prc)
 {
-	printf("\rModule process ID %d  Time: %s", (mdl_prc)->ProcessID, pGetTime());
+	PROCESS* prc = (PROCESS*)mdl_prc;
+	printf("\rModule process ID %d  Time: %s", prc->ProcessID, pGetTime());
 	static uint32_t time = 0;
 	static bool lock = true;
 	/*
@@ -66,10 +68,10 @@ void ModuleProcessStub1(struct _process* mdl_prc)
 	}
 	else
 	{
-		if (pGetSysTick() - time > 500)
+		if (pGetSysTick() - time > 2000)
 		{
 			lock = true;
-			printf("\nStop Module process ID %d  Time: %s \n", (mdl_prc)->ProcessID, pGetTime());			
+			printf("\nStop Module process ID %d  Time: %s \n", prc->ProcessID, pGetTime());			
 			uProcessStop(&ProcessStopList, mdl_prc);
 		}
 	}
@@ -79,5 +81,5 @@ void ModuleAdd(MODULE* module)
 {
 	module->process.Process = ModuleProcessStub;
 	uProcessStart(module);
-
+	printf("Module ID %d added to process list... \n", module->NameID);
 }

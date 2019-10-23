@@ -62,6 +62,34 @@ void Node_Connect(NODE** List, NODE* node, NODE** iterator)
 	return;
 }
 
+void Node_Insert(NODE* node, NODE* insert_node, NODE** iterator)
+{
+	if ((!node))
+	{
+		return;
+	}
+	if (!iterator)
+	{
+		return;
+	}
+	if (!*iterator)
+	{
+		return;
+	}
+	if (!insert_node)
+	{
+		return;
+	}
+	if (node->next == *iterator)
+	{
+		*iterator = insert_node;
+	}
+	insert_node->next = node->next;
+	insert_node->prev = node;
+	node->next->prev = insert_node;
+	node->next = insert_node;
+}
+
 /*!
 *	\breif Function disconnects the node from linked list.
 *	\param List - Pointer to pointer to the linked list.
