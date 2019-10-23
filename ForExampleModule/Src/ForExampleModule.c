@@ -37,16 +37,18 @@ void InitGetSysTick(uint32_t (*ppGetSysTick)())
 	pGetSysTick = ppGetSysTick;
 }
 
-void ModuleProcessStub(struct _process* mdl_prc);
+void ModuleProcessStub(NODE* mdl_prc);
 
-void ModuleProcessStub(struct _process* mdl_prc)
+void ModuleProcessStub(NODE* mdl_prc)
 {
-	printf("Module process ID %d ...\r\n", (mdl_prc)->ProcessID);
+	PROCESS* prc = (PROCESS*)mdl_prc;
+	printf("Module process ID %d ...\r\n", (prc)->ProcessID);
 	/*
 		Module process...
 	*/
 
-	NodeStopProcess((NODE* *)& ProcessList, (NODE * *)& ModuleList, (NODE*)mdl_prc);
+	uProcessDisconnect(mdl_prc);
+
 }
 
 void ModuleProcessStub1(struct _process* mdl_prc)
@@ -67,13 +69,8 @@ void ModuleProcessStub1(struct _process* mdl_prc)
 		if (pGetSysTick() - time > 500)
 		{
 			lock = true;
-			printf("\nStop Module process ID %d  Time: %s \n", (mdl_prc)->ProcessID, pGetTime());
-			NodeStopProcess((NODE**)&ProcessList, (NODE**)& ModuleList, (NODE*)mdl_prc);
-
-			//Process_Stop((PROCESS * *)& ProcessList, (PROCESS * *)& ModuleList, (PROCESS*)mdl_prc);
-
-			//Process_Restart((PROCESS * *)& ModuleList, &ProcessList, (PROCESS*)mdl_prc);
-			NodeRestartProcess((NODE * *)& ModuleList, (NODE * *)& ProcessList, (NODE*)mdl_prc);
+			printf("\nStop Module process ID %d  Time: %s \n", (mdl_prc)->ProcessID, pGetTime());			
+			uProcessStop(&ProcessStopList, mdl_prc);
 		}
 	}
 }
@@ -81,5 +78,6 @@ void ModuleProcessStub1(struct _process* mdl_prc)
 void ModuleAdd(MODULE* module)
 {
 	module->process.Process = ModuleProcessStub;
-	Process_Start((PROCESS * *)& ProcessList, (PROCESS*)module);
+	uProcessStart(module);
+
 }

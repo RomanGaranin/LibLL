@@ -8,7 +8,7 @@
 #include "stdbool.h"
 #include "stdarg.h"
 #include "string.h"
-#include "../../Node/Inc/Node.h"
+//#include "../../Node/Inc/Node.h"
 #include "..//..//Process/Inc/Process.h"
 #include "../../ForExampleGraphics/Inc/ForExampleGraphis.h"
 #include "..//..//ForExampleModule/Inc/ForExampleModule.h"
@@ -80,21 +80,21 @@ Connecting platform dependent functions to platform independent functions.
 		ModuleAdd(mdl);
 	}
 
-	MODULE* mdl = (MODULE*)malloc(sizeof(MODULE));
-	if (!mdl)
-	{
-		return;
-	}
-	mdl->NameID = 50;
-	mdl->process.ProcessID = 50;
-	mdl->process.node.ID = 50;
-	mdl->process.Process = ModuleProcessStub1;
-	ModuleAdd(mdl);
-	mdl->process.Process = ModuleProcessStub1;
+MODULE* mdl = (MODULE*)malloc(sizeof(MODULE));
+if (!mdl)
+{
+	return;
+}
+mdl->NameID = 50;
+mdl->process.ProcessID = 50;
+mdl->process.node.ID = 50;
+mdl->process.Process = ModuleProcessStub1;
+ModuleAdd(mdl);
+mdl->process.Process = ModuleProcessStub1;
 
 	while (1)
 	{
-		Processes();
+		ProcessForEach(&ProcessList);
 	}
 }
 

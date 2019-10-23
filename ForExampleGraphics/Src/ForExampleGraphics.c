@@ -6,14 +6,15 @@
 #include "../Inc/ForExampleGraphis.h"
 #include "string.h"
 
-GO_HEADER* GrapicsList = (GO_HEADER*)& ProcessStub;
+GO_HEADER* GraphicsList = (GO_HEADER*)& ProcessStub;
+GO_HEADER* GO_Iterator = (GO_HEADER*)&ProcessStub;
 
-static void DrawStub(struct _process* go_prc);
+static void DrawStub(NODE* go_prc);
 
-static void DrawStub(struct _process* go_prc)
+static void DrawStub(NODE* go_prc)
 {
-	GO_HEADER* hdr = (GO_HEADER*)
-	printf("Draw %d \r\n", (go_prc)->ProcessID);
+	GO_HEADER* hdr = (GO_HEADER*)go_prc;
+	printf("Draw %d \r\n", hdr->process.ProcessID);
 	/*
 		Draw...
 	*/
@@ -21,12 +22,12 @@ static void DrawStub(struct _process* go_prc)
 
 	if (lock)
 	{
-		NodeProcessRepeat(go_prc);
+		uProcessRepeat(go_prc, &PLProcessIterator);
 		lock = false;
 	}
 	else
 	{
-	 NodeStopProcess((NODE * *)&ProcessList, (NODE * *)&GrapicsList, (NODE*)go_prc);
+		uProcessStop(&GraphicsList, go_prc);
 		lock = true;
 	}
 }
@@ -43,7 +44,7 @@ void GO_Add(GO_HEADER* go)
 	go->process.Process = DrawStub;
 	go->state = GO_SWITCHABLE | GO_DRAW;
 
-	Process_Start((PROCESS **)& ProcessList, (PROCESS*)go);
+	uProcessStart(go);
 }
 
 bool GO_Check(void* obj, va_list args)

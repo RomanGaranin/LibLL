@@ -1,58 +1,78 @@
 /*
 	Roman Garanin
-	18.09.2019
 */
 
 #include "../Inc/Process.h"
-void ProcessStubFunc(struct _process* prc);
 
+static void ProcessStubFunc(NODE* prc);
 PROCESS ProcessStub =
 {
 	{
-		.next = (NODE*)& ProcessStub,
-		.prev = (NODE*)& ProcessStub,
+		.next = (NODE*)&ProcessStub,
+		.prev = (NODE*)&ProcessStub,
+		.ID = 44444,
 	},
-	.Process = &ProcessStubFunc, 
+	.Process = &ProcessStubFunc,
+	.ProcessID = 44444
 };
 
-void ProcessStubFunc(struct _process* prc)
-{ 
+static void ProcessStubFunc(NODE* prc)
+{
 	printf("No processes...\r");
 	return;
 }
+static void ProcessDeleteList(NODE* prc);
 
-PROCESS* ProcessList	= &ProcessStub;
-PROCESS* Process		= &ProcessStub;
-
-void Process_Start(PROCESS** process_list, PROCESS* process_to_start)
+PROCESS ProcessDelete =
 {
-	if ((!process_list))
 	{
-		return;
-	}
-	else
-	{
-		if ((!*process_list) && (!process_to_start))
-		{
-			return;
-		}
-	}
-	if (*process_list == &ProcessStub)
-	{
-		Node_Connect((NODE **)process_list, (NODE*)process_to_start);
-		Process = *process_list;
-	}
-	else
-	{
-		Node_Connect((NODE **)process_list, (NODE*)process_to_start);
-	}
+		.next = (NODE*)&ProcessDelete,
+		.prev = (NODE*)&ProcessDelete,
+		.ID = 33333,
+	},
+	.Process = &ProcessDeleteList
+};
+
+bool process_del = false;
+
+static void ProcessDeleteList(NODE* prc)
+{
+	Node_Clear_List((NODE**)&ProcessDelList);
+	uProcessDisconnect(prc);
+	process_del = false;
 	return;
 }
 
-void Processes()
+PROCESS* ProcessStopList = &ProcessStub;
+PROCESS* SLProcessIterator = &ProcessStub;
+
+PROCESS* ProcessList = &ProcessStub;
+PROCESS* PLProcessIterator = &ProcessStub;
+
+PROCESS* ProcessDelList = &ProcessStub;
+PROCESS* DLProcessIterator = &ProcessStub;
+
+
+
+void ProcessForEach(PROCESS** proccesslist)
 {
-    NodeDo(&Process, Process->Process);
+	if (!proccesslist)
+	{
+		return;
+	}
+	PROCESS* process = *proccesslist;
+	do
+	{
+		PLProcessIterator = (PROCESS*)process->node.next;
+		process->Process((NODE*)process);
+		process = (PROCESS*)PLProcessIterator;
+	} while ((PLProcessIterator != *proccesslist));
+
+	return;
 }
 
- 
+
+
+
+
 
