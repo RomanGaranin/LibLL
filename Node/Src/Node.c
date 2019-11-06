@@ -1,5 +1,6 @@
 /*
 	Roman Garanin
+	r_o.m.a_n@mail.ru
 */
 #include "../Inc/Node.h"
 
@@ -15,13 +16,6 @@ void Node_Connect_to_Stub(NODE** node, NODE* stub)
 {
 	*node = stub;
 }
-
-/*!
-*	\breif Function connects the node to the end of linked list.
-*	\param List - Pointer to pointer to the linked list.
-*	\param node - The node to disconnect.
-*	\return - no.
-*/
 
 void Node_Connect(NODE** List, NODE* node, NODE** iterator)
 {
@@ -90,13 +84,6 @@ void Node_Insert(NODE* node, NODE* insert_node, NODE** iterator)
 	node->next = insert_node;
 }
 
-/*!
-*	\breif Function disconnects the node from linked list.
-*	\param List - Pointer to pointer to the linked list.
-*	\param node - The node to disconnect.
-*	\param iteretor - Pointer to pointer to the extertnal iterator.
-*	\return no.
-*/
 void Node_Disconnect(NODE** List, NODE* node, NODE** iterator)
 {
 	if ((!node))
@@ -148,14 +135,7 @@ void Node_Disconnect(NODE** List, NODE* node, NODE** iterator)
 	} while (nd != *List);
 }
 
-/*!
-*	\breif Function disconnects the first node from linked list.
-*	\param List - Pointer to pointer to the linked list.
-*	\param deleted_node - pointer to pointer node to disconnected node.
-*	\return no.
-*/
-
-void Node_Disconnect_First(NODE** List, NODE** deleted_node)
+void Node_Disconnect_First(NODE** List, NODE** deleted_node, NODE** iterator)
 {
 	if (!List)
 	{
@@ -182,7 +162,6 @@ void Node_Disconnect_First(NODE** List, NODE** deleted_node)
 		return;
 	}
 }
-
 
 void Node_Change_List(NODE** SrcList, 
 				      NODE** DestList, 
@@ -240,7 +219,7 @@ void Node_Clear_List(NODE** List)
 	while (*List != Stub)
 	{
 		
-		Node_Disconnect_First(List, &del_node);
+		Node_Disconnect_First(List, &del_node, 0);
 		printf("%d  == %p == - %d\r\n",cnt, del_node, del_node->ID);
 		free(del_node);
 		cnt++;
@@ -313,15 +292,6 @@ void NodeForEach(NODE** list,
 	return;
 }
 
-
-void NodeProcessRepeat(NODE* process_to_repeat, NODE** iterator)
-{
-	if (!process_to_repeat)
-	{
-		return;
-	}
-	*iterator = process_to_repeat;
-}
 
 void PrintList(NODE* list_to_print)
 {

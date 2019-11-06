@@ -1,5 +1,6 @@
 /*
 	Roman Garanin
+	r_o.m.a_n@mail.ru
 */
 
 #include "../Inc/Process.h"
@@ -51,8 +52,6 @@ PROCESS* PLProcessIterator = &ProcessStub;
 
 PROCESS* ProcessDelList = &ProcessStub;
 PROCESS* DLProcessIterator = &ProcessStub;
-
-
 
 void ProcessForEach(PROCESS** proccesslist)
 {

@@ -1,8 +1,3 @@
-/*
-	Roman Garanin
-	17.09.2019
-*/
-
 #include "../Inc/ForExampleGraphis.h"
 #include "string.h"
 

@@ -1,8 +1,4 @@
 #include "..\Inc\ForExampleModule.h"
-/*
-	Roman Garanin
-	23.09.2019
-*/
 
 
 MODULE* ModuleList = (MODULE*)&ProcessStub;

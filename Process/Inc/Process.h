@@ -1,6 +1,6 @@
 /*
 	Roman Garanin
-	18.09.2019
+	r_o.m.a_n@mail.ru
 */
 
 #ifndef PROCESS_H

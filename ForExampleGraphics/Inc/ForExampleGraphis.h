@@ -1,7 +1,4 @@
-/*
-	Roman Garanin
-	17.09.2019
-*/
+
 #ifndef GRAPHICS_TEST_H
 #define GRAPHICS_TEST_H
 #include "../../Node/Inc/Node.h"
