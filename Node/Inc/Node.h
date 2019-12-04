@@ -1,6 +1,5 @@
 /*
 	Roman Garanin
-	r_o.m.a_n@mail.ru
 */
 #ifndef NODE_H
 #define NODE_H
@@ -17,8 +16,10 @@ extern "C" {
 #include "stdio.h"
 #include "string.h"
 
+
+
 	/**************************************************************************************!
-	*	\brief The base node struct. 
+	*	\brief The base node struct.
 	*/
 	typedef struct _node
 	{
@@ -26,7 +27,6 @@ extern "C" {
 		struct _node* prev;
 		uint16_t ID;
 	}NODE;
-
 	/**************************************************************************************!
 	*	\brief Enum defines a direction for searching the nodes in the linked lists.
 	*/
@@ -92,6 +92,23 @@ extern "C" {
 	*	\return no.
 	*/
 	void Node_Change_List(NODE** SrcList, NODE** DestList, NODE* node, NODE** sl_iterator, NODE** dl_iterator);
+
+
+	/**************************************************************************************!
+	*	\brief Function disconnects the node from the source linked list and then connects it to the destination linked list.
+	*	\param insert_after - The Pointer to node in the destination list after which the node will insert.
+	*	\param DstList - The Pointer to pointer to the destination linked list.
+	*	\sl_iterator - Global pointer to pointer uses for iterate the  source linked list.
+	*	\dl_iterator - Global pointer to pointer uses for iterate the destination linked list.
+	*				   Each linked list should have its own iterator.
+	*	\param node - The pointer.
+	*	\return no.
+	*/
+	void Node_Change_List_Insert(NODE** SrcList,
+		NODE* insert_after,
+		NODE* node,
+		NODE** s_iterator,
+		NODE** d_iterator);
 
 	/*!
 	*	\brief Function disconnects all nodes from the linked list and than free the memory.

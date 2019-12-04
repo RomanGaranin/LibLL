@@ -1,6 +1,5 @@
 /*
 	Roman Garanin
-	r_o.m.a_n@mail.ru
 */
 #include "../Inc/Node.h"
 
@@ -10,11 +9,6 @@ NODE* Stub = 0;
 void Node_Init_Stub(NODE* stub)
 {
 	Stub = stub;
-}
-
-void Node_Connect_to_Stub(NODE** node, NODE* stub)
-{
-	*node = stub;
 }
 
 void Node_Connect(NODE** List, NODE* node, NODE** iterator)
@@ -37,11 +31,13 @@ void Node_Connect(NODE** List, NODE* node, NODE** iterator)
 	}
 	if (*List == Stub)
 	{
-		
+
 		*List = node;
-		//*iterator = *List;
+		*iterator = *List;
 		node->next = node;
 		node->prev = node;
+
+
 		return;
 	}
 	NODE* nd = *List;
@@ -55,6 +51,7 @@ void Node_Connect(NODE** List, NODE* node, NODE** iterator)
 	(*List)->prev = node;
 	return;
 }
+
 
 void Node_Insert(NODE* node, NODE* insert_node, NODE** iterator)
 {
@@ -84,6 +81,7 @@ void Node_Insert(NODE* node, NODE* insert_node, NODE** iterator)
 	node->next = insert_node;
 }
 
+
 void Node_Disconnect(NODE** List, NODE* node, NODE** iterator)
 {
 	if ((!node))
@@ -112,7 +110,7 @@ void Node_Disconnect(NODE** List, NODE* node, NODE** iterator)
 				if (nd->next == *List)					 // Only one node in the list.
 				{
 					*iterator = Stub;
-					*List = Stub;			  
+					*List = Stub;
 					return;
 				}
 				else
@@ -134,6 +132,8 @@ void Node_Disconnect(NODE** List, NODE* node, NODE** iterator)
 		nd = nd->next;
 	} while (nd != *List);
 }
+
+
 
 void Node_Disconnect_First(NODE** List, NODE** deleted_node, NODE** iterator)
 {
@@ -163,11 +163,12 @@ void Node_Disconnect_First(NODE** List, NODE** deleted_node, NODE** iterator)
 	}
 }
 
-void Node_Change_List(NODE** SrcList, 
-				      NODE** DestList, 
-					  NODE* node, 
-					  NODE** s_iterator,
-					  NODE** d_iterator)
+
+void Node_Change_List(NODE** SrcList,
+	NODE** DestList,
+	NODE* node,
+	NODE** s_iterator,
+	NODE** d_iterator)
 {
 	if (!SrcList)
 	{
@@ -200,6 +201,39 @@ void Node_Change_List(NODE** SrcList,
 	return;
 }
 
+
+void Node_Change_List_Insert(NODE** SrcList,
+	NODE* insert_after,
+	NODE* node,
+	NODE** s_iterator,
+	NODE** d_iterator)
+{
+	if (!SrcList)
+	{
+		return;
+	}
+	else
+	{
+		if (!*SrcList)
+		{
+			return;
+		}
+	}
+	if (!insert_after)
+	{
+		return;
+	}
+
+	if (!node)
+	{
+		return;
+	}
+	Node_Disconnect(SrcList, node, s_iterator);
+	Node_Insert(insert_after, node, d_iterator);
+	return;
+}
+
+
 void Node_Clear_List(NODE** List)
 {
 	if (!List)
@@ -218,19 +252,19 @@ void Node_Clear_List(NODE** List)
 	printf("List deleted:\r\n");
 	while (*List != Stub)
 	{
-		
+
 		Node_Disconnect_First(List, &del_node, 0);
-		printf("%d  == %p == - %d\r\n",cnt, del_node, del_node->ID);
+		printf("%d  == %p == - %d\r\n", cnt, del_node, del_node->ID);
 		free(del_node);
 		cnt++;
 	}
 	return;
 }
 
-NODE* NodeFind(NODE* start_node, 
-			   enum dir direction, 
-			   bool (*pCheckSign)(void* obj, va_list args), 
-			   ...)
+NODE* NodeFind(NODE* start_node,
+	enum dir direction,
+	bool (*pCheckSign)(void* obj, va_list args),
+	...)
 {
 	if (!start_node)
 	{
@@ -270,9 +304,9 @@ NODE* NodeFind(NODE* start_node,
 	return NULL;
 }
 
-void NodeForEach(NODE** list, 
-				 void (*pAction)(NODE* node), 
-				 NODE** iterator)
+void NodeForEach(NODE** list,
+	void (*pAction)(NODE* node),
+	NODE** iterator)
 {
 	if (!list)
 	{
@@ -288,10 +322,19 @@ void NodeForEach(NODE** list,
 		*iterator = node->next;
 		pAction(node);
 		node = *iterator;
-	} while ((*iterator !=*list)&&(*list!=Stub));
+	} while ((*iterator != *list) && (*list != Stub));
 	return;
 }
 
+
+void NodeProcessRepeat(NODE* process_to_repeat, NODE** iterator)
+{
+	if (!process_to_repeat)
+	{
+		return;
+	}
+	*iterator = process_to_repeat;
+}
 
 void PrintList(NODE* list_to_print)
 {
