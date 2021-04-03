@@ -54,6 +54,15 @@ Connecting platform dependent functions to platform independent functions.
 		mdl->process.node.ID = i;
 		ModuleAdd(mdl);
 	}
+
+	NODE* _list = ProcessList;
+	NODE* _l;
+	LIST_FOREACH(_l, _list)
+	{
+		PROCESS* p = (PROCESS*)_l;
+		printf("Process ID %d\n", p->ProcessID);
+	}
+
 	for (uint8_t i = 0; i < 5; i++)
 	{
 		GO_HEADER* go = (GO_HEADER*)malloc(sizeof(GO_HEADER));
@@ -92,10 +101,15 @@ mdl->process.Process = ModuleProcessStub1;
 ModuleAdd(mdl);
 mdl->process.Process = ModuleProcessStub1;
 
+
+
+
 	while (1)
 	{
 		ProcessForEach(&ProcessList);
 	}
+	
+
 }
 
 uint8_t* GetTime()

@@ -164,11 +164,7 @@ void Node_Disconnect_First(NODE** List, NODE** deleted_node, NODE** iterator)
 }
 
 
-void Node_Change_List(NODE** SrcList,
-	NODE** DestList,
-	NODE* node,
-	NODE** s_iterator,
-	NODE** d_iterator)
+void Node_Change_List(NODE** SrcList, NODE** DestList, NODE* node, NODE** s_iterator, NODE** d_iterator)
 {
 	if (!SrcList)
 	{
@@ -304,9 +300,7 @@ NODE* NodeFind(NODE* start_node,
 	return NULL;
 }
 
-void NodeForEach(NODE** list,
-	void (*pAction)(NODE* node),
-	NODE** iterator)
+void NodeForEach(NODE** list, void (*pAction)(NODE* node), NODE** iterator)
 {
 	if (!list)
 	{
@@ -326,14 +320,10 @@ void NodeForEach(NODE** list,
 	return;
 }
 
-
-void NodeProcessRepeat(NODE* process_to_repeat, NODE** iterator)
+void IterateBack(NODE** iterator)
 {
-	if (!process_to_repeat)
-	{
-		return;
-	}
-	*iterator = process_to_repeat;
+	*iterator = (*iterator)->prev;
+	return;
 }
 
 void PrintList(NODE* list_to_print)

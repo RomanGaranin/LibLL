@@ -17,14 +17,13 @@ extern "C" {
 #include "string.h"
 
 
-
 	/**************************************************************************************!
 	*	\brief The base node struct.
 	*/
 	typedef struct _node
 	{
-		struct _node* next;
-		struct _node* prev;
+		struct _node* next; 
+		struct _node* prev; 
 		uint16_t ID;
 	}NODE;
 	/**************************************************************************************!
@@ -143,6 +142,15 @@ extern "C" {
 	*	\return no.
 	*/
 	void PrintList(NODE* list_to_print);
+
+#define LIST_FOREACH(l, list)\
+		for(l = (list)->next; l != (list); l = l->next)
+
+#define	list_for_each_safe(p, n, head)					\
+	for (p = (head)->next, n = p->next; p != (head); p = n, n = p->next)
+
+
+
 
 #ifdef __cplusplus
 }
