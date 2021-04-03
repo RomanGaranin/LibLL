@@ -1,17 +1,45 @@
-/*
-	Roman Garanin
+/**
+*	\file         Node.c
+*	\brief        Linked list library implementation.
+*	\author       Roman Garanin
 */
+
 #include "../Inc/Node.h"
 
+//#define PRINT_DEBUG
+#ifdef PRINT_DEBUG
 
-NODE* Stub = 0;
+#define DEBUG_PRINT(...); printf(__VA_ARGS__);
 
-void Node_Init_Stub(NODE* stub)
+#else
+
+#define DEBUG_PRINT(...);
+
+#endif
+
+static void StubAction(NODE* node);
+struct stub_node
 {
-	Stub = stub;
+	NODE node;
+	void (*pStubAction)(NODE* node);
+};
+
+const struct stub_node Stub =
+{
+	.node =
+	{
+		.next = (NODE*)&Stub,
+		.prev = (NODE*)&Stub,
+	},
+	.pStubAction = StubAction
+};
+
+static void StubAction(NODE* node)
+{
+	DEBUG_PRINT("Stub...\n");
 }
 
-void Node_Connect(NODE** List, NODE* node, NODE** iterator)
+void Node_Connect(NODE** List, NODE* node, NODE** tmp)
 {
 	if (!node)
 	{
@@ -29,11 +57,11 @@ void Node_Connect(NODE** List, NODE* node, NODE** iterator)
 			return;
 		}
 	}
-	if (*List == Stub)
+	if (*List == (NODE*)&Stub)
 	{
 
 		*List = node;
-		*iterator = *List;
+		*tmp = *List;
 		node->next = node;
 		node->prev = node;
 
@@ -53,17 +81,17 @@ void Node_Connect(NODE** List, NODE* node, NODE** iterator)
 }
 
 
-void Node_Insert(NODE* node, NODE* insert_node, NODE** iterator)
+void Node_Insert(NODE* node, NODE* insert_node, NODE** tmp)
 {
 	if ((!node))
 	{
 		return;
 	}
-	if (!iterator)
+	if (!tmp)
 	{
 		return;
 	}
-	if (!*iterator)
+	if (!*tmp)
 	{
 		return;
 	}
@@ -71,9 +99,9 @@ void Node_Insert(NODE* node, NODE* insert_node, NODE** iterator)
 	{
 		return;
 	}
-	if (node->next == *iterator)
+	if (node->next == *tmp)
 	{
-		*iterator = insert_node;
+		*tmp = insert_node;
 	}
 	insert_node->next = node->next;
 	insert_node->prev = node;
@@ -82,7 +110,7 @@ void Node_Insert(NODE* node, NODE* insert_node, NODE** iterator)
 }
 
 
-void Node_Disconnect(NODE** List, NODE* node, NODE** iterator)
+void Node_Disconnect(NODE** List, NODE* node, NODE** tmp)
 {
 	if ((!node))
 	{
@@ -101,16 +129,16 @@ void Node_Disconnect(NODE** List, NODE* node, NODE** iterator)
 	{
 		if (node == nd)
 		{
-			if (node == *iterator)
+			if (node == *tmp)
 			{
-				*iterator = node->next;
+				*tmp = node->next;
 			}
 			if (nd == *List)							 // The node is the first in the list.
 			{
 				if (nd->next == *List)					 // Only one node in the list.
 				{
-					*iterator = Stub;
-					*List = Stub;
+					*tmp = (NODE*)&Stub;
+					*List = (NODE*)&Stub;
 					return;
 				}
 				else
@@ -135,7 +163,7 @@ void Node_Disconnect(NODE** List, NODE* node, NODE** iterator)
 
 
 
-void Node_Disconnect_First(NODE** List, NODE** deleted_node, NODE** iterator)
+void Node_Disconnect_First(NODE** List, NODE** deleted_node, NODE** tmp)
 {
 	if (!List)
 	{
@@ -148,7 +176,7 @@ void Node_Disconnect_First(NODE** List, NODE** deleted_node, NODE** iterator)
 	if ((*List)->next == *List)					// We have only one node
 	{
 		*deleted_node = *List;
-		*List = Stub;
+		*List = (NODE*)&Stub;
 		return;
 	}
 	else
@@ -164,7 +192,7 @@ void Node_Disconnect_First(NODE** List, NODE** deleted_node, NODE** iterator)
 }
 
 
-void Node_Change_List(NODE** SrcList, NODE** DestList, NODE* node, NODE** s_iterator, NODE** d_iterator)
+void Node_Change_List(NODE** SrcList, NODE** DestList, NODE* node, NODE** s_tmp, NODE** d_tmp)
 {
 	if (!SrcList)
 	{
@@ -192,8 +220,8 @@ void Node_Change_List(NODE** SrcList, NODE** DestList, NODE* node, NODE** s_iter
 	{
 		return;
 	}
-	Node_Disconnect(SrcList, node, s_iterator);
-	Node_Connect(DestList, node, d_iterator);
+	Node_Disconnect(SrcList, node, s_tmp);
+	Node_Connect(DestList, node, d_tmp);
 	return;
 }
 
@@ -201,8 +229,8 @@ void Node_Change_List(NODE** SrcList, NODE** DestList, NODE* node, NODE** s_iter
 void Node_Change_List_Insert(NODE** SrcList,
 	NODE* insert_after,
 	NODE* node,
-	NODE** s_iterator,
-	NODE** d_iterator)
+	NODE** s_tmp,
+	NODE** d_tmp)
 {
 	if (!SrcList)
 	{
@@ -224,8 +252,8 @@ void Node_Change_List_Insert(NODE** SrcList,
 	{
 		return;
 	}
-	Node_Disconnect(SrcList, node, s_iterator);
-	Node_Insert(insert_after, node, d_iterator);
+	Node_Disconnect(SrcList, node, s_tmp);
+	Node_Insert(insert_after, node, d_tmp);
 	return;
 }
 
@@ -245,12 +273,11 @@ void Node_Clear_List(NODE** List)
 	}
 	static NODE* del_node = 0;
 	uint16_t cnt = 1;
-	printf("List deleted:\r\n");
-	while (*List != Stub)
+	DEBUG_PRINT("List deleted:\r\n");
+	while (*List != (NODE*)&Stub)
 	{
 
 		Node_Disconnect_First(List, &del_node, 0);
-		printf("%d  == %p == - %d\r\n", cnt, del_node, del_node->ID);
 		free(del_node);
 		cnt++;
 	}
@@ -300,7 +327,7 @@ NODE* NodeFind(NODE* start_node,
 	return NULL;
 }
 
-void NodeForEach(NODE** list, void (*pAction)(NODE* node), NODE** iterator)
+void NodeForEach(NODE** list, void (*pAction)(NODE* node), NODE** tmp)
 {
 	if (!list)
 	{
@@ -313,16 +340,16 @@ void NodeForEach(NODE** list, void (*pAction)(NODE* node), NODE** iterator)
 	NODE* node = *list;
 	do
 	{
-		*iterator = node->next;
+		*tmp = node->next;
 		pAction(node);
-		node = *iterator;
-	} while ((*iterator != *list) && (*list != Stub));
+		node = *tmp;
+	} while ((*tmp != *list) && (*list != (NODE*)&Stub));
 	return;
 }
 
-void IterateBack(NODE** iterator)
+void IterateBack(NODE** tmp)
 {
-	*iterator = (*iterator)->prev;
+	*tmp = (*tmp)->prev;
 	return;
 }
 
@@ -334,12 +361,11 @@ void PrintList(NODE* list_to_print)
 	do
 	{
 		next = node->next;
-		printf("== %p == ID - %d\r\n", (void*)node, node->ID);
 		node = next;
 		cnt++;
 	} while (next != list_to_print);
 
-	printf("\r\n\r\n");
+	DEBUG_PRINT("\r\n\r\n");
 	return;
 }
 
