@@ -11,7 +11,7 @@ A basic linked list designed for creating more complex linked lists.
 * Replace node from one linked list to the end of another linked list.
 * Replace node from one linked list to another linked list (Disconnect from source list and insert to destination list).
 * Find node in the list.
-* Iterate list.
+* Foreach list.
 * Print List to standart output.
 * Removing List (freeing memory).
 
