@@ -155,11 +155,11 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\Node\Src\Node.c" />
+    <ClCompile Include="..\..\Src\Node.c" />
     <ClCompile Include="LinkedList.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\Node\Inc\Node.h" />
+    <ClInclude Include="..\..\Inc\Node.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

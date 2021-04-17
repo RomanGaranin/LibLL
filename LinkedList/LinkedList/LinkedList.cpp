@@ -8,7 +8,7 @@
 #include "stdbool.h"
 #include "stdarg.h"
 #include "string.h"
-#include "../../Node/Inc/Node.h"
+#include "../../Inc/Node.h"
 
 
 #include "windows.h"

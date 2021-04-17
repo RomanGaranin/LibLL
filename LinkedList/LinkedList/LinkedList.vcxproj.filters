@@ -13,24 +13,18 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
-    <Filter Include="Исходные файлы\Node">
-      <UniqueIdentifier>{a1ebab91-9456-44eb-afd2-3681db74910e}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Файлы заголовков\Node">
-      <UniqueIdentifier>{bd5055a3-37d8-48ad-a8d0-0631c428925f}</UniqueIdentifier>
-    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="LinkedList.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Node\Src\Node.c">
-      <Filter>Исходные файлы\Node</Filter>
+    <ClCompile Include="..\..\Src\Node.c">
+      <Filter>Исходные файлы</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\Node\Inc\Node.h">
-      <Filter>Файлы заголовков\Node</Filter>
+    <ClInclude Include="..\..\Inc\Node.h">
+      <Filter>Файлы заголовков</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
