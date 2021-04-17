@@ -8,16 +8,12 @@
 
 //#define PRINT_DEBUG
 #ifdef PRINT_DEBUG
-
 #define DEBUG_PRINT(...); printf(__VA_ARGS__);
-
 #else
-
 #define DEBUG_PRINT(...);
-
 #endif
 
-static void StubAction(NODE* node);
+static void StubAction(NODE *node);
 struct stub_node
 {
 	NODE node;
@@ -36,43 +32,34 @@ const struct stub_node Stub =
 
 static void StubAction(NODE* node)
 {
-	DEBUG_PRINT("Stub...\n");
+	DEBUG_PRINT("List is empty ...\n");
 }
 
 void Node_Connect(NODE** List, NODE* node, NODE** tmp)
 {
-	if (!node)
-	{
+	if (NULL == node) {
 		return;
 	}
-
-	if (!List)
-	{
+	if (NULL == List) {
 		return;
-	}
-	else
-	{
-		if ((!*List))
-		{
+	} else {
+		if ((NULL == *List)) {
 			return;
 		}
 	}
-	if (*List == (NODE*)&Stub)
-	{
-
+	if (*List == (NODE*)&Stub) {
 		*List = node;
 		*tmp = *List;
 		node->next = node;
 		node->prev = node;
-
-
 		return;
 	}
-	NODE* nd = *List;
-	do
-	{
+    NODE *nd = *List;
+
+	do {
 		nd = nd->next;
 	} while (nd->next != *List);
+	
 	nd->next = node;
 	node->prev = nd;
 	node->next = *List;
@@ -80,27 +67,21 @@ void Node_Connect(NODE** List, NODE* node, NODE** tmp)
 	return;
 }
 
-
 void Node_Insert(NODE* node, NODE* insert_node, NODE** tmp)
 {
-	if ((!node))
-	{
+	if ((NULL == node)) {
 		return;
 	}
-	if (!tmp)
-	{
+	if (NULL == tmp) {
 		return;
 	}
-	if (!*tmp)
-	{
+	if (NULL == *tmp) {
 		return;
 	}
-	if (!insert_node)
-	{
+	if (NULL == insert_node) {
 		return;
 	}
-	if (node->next == *tmp)
-	{
+	if (node->next == *tmp) {
 		*tmp = insert_node;
 	}
 	insert_node->next = node->next;
@@ -109,40 +90,30 @@ void Node_Insert(NODE* node, NODE* insert_node, NODE** tmp)
 	node->next = insert_node;
 }
 
-
 void Node_Disconnect(NODE** List, NODE* node, NODE** tmp)
 {
-	if ((!node))
-	{
+	if ((NULL == node)) {
 		return;
 	}
-	if (!List)
-	{
+	if (NULL == List) {
 		return;
 	}
-	if (!*List)
-	{
+	if (NULL == *List) {
 		return;
 	}
 	NODE* nd = *List;
-	do
-	{
-		if (node == nd)
-		{
-			if (node == *tmp)
-			{
+	do {
+		if (node == nd) {
+			if (node == *tmp) {
 				*tmp = node->next;
 			}
-			if (nd == *List)							 // The node is the first in the list.
-			{
-				if (nd->next == *List)					 // Only one node in the list.
-				{
+			if (nd == *List) {							 // The node is the first in the list.
+				if (nd->next == *List) {				 // Only one node in the list.
 					*tmp = (NODE*)&Stub;
 					*List = (NODE*)&Stub;
 					return;
 				}
-				else
-				{
+				else {
 					(*List)->next->prev = (*List)->prev; // Connect next node (second in the list) to the last 
 					(*List)->prev->next = (*List)->next; // Connect last node in the list to the second node in the list
 					*List = (*List)->next;				 // The second node in the list becomes first			
@@ -161,26 +132,19 @@ void Node_Disconnect(NODE** List, NODE* node, NODE** tmp)
 	} while (nd != *List);
 }
 
-
-
 void Node_Disconnect_First(NODE** List, NODE** deleted_node, NODE** tmp)
 {
-	if (!List)
-	{
+	if (NULL == List) {
 		return;
 	}
-	if (!*List)
-	{
+	if (NULL == *List) {
 		return;
 	}
-	if ((*List)->next == *List)					// We have only one node
-	{
+	if ((*List)->next == *List)	{				// We have only one node
 		*deleted_node = *List;
 		*List = (NODE*)&Stub;
 		return;
-	}
-	else
-	{
+	} else {
 		*deleted_node = *List;
 		(*List)->next->prev = (*List)->prev;	// Connect next node (second in the list) to the last 
 		(*List)->prev->next = (*List)->next;	// Connect last node in the list to the second node in the list
@@ -191,33 +155,25 @@ void Node_Disconnect_First(NODE** List, NODE** deleted_node, NODE** tmp)
 	}
 }
 
-
 void Node_Change_List(NODE** SrcList, NODE** DestList, NODE* node, NODE** s_tmp, NODE** d_tmp)
 {
-	if (!SrcList)
-	{
+	if (NULL == SrcList) {
 		return;
 	}
-	else
-	{
-		if (!*SrcList)
-		{
+	else {
+		if (NULL == *SrcList) {
 			return;
 		}
 	}
-	if (!DestList)
-	{
+	if (NULL == DestList) {
 		return;
 	}
-	else
-	{
-		if (!*DestList)
-		{
+	else {
+		if (NULL == *DestList) {
 			return;
 		}
 	}
-	if (!node)
-	{
+	if (NULL == node) {
 		return;
 	}
 	Node_Disconnect(SrcList, node, s_tmp);
@@ -225,31 +181,19 @@ void Node_Change_List(NODE** SrcList, NODE** DestList, NODE* node, NODE** s_tmp,
 	return;
 }
 
-
-void Node_Change_List_Insert(NODE** SrcList,
-	NODE* insert_after,
-	NODE* node,
-	NODE** s_tmp,
-	NODE** d_tmp)
+void Node_Change_List_Insert(NODE** SrcList, NODE* insert_after, NODE* node, NODE** s_tmp, NODE** d_tmp)
 {
-	if (!SrcList)
-	{
+	if (NULL == SrcList) {
 		return;
-	}
-	else
-	{
-		if (!*SrcList)
-		{
+	} else {
+		if (NULL == *SrcList) {
 			return;
 		}
 	}
-	if (!insert_after)
-	{
+	if (NULL == insert_after) {
 		return;
 	}
-
-	if (!node)
-	{
+	if (NULL == node) {
 		return;
 	}
 	Node_Disconnect(SrcList, node, s_tmp);
@@ -257,17 +201,12 @@ void Node_Change_List_Insert(NODE** SrcList,
 	return;
 }
 
-
 void Node_Clear_List(NODE** List)
 {
-	if (!List)
-	{
+	if (NULL == List) {
 		return;
-	}
-	else
-	{
-		if (!*List)
-		{
+	} else {
+		if (NULL == *List) {
 			return;
 		}
 	}
@@ -276,7 +215,6 @@ void Node_Clear_List(NODE** List)
 	DEBUG_PRINT("List deleted:\r\n");
 	while (*List != (NODE*)&Stub)
 	{
-
 		Node_Disconnect_First(List, &del_node, 0);
 		free(del_node);
 		cnt++;
@@ -284,44 +222,31 @@ void Node_Clear_List(NODE** List)
 	return;
 }
 
-NODE* NodeFind(NODE* start_node,
-	enum dir direction,
-	bool (*pCheckSign)(void* obj, va_list args),
-	...)
+NODE* NodeFind(NODE* start_node, enum dir direction, bool (*pCheckSign)(void* obj, va_list args), ...)
 {
-	if (!start_node)
-	{
+	if (NULL == start_node) {
 		return NULL;
-	}
-	if (!pCheckSign)
-	{
+	} if (NULL == pCheckSign) {
 		return NULL;
 	}
 	NODE* node = start_node;
 	va_list args;
 	va_start(args, pCheckSign);
 
-	if (!pCheckSign)
-	{
+	if (NULL == pCheckSign) {
 		return NULL;
 	}
 
-	do
-	{
-		if (direction == Next)
-		{
+	do {
+		if (direction == Next) {
 			node = node->next;
 		}
-		else if (direction == Prev)
-		{
+		else if (direction == Prev) {
 			node = node->prev;
 		}
-
-		if (pCheckSign((void*)node, args))
-		{
+		if (pCheckSign((void*)node, args)) {
 			return node;
 		}
-
 	} while (node != start_node);
 	va_end(args);
 	return NULL;
@@ -329,27 +254,17 @@ NODE* NodeFind(NODE* start_node,
 
 void NodeForEach(NODE** list, void (*pAction)(NODE* node), NODE** tmp)
 {
-	if (!list)
-	{
+	if (NULL == list) {
 		return;
-	}
-	if (!pAction)
-	{
+	} if (NULL == pAction) {
 		return;
 	}
 	NODE* node = *list;
-	do
-	{
+	do {
 		*tmp = node->next;
 		pAction(node);
 		node = *tmp;
-	} while ((*tmp != *list) && (*list != (NODE*)&Stub));
-	return;
-}
-
-void IterateBack(NODE** tmp)
-{
-	*tmp = (*tmp)->prev;
+        } while ((*tmp != *list) && (*list != (NODE *)&Stub));
 	return;
 }
 
@@ -358,13 +273,11 @@ void PrintList(NODE* list_to_print)
 	NODE* node = list_to_print;
 	NODE* next;
 	uint16_t cnt = 0;
-	do
-	{
+	do {
 		next = node->next;
 		node = next;
 		cnt++;
-	} while (next != list_to_print);
-
+        } while (next != list_to_print);
 	DEBUG_PRINT("\r\n\r\n");
 	return;
 }

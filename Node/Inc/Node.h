@@ -33,7 +33,7 @@ extern const struct stub_node Stub;
 NODE* ListName = Stub;
 
 /**
-*	\brief The base node struct.
+*	\brief Base node struct.
 */
 typedef struct _node
 {
@@ -41,14 +41,6 @@ typedef struct _node
 	struct _node* prev;  /**< The pointer to the previous node */
 }NODE;
 
-/**
-*	\brief Enum defines a direction for searching the nodes in the linked lists.
-*/
-enum dir
-{
-	Next = 0,
-	Prev
-};
 
 /**
 *	\brief Function connects the node to the end of the linked list.
@@ -59,7 +51,7 @@ enum dir
 void Node_Connect(NODE** List, NODE* node, NODE** tmp);
 
 /**
-*	\brief Function inserts the node to the  linked list.
+*	\brief Function inserts the node to the linked list.
 *	\param List - The pointer to pointer to the linked list.
 *	\param node - The node after which the new node will be inserted.
 *	\param tmp - Global pointer to pointer uses for iterate the linked list.
@@ -123,6 +115,12 @@ void Node_Change_List_Insert(NODE** SrcList,
 *	\return no.
 */
 void Node_Clear_List(NODE** List);
+
+/**
+ *	\brief Enum defines a direction for searching the nodes in the linked
+ *lists.
+ */
+enum dir { Next = 0, Prev };
 
 /**
 *	\brief Function finds the node in the linked list by the check signs function.
