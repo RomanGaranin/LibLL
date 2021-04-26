@@ -29,8 +29,14 @@ extern const struct stub_node Stub;
 *	\brief Macro for declaration and initialisation a new linked list pointer.
 *	\param ListName - The name for new linked list.
 */
-#define CreateList(ListName)\
-NODE* ListName = Stub;
+#define mCREATE_LIST(ListName, ListTmp)\
+	NODE* ListName = (NODE*)&Stub;\
+	NODE* ListTmp = (NODE*)&Stub;
+
+
+#define mINIT_NODE(node)\
+	(NODE *)node->next = (NODE*)node;\
+	(NODE *)node->prev = (NODE*)node;
 
 /**
 *	\brief Base node struct.
@@ -52,8 +58,8 @@ void Node_Connect(NODE** List, NODE* node, NODE** tmp);
 
 /**
 *	\brief Function inserts the node to the linked list.
-*	\param List - The pointer to pointer to the linked list.
 *	\param node - The node after which the new node will be inserted.
+*  	\param insert_node - The node to insert.
 *	\param tmp - Global pointer to pointer uses for iterate the linked list.
 *					  Each linked list should have its own tmp.
 *	\return - no.

@@ -252,8 +252,9 @@ void NodeForEach(NODE** list, NODE* (*pAction)(NODE* node), NODE** tmp)
 		return;
 	}
 
-	if (*list == &Stub) {
-          Stub.pStubAction(&Stub);
+	if (*list == (NODE*)&Stub) {
+          Stub.pStubAction((NODE*)&Stub);
+          return;
 	}
 
 	NODE* node = *list;
@@ -278,5 +279,3 @@ void PrintList(NODE* list_to_print)
 	DEBUG_PRINT("\r\n\r\n");
 	return;
 }
-
-
