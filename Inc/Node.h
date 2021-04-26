@@ -140,7 +140,7 @@ NODE* NodeFind(NODE* start_node, enum dir direction, bool (*pCheckSign)(void* ob
 *					 Each linked list should have its own tempore node .
 *	\return no.
 */
-void NodeForEach(NODE** list, void (*pAction)(NODE* node), NODE** tmp);
+void NodeForEach(NODE** list, NODE* (*pAction)(NODE* node), NODE** tmp);
 
 /**
 *	\brief Function prints all list to standart output.

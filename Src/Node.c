@@ -54,12 +54,9 @@ void Node_Connect(NODE** List, NODE* node, NODE** tmp)
 		node->prev = node;
 		return;
 	}
-    NODE *nd = *List;
 
-	do {
-		nd = nd->next;
-	} while (nd->next != *List);
-	
+    NODE *nd = (*List)->prev;
+
 	nd->next = node;
 	node->prev = nd;
 	node->next = *List;
@@ -101,35 +98,30 @@ void Node_Disconnect(NODE** List, NODE* node, NODE** tmp)
 	if (NULL == *List) {
 		return;
 	}
-	NODE* nd = *List;
-	do {
-		if (node == nd) {
-			if (node == *tmp) {
+
+	if (node == *tmp) {
 				*tmp = node->next;
-			}
-			if (nd == *List) {							 // The node is the first in the list.
-				if (nd->next == *List) {				 // Only one node in the list.
-					*tmp = (NODE*)&Stub;
-					*List = (NODE*)&Stub;
-					return;
-				}
-				else {
-					(*List)->next->prev = (*List)->prev; // Connect next node (second in the list) to the last 
-					(*List)->prev->next = (*List)->next; // Connect last node in the list to the second node in the list
-					*List = (*List)->next;				 // The second node in the list becomes first			
-				}
-				node->next = node;
-				node->prev = node;
-				return;
-			}
-			node->prev->next = node->next;
-			node->next->prev = node->prev;
-			node->next = node;
-			node->prev = node;
-			return;
+	}
+
+	if (node == *List) {					     // The node is the first in the list.
+		if (node->next == *List) {				 // Only one node in the list.
+		    *tmp = (NODE*)&Stub;
+		    *List = (NODE*)&Stub;
+		    return;
+		} else {  
+			(*List)->next->prev = (*List)->prev; // Connect next node (second in the list) to the last 
+			(*List)->prev->next = (*List)->next; // Connect last node in the list to the second node in the list
+			*List = (*List)->next;				 // The second node in the list becomes first			
 		}
-		nd = nd->next;
-	} while (nd != *List);
+		node->next = node;
+		node->prev = node;
+		return;
+	}
+	node->prev->next = node->next;
+	node->next->prev = node->prev;
+	node->next = node;
+	node->prev = node;
+	return;
 }
 
 void Node_Disconnect_First(NODE** List, NODE** deleted_node, NODE** tmp)
@@ -252,13 +244,18 @@ NODE* NodeFind(NODE* start_node, enum dir direction, bool (*pCheckSign)(void* ob
 	return NULL;
 }
 
-void NodeForEach(NODE** list, void (*pAction)(NODE* node), NODE** tmp)
+void NodeForEach(NODE** list, NODE* (*pAction)(NODE* node), NODE** tmp)
 {
 	if (NULL == list) {
 		return;
 	} if (NULL == pAction) {
 		return;
 	}
+
+	if (*list == &Stub) {
+          Stub.pStubAction(&Stub);
+	}
+
 	NODE* node = *list;
 	do {
 		*tmp = node->next;
