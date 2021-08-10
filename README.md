@@ -1,7 +1,9 @@
 Linked List Library
 ============
+## Build status: 
 ## Description:
 A basic linked list designed for creating more complex linked lists.
+## Terms and definitions:
 ## Contents:
 * Connecting node to the end of the linked list.
 * Inserting node to the linked list.
@@ -13,4 +15,8 @@ A basic linked list designed for creating more complex linked lists.
 * Foreach list.
 * Print List to standart output.
 * Removing List (freeing memory).
+## How to use:
+
+
+
 
