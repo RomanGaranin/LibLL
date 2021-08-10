@@ -1,4 +1,4 @@
-Linked List
+Linked List Library
 ============
 ## Description:
 A basic linked list designed for creating more complex linked lists.
