@@ -2,6 +2,8 @@ Linked List Library
 ============
 ## Build status: 
 ## Description:
+The project is in progress ...
+
 A basic linked list designed for creating more complex linked lists.
 ## Terms and definitions:
 ## Contents:
