@@ -1,9 +1,8 @@
-LinkedList.
+Linked List
 ============
+## Description:
 A basic linked list designed for creating more complex linked lists.
-
-
-# Description.
+## Contents:
 * Connecting node to the end of the linked list.
 * Inserting node to the linked list.
 * Disconnecting node from the linked list.
