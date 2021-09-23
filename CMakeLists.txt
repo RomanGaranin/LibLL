@@ -3,4 +3,4 @@ project (LibLL VERSION 1.0)
 
 ADD_DEFINITIONS(-I$ENV{CMAKE_CURRENT_SOURCE_DIR}/Src)
 
-add_library(LibLL Node.c)
+add_library(Node Node.c)
