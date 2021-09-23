@@ -1,7 +1,7 @@
 Linked List Library
 ============
 ## Build status: 
-[![CMake](https://github.com/RomanGaranin/LibLL/actions/workflows/cmake.yml/badge.svg)](https://github.com/RomanGaranin/LibLL/actions/workflows/cmake.yml)
+
 ## Description:
 The project is in progress ...
 

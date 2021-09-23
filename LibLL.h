@@ -1,11 +1,15 @@
 /**
-*	\file         Node.c
+*	\file         LibLL.h
 *	\brief        Linked list library implementation.
+*	\abbreviations:
+*		LL - Linked list.
+*	
 *	\author       Roman Garanin
+*	
 */
 
-#ifndef NODE_H
-#define NODE_H
+#ifndef LIBLL_H
+#define LIBLL_H
 #define _CRT_SECURE_NO_WARNINGS
 
 #ifdef __cplusplus
@@ -54,7 +58,7 @@ typedef struct _node
 *	\param node - The pointer to node to be disconnected.
 *	\return - no.
 */
-void Node_Connect(NODE** List, NODE* node, NODE** tmp);
+void LL_Connect(NODE** List, NODE* node, NODE** tmp);
 
 /**
 *	\brief Function inserts the node to the linked list.
@@ -64,7 +68,7 @@ void Node_Connect(NODE** List, NODE* node, NODE** tmp);
 *					  Each linked list should have its own tmp.
 *	\return - no.
 */
-void Node_Insert(NODE* node, NODE* insert_node, NODE** tmp);
+void LL_Insert(NODE* node, NODE* insert_node, NODE** tmp);
 
 /**
 *	\brief Function disconnects the node from linked list.
@@ -74,7 +78,7 @@ void Node_Insert(NODE* node, NODE* insert_node, NODE** tmp);
 *					  Each linked list should have its own tmp.
 *	\return - no.
 */
-void Node_Disconnect(NODE** List, NODE* node, NODE** tmp);
+void LL_Disconnect(NODE** List, NODE* node, NODE** tmp);
 
 /**
 *	\brief Function disconnects the first node from linked list.
@@ -84,7 +88,7 @@ void Node_Disconnect(NODE** List, NODE* node, NODE** tmp);
 *					  Each linked list should have its own tmp.
 *	\return - no.
 */
-void Node_Disconnect_First(NODE** List, NODE** deleted_node, NODE** tmp);
+void LL_Disconnect_First(NODE** List, NODE** deleted_node, NODE** tmp);
 
 /**
 *	\brief Function disconnects the node from the source linked list and then connects it to the destination linked list.
@@ -96,7 +100,7 @@ void Node_Disconnect_First(NODE** List, NODE** deleted_node, NODE** tmp);
 *	\param node - The pointer.
 *	\return no.
 */
-void Node_Change_List(NODE** SrcList, NODE** DestList, NODE* node, NODE** sl_tmp, NODE** dl_tmp);
+void LL_Change_List(NODE** SrcList, NODE** DestList, NODE* node, NODE** sl_tmp, NODE** dl_tmp);
 
 
 /**
@@ -109,7 +113,7 @@ void Node_Change_List(NODE** SrcList, NODE** DestList, NODE* node, NODE** sl_tmp
 *	\param node - The pointer.
 *	\return no.
 */
-void Node_Change_List_Insert(NODE** SrcList,
+void LL_Change_List_Insert(NODE** SrcList,
 	NODE* insert_after,
 	NODE* node,
 	NODE** s_tmp,
@@ -120,7 +124,7 @@ void Node_Change_List_Insert(NODE** SrcList,
 *	\param List - Pointer to pointer to the linked list.
 *	\return no.
 */
-void Node_Clear_List(NODE** List);
+void LL_Clear_List(NODE** List);
 
 /**
  *	\brief Enum defines a direction for searching the nodes in the linked
@@ -136,7 +140,7 @@ enum dir { Next = 0, Prev };
 *	\param ... - The sequence of parameters that passes to the check signs function.
 *	\return pointer to the finded node.
 */
-NODE* NodeFind(NODE* start_node, enum dir direction, bool (*pCheckSign)(void* obj, va_list args), ...);
+NODE* LL_Find(NODE* start_node, enum dir direction, bool (*pCheckSign)(void* obj, va_list args), ...);
 
 /**
 *	\brief Function iterates the linked list and call the action (pointer to function) passed as a parameter to that function.
@@ -146,7 +150,7 @@ NODE* NodeFind(NODE* start_node, enum dir direction, bool (*pCheckSign)(void* ob
 *					 Each linked list should have its own tempore node .
 *	\return no.
 */
-void NodeForEach(NODE** list, NODE* (*pAction)(NODE* node), NODE** tmp);
+void LL_ForEach(NODE** list, NODE* (*pAction)(NODE* node), NODE** tmp);
 
 /**
 *	\brief Function prints all list to standart output.
@@ -165,5 +169,5 @@ void PrintList(NODE* list_to_print);
 }
 #endif
 
-#endif // !NODE_H
+#endif // !LIBLL_H
 

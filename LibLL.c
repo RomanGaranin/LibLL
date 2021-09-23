@@ -1,10 +1,13 @@
 /**
-*	\file         Node.c
+*	\file         LibLL.c
 *	\brief        Linked list library implementation.
+*	\abbreviations:
+*		LL - Linked List
+* 
 *	\author       Roman Garanin
 */
 
-#include "../Inc/Node.h"
+#include "LibLL.h"
 
 //#define PRINT_DEBUG
 #ifdef PRINT_DEBUG
@@ -35,7 +38,7 @@ static void StubAction(NODE* node)
 	DEBUG_PRINT("List is empty ...\n");
 }
 
-void Node_Connect(NODE** List, NODE* node, NODE** tmp)
+void LL_Connect(NODE** List, NODE* node, NODE** tmp)
 {
 	if (NULL == node) {
 		return;
@@ -64,7 +67,7 @@ void Node_Connect(NODE** List, NODE* node, NODE** tmp)
 	return;
 }
 
-void Node_Insert(NODE* node, NODE* insert_node, NODE** tmp)
+void LL_Insert(NODE* node, NODE* insert_node, NODE** tmp)
 {
 	if ((NULL == node)) {
 		return;
@@ -87,7 +90,7 @@ void Node_Insert(NODE* node, NODE* insert_node, NODE** tmp)
 	node->next = insert_node;
 }
 
-void Node_Disconnect(NODE** List, NODE* node, NODE** tmp)
+void LL_Disconnect(NODE** List, NODE* node, NODE** tmp)
 {
 	if ((NULL == node)) {
 		return;
@@ -124,7 +127,7 @@ void Node_Disconnect(NODE** List, NODE* node, NODE** tmp)
 	return;
 }
 
-void Node_Disconnect_First(NODE** List, NODE** deleted_node, NODE** tmp)
+void LL_Disconnect_First(NODE** List, NODE** deleted_node, NODE** tmp)
 {
 	if (NULL == List) {
 		return;
@@ -147,7 +150,7 @@ void Node_Disconnect_First(NODE** List, NODE** deleted_node, NODE** tmp)
 	}
 }
 
-void Node_Change_List(NODE** SrcList, NODE** DestList, NODE* node, NODE** s_tmp, NODE** d_tmp)
+void LL_Change_List(NODE** SrcList, NODE** DestList, NODE* node, NODE** s_tmp, NODE** d_tmp)
 {
 	if (NULL == SrcList) {
 		return;
@@ -168,12 +171,12 @@ void Node_Change_List(NODE** SrcList, NODE** DestList, NODE* node, NODE** s_tmp,
 	if (NULL == node) {
 		return;
 	}
-	Node_Disconnect(SrcList, node, s_tmp);
-	Node_Connect(DestList, node, d_tmp);
+	LL_Disconnect(SrcList, node, s_tmp);
+	LL_Connect(DestList, node, d_tmp);
 	return;
 }
 
-void Node_Change_List_Insert(NODE** SrcList, NODE* insert_after, NODE* node, NODE** s_tmp, NODE** d_tmp)
+void LL_Change_List_Insert(NODE** SrcList, NODE* insert_after, NODE* node, NODE** s_tmp, NODE** d_tmp)
 {
 	if (NULL == SrcList) {
 		return;
@@ -188,12 +191,12 @@ void Node_Change_List_Insert(NODE** SrcList, NODE* insert_after, NODE* node, NOD
 	if (NULL == node) {
 		return;
 	}
-	Node_Disconnect(SrcList, node, s_tmp);
-	Node_Insert(insert_after, node, d_tmp);
+	LL_Disconnect(SrcList, node, s_tmp);
+	LL_Insert(insert_after, node, d_tmp);
 	return;
 }
 
-void Node_Clear_List(NODE** List)
+void LL_Clear_List(NODE** List)
 {
 	if (NULL == List) {
 		return;
@@ -207,14 +210,14 @@ void Node_Clear_List(NODE** List)
 	DEBUG_PRINT("List deleted:\r\n");
 	while (*List != (NODE*)&Stub)
 	{
-		Node_Disconnect_First(List, &del_node, 0);
+		LL_Disconnect_First(List, &del_node, 0);
 		free(del_node);
 		cnt++;
 	}
 	return;
 }
 
-NODE* NodeFind(NODE* start_node, enum dir direction, bool (*pCheckSign)(void* obj, va_list args), ...)
+NODE* LL_Find(NODE* start_node, enum dir direction, bool (*pCheckSign)(void* obj, va_list args), ...)
 {
 	if (NULL == start_node) {
 		return NULL;
@@ -244,7 +247,7 @@ NODE* NodeFind(NODE* start_node, enum dir direction, bool (*pCheckSign)(void* ob
 	return NULL;
 }
 
-void NodeForEach(NODE** list, NODE* (*pAction)(NODE* node), NODE** tmp)
+void LL_ForEach(NODE** list, NODE* (*pAction)(NODE* node), NODE** tmp)
 {
 	if (NULL == list) {
 		return;
