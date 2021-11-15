@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['mcreate_5flist_14',['mCREATE_LIST',['../LibLL_8h.html#acb779a9c93788ab264eb4e4c7e26b0a8',1,'LibLL.h']]]
+  ['prev_3',['prev',['../struct__node.html#a5c834449a02de0cc261710d4b2783fd5',1,'_node']]]
 ];

@@ -22,21 +22,32 @@
 
  @licend  The above is the entire license notice for the JavaScript code in this file
 */
-var menudata={children:[
-{text:"Main Page",url:"index.html"},
-{text:"Related Pages",url:"pages.html"},
-{text:"Classes",url:"annotated.html",children:[
-{text:"Class List",url:"annotated.html"},
-{text:"Class Index",url:"classes.html"},
-{text:"Class Members",url:"functions.html",children:[
-{text:"All",url:"functions.html"},
-{text:"Variables",url:"functions_vars.html"}]}]},
-{text:"Files",url:"files.html",children:[
-{text:"File List",url:"files.html"},
-{text:"File Members",url:"globals.html",children:[
-{text:"All",url:"globals.html"},
-{text:"Functions",url:"globals_func.html"},
-{text:"Variables",url:"globals_vars.html"},
-{text:"Typedefs",url:"globals_type.html"},
-{text:"Enumerations",url:"globals_enum.html"},
-{text:"Macros",url:"globals_defs.html"}]}]}]}
+var NAVTREE =
+[
+  [ "Async BSD Sockets Library", "index.html", [
+    [ "Linked List Library", "md_README.html", [
+      [ "Build status:", "md_README.html#autotoc_md0", null ],
+      [ "Code Factor status:", "md_README.html#autotoc_md1", null ],
+      [ "Description:", "md_README.html#autotoc_md2", null ],
+      [ "Terms and definitions:", "md_README.html#autotoc_md3", null ],
+      [ "Contents:", "md_README.html#autotoc_md4", null ],
+      [ "How to use:", "md_README.html#autotoc_md5", null ]
+    ] ],
+    [ "Classes", "annotated.html", [
+      [ "Class List", "annotated.html", "annotated_dup" ],
+      [ "Class Index", "classes.html", null ],
+      [ "Class Members", "functions.html", [
+        [ "All", "functions.html", null ],
+        [ "Variables", "functions_vars.html", null ]
+      ] ]
+    ] ]
+  ] ]
+];
+
+var NAVTREEINDEX =
+[
+"annotated.html"
+];
+
+var SYNCONMSG = 'click to disable panel synchronisation';
+var SYNCOFFMSG = 'click to enable panel synchronisation';
