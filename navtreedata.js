@@ -24,7 +24,7 @@
 */
 var NAVTREE =
 [
-  [ "Async BSD Sockets Library", "index.html", [
+  [ "Linked List Library", "index.html", [
     [ "Linked List Library", "md_README.html", [
       [ "Build status:", "md_README.html#autotoc_md0", null ],
       [ "Code Factor status:", "md_README.html#autotoc_md1", null ],
