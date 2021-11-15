@@ -28,6 +28,7 @@ jobs:
       uses: langroodi/doxygenize@v1.4
       with:
         doxygenconf: './doxygen.conf'
+        htmloutput: './doc/html/'
   
 
 
