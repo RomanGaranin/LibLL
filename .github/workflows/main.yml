@@ -25,7 +25,7 @@ jobs:
     - name: Doxygenize
       uses: langroodi/doxygenize@v1.4
       with:
-        doxygenconf: './Doxyfile'
+        doxygenconf: './doxygen.conf'
   
 
 
