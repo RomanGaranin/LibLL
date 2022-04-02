@@ -3,11 +3,11 @@ Linked List Library
 ## Build status: 
 ## Code Factor status:
 [![CodeFactor](https://www.codefactor.io/repository/github/romangaranin/libll/badge)](https://www.codefactor.io/repository/github/romangaranin/libll)
-## Description:
+## Brief:
 The project is in progress ...
 
 A basic linked list designed for creating more complex linked lists.
-## Terms and definitions:
+
 ## Contents:
 * Connecting node to the end of the linked list.
 * Inserting node to the linked list.
@@ -19,7 +19,35 @@ A basic linked list designed for creating more complex linked lists.
 * Foreach list.
 * Print List to standart output.
 * Removing List (freeing memory).
-## How to use:
+
+NOTES: 
+Connecting - doesn't mean creating the node in memory. User have to create the node befor connecting.
+Disconneting - doesn't mean deleting the node from memory.
+
+## Terms and definitions:
+
+## Description:
+This is a simple library for creating and managing a linked lists written in C.
+
+The main element of linked list - node. The node is just a struct that contains two pointers only:
+
+- "next" - pointer to the next node.
+- "prev" - pointer to the previous node.
+
+Implementatoin of this library assumes:
+- node can be created statically and dynamically;
+- Nodes can exists independently from any lists; 
+- Independent node have to point to itself by both pointers;
+- The list is closed. It means that the "next" pointer of the last node points to the first node of the list,  and the "prev" pointer of the first node points to the last node of the list;
+- Each list have its own pointer that point to the first element of list;
+- Each list have its temporary pointer for safe management;
+- If the list is empty its pointer will point to a stub node. A stub node implemented by this library; 
+## How to use: 
+
+
+
+
+
 
 
 
