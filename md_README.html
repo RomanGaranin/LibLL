@@ -92,12 +92,10 @@ Build status:</h1>
 Code Factor status:</h1>
 <p><a href="https://www.codefactor.io/repository/github/romangaranin/libll"><img src="https://www.codefactor.io/repository/github/romangaranin/libll/badge" alt="CodeFactor" class="inline"/></a> </p>
 <h1><a class="anchor" id="autotoc_md2"></a>
-Description:</h1>
+Brief:</h1>
 <p>The project is in progress ...</p>
-<p>A basic linked list designed for creating more complex linked lists. </p>
+<p>A basic linked list designed for creating more complex linked lists.</p>
 <h1><a class="anchor" id="autotoc_md3"></a>
-Terms and definitions:</h1>
-<h1><a class="anchor" id="autotoc_md4"></a>
 Contents:</h1>
 <ul>
 <li>Connecting node to the end of the linked list.</li>
@@ -109,9 +107,29 @@ Contents:</h1>
 <li>Find node in the list.</li>
 <li>Foreach list.</li>
 <li>Print List to standart output.</li>
-<li>Removing List (freeing memory). </li>
+<li>Removing List (freeing memory).</li>
 </ul>
+<p>NOTES: Connecting - doesn't mean creating the node in memory. User have to create the node befor connecting. Disconneting - doesn't mean deleting the node from memory.</p>
+<h1><a class="anchor" id="autotoc_md4"></a>
+Terms and definitions:</h1>
 <h1><a class="anchor" id="autotoc_md5"></a>
+Description:</h1>
+<p>This is a simple library for creating and managing a linked lists written in C.</p>
+<p>The main element of linked list - node. The node is just a struct that contains two pointers only:</p>
+<ul>
+<li>"next" - pointer to the next node.</li>
+<li>"prev" - pointer to the previous node.</li>
+</ul>
+<p>Implementatoin of this library assumes:</p><ul>
+<li>node can be created statically and dynamically;</li>
+<li>Nodes can exists independently from any lists;</li>
+<li>Independent node have to point to itself by both pointers;</li>
+<li>The list is closed. It means that the "next" pointer of the last node points to the first node of the list, and the "prev" pointer of the first node points to the last node of the list;</li>
+<li>Each list have its own pointer that point to the first element of list;</li>
+<li>Each list have its temporary pointer for safe management;</li>
+<li>If the list is empty its pointer will point to a stub node. A stub node implemented by this library; </li>
+</ul>
+<h1><a class="anchor" id="autotoc_md6"></a>
 How to use:</h1>
 </div></div><!-- contents -->
 </div><!-- PageDoc -->
