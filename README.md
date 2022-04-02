@@ -44,8 +44,8 @@ Implementatoin of this library assumes:
 - If the list is empty its pointer will point to a stub node. A stub node implemented by this library; 
 ## How to use(sketch): 
 1) Create your own data type based on node type. Wherein the node type should be in the head of created data type.
-2) Create a pointer to your linked list using data type you just created. It should point to stub node defined in library.
-3) Create a temporary pointer using data type you just created. It will use for safe management of linked list.
+2) Create a pointer to your linked. It should point to stub node defined in library.
+3) Create a temporary pointer. It will use for safe management of linked list.
 4) Create a nodes using data type you created for your linked list.
 5) Manage linked list using the library, before any manipulation cast your data types to node data type.
 
