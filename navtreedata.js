@@ -26,13 +26,12 @@ var NAVTREE =
 [
   [ "Linked List Library", "index.html", [
     [ "Linked List Library", "md_README.html", [
-      [ "Build status:", "md_README.html#autotoc_md0", null ],
-      [ "Code Factor status:", "md_README.html#autotoc_md1", null ],
-      [ "Brief:", "md_README.html#autotoc_md2", null ],
-      [ "Contents:", "md_README.html#autotoc_md3", null ],
-      [ "Terms and definitions:", "md_README.html#autotoc_md4", null ],
-      [ "Description:", "md_README.html#autotoc_md5", null ],
-      [ "How to use(sketch):", "md_README.html#autotoc_md6", null ]
+      [ "Status:", "md_README.html#autotoc_md0", null ],
+      [ "Brief:", "md_README.html#autotoc_md1", null ],
+      [ "Contents:", "md_README.html#autotoc_md2", null ],
+      [ "Terms and definitions:", "md_README.html#autotoc_md3", null ],
+      [ "Description:", "md_README.html#autotoc_md4", null ],
+      [ "How to use(sketch):", "md_README.html#autotoc_md5", null ]
     ] ],
     [ "Classes", "annotated.html", [
       [ "Class List", "annotated.html", "annotated_dup" ],
