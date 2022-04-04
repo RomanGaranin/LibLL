@@ -1,7 +1,6 @@
 Linked List Library
 ============
-## Build status: 
-## Code Factor status:
+## Status:
 [![CodeFactor](https://www.codefactor.io/repository/github/romangaranin/libll/badge)](https://www.codefactor.io/repository/github/romangaranin/libll)
 ## Brief:
 The project is in progress ...
