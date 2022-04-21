@@ -23,13 +23,14 @@ extern "C" {
 #include "stdio.h"
 #include "string.h"
 
-/**
+/**     
 *	\brief Global Stub for all linked lists.
 *		   This stub contain the NODE struct and a pointer to stub function.
 */
 extern const struct stub_node Stub;
 
 /**
+*	\struct
 *	\brief Macro for declaration and initialisation a new linked list pointer.
 *	\param ListName - The name for new linked list.
 */
@@ -43,6 +44,7 @@ extern const struct stub_node Stub;
 	(NODE *)node->prev = (NODE*)node;
 
 /**
+*	\struct
 *	\brief Base node struct.
 */
 typedef struct _node
