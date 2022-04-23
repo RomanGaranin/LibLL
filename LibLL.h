@@ -1,7 +1,8 @@
 /**
 *	\file         LibLL.h
 *	\brief        Linked list library implementation.
-*	\abbreviations:
+*	
+*	Abbreviations:
 *		LL - Linked list.
 *	
 *	\author       Roman Garanin
@@ -30,7 +31,6 @@ extern "C" {
 extern const struct stub_node Stub;
 
 /**
-*	\struct
 *	\brief Macro for declaration and initialisation a new linked list pointer.
 *	\param ListName - The name for new linked list.
 */
@@ -100,7 +100,7 @@ void LL_Disconnect_First(NODE** List, NODE** deleted_node, NODE** tmp);
 *	\dl_tmp - Global pointer to pointer uses for iterate the destination linked list.
 *				   Each linked list should have its own tmp.
 *	\param node - The pointer.
-*	\return no.
+*	\return - no.
 */
 void LL_Change_List(NODE** SrcList, NODE** DestList, NODE* node, NODE** sl_tmp, NODE** dl_tmp);
 
@@ -113,7 +113,7 @@ void LL_Change_List(NODE** SrcList, NODE** DestList, NODE* node, NODE** sl_tmp, 
 *	\dl_tmp - Global pointer to pointer uses for iterate the destination linked list.
 *				   Each linked list should have its own tmp.
 *	\param node - The pointer.
-*	\return no.
+*	\return - no.
 */
 void LL_Change_List_Insert(NODE** SrcList,
 	NODE* insert_after,
@@ -124,7 +124,7 @@ void LL_Change_List_Insert(NODE** SrcList,
 /*!
 *	\brief Function disconnects all nodes from the linked list and than free the memory.
 *	\param List - Pointer to pointer to the linked list.
-*	\return no.
+*	\return - no.
 */
 void LL_Clear_List(NODE** List);
 
@@ -140,7 +140,7 @@ enum dir { Next = 0, Prev };
 *	\param direction - The direction for searching.
 *	\param CheckSign - The pointer to the check signs function.
 *	\param ... - The sequence of parameters that passes to the check signs function.
-*	\return pointer to the finded node.
+*	\return Pointer to the finded node.
 */
 NODE* LL_Find(NODE* start_node, enum dir direction, bool (*pCheckSign)(void* obj, va_list args), ...);
 
@@ -150,14 +150,14 @@ NODE* LL_Find(NODE* start_node, enum dir direction, bool (*pCheckSign)(void* obj
 					 This function should receive a pointer to the current node as a parameter.
 *	\param tmp -     Global pointer to pointer uses for iterate the linked list.
 *					 Each linked list should have its own tempore node .
-*	\return no.
+*	\return - no.
 */
 void LL_ForEach(NODE** list, NODE* (*pAction)(NODE* node), NODE** tmp);
 
 /**
 *	\brief Function prints all list to standart output.
 *	\param list_to_print - Pointer to list for print.
-*	\return no.
+*	\return - no.
 */
 void PrintList(NODE* list_to_print);
 
