@@ -27,3 +27,4 @@ jobs:
       with:
         doxygenconf: './doxygen.conf'
         htmloutput:  './docs/'
+        darkmode: true
