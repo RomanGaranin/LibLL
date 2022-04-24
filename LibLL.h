@@ -93,12 +93,12 @@ void LL_Disconnect(NODE** List, NODE* node, NODE** tmp);
 void LL_Disconnect_First(NODE** List, NODE** deleted_node, NODE** tmp);
 
 /**
-*	\brief Function disconnects the node from the source linked list and then connects it to the destination linked list.
+*	\brief Function disconnects the node from the source linked list and then connects it to the end of destination linked list.
 *	\param SrcList - The Pointer to pointer to the source linked list.
 *	\param DstList - The Pointer to pointer to the destination linked list.
-*	\sl_tmp - Global pointer to pointer uses for iterate the  source linked list.
-*	\dl_tmp - Global pointer to pointer uses for iterate the destination linked list.
-*				   Each linked list should have its own tmp.
+*	\param sl_tmp - Global pointer to pointer uses for iterate the  source linked list.
+*	\param dl_tmp - Global pointer to pointer uses for iterate the destination linked list.
+*			Each linked list should have its own tmp.
 *	\param node - The pointer.
 *	\return - no.
 */
@@ -106,20 +106,17 @@ void LL_Change_List(NODE** SrcList, NODE** DestList, NODE* node, NODE** sl_tmp, 
 
 
 /**
-*	\brief Function disconnects the node from the source linked list and then connects it to the destination linked list.
+*	\brief Function disconnects the node from the source linked list and then inserts it to the destination linked list.
+*	\param SrcList - The Pointer to pointer to the source linked list.
 *	\param insert_after - The Pointer to node in the destination list after which the node will insert.
-*	\param DstList - The Pointer to pointer to the destination linked list.
-*	\sl_tmp - Global pointer to pointer uses for iterate the  source linked list.
-*	\dl_tmp - Global pointer to pointer uses for iterate the destination linked list.
-*				   Each linked list should have its own tmp.
+*	\param node - Global pointer to pointer uses for iterate the  source linked list.
+*	\param sl_tmp - Global pointer to pointer uses for iterate the  source linked list.
+*	\param dl_tmp - Global pointer to pointer uses for iterate the destination linked list.
+*			Each linked list should have its own tmp.
 *	\param node - The pointer.
 *	\return - no.
 */
-void LL_Change_List_Insert(NODE** SrcList,
-	NODE* insert_after,
-	NODE* node,
-	NODE** s_tmp,
-	NODE** d_tmp);
+void LL_Change_List_Insert(NODE** SrcList, NODE* insert_after, NODE* node,NODE** sl_tmp, NODE** dl_tmp);
 
 /*!
 *	\brief Function disconnects all nodes from the linked list and than free the memory.
@@ -129,8 +126,7 @@ void LL_Change_List_Insert(NODE** SrcList,
 void LL_Clear_List(NODE** List);
 
 /**
- *	\brief Enum defines a direction for searching the nodes in the linked
- *lists.
+ *	\brief Enum defines a direction for searching the nodes in the linked lists.
  */
 enum dir { Next = 0, Prev };
 
