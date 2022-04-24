@@ -23,7 +23,7 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - name: Doxygenize
-      uses: langroodi/doxygenize@v1.4
+      uses: langroodi/doxygenize@v1
       with:
         doxygenconf: './doxygen.conf'
         htmloutput:  './docs/'
