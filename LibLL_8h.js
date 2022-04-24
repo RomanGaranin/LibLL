@@ -7,7 +7,7 @@ var LibLL_8h =
       [ "Prev", "LibLL_8h.html#a4ca269cf93df1b512b52174c1a256fe5a1e53e1b0579d90747849792893484470", null ]
     ] ],
     [ "LL_Change_List", "LibLL_8h.html#ad6ea3c82c6889bf9243d08b4791adecf", null ],
-    [ "LL_Change_List_Insert", "LibLL_8h.html#a84a82de5aa962aa5de7c2239dff19a16", null ],
+    [ "LL_Change_List_Insert", "LibLL_8h.html#aad6721b68c56a0794ad1cc2889dd622c", null ],
     [ "LL_Clear_List", "LibLL_8h.html#a2659814c359a3f001fdc7701e5515bbb", null ],
     [ "LL_Connect", "LibLL_8h.html#a8274f49f06aa1cf53309da647eb4b06f", null ],
     [ "LL_Disconnect", "LibLL_8h.html#a4dace3d699f8e0e8eccc721ef5b64c21", null ],

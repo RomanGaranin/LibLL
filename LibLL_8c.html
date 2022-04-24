@@ -122,10 +122,10 @@ Functions</h2></td></tr>
 <tr class="memdesc:a6a39a1c6328eb13c0c6166fb13d1e43c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function disconnects the first node from linked list.  <a href="LibLL_8c.html#a6a39a1c6328eb13c0c6166fb13d1e43c">More...</a><br /></td></tr>
 <tr class="separator:a6a39a1c6328eb13c0c6166fb13d1e43c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a87970dc9c75edeeab8ac03eb63452baf"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="LibLL_8c.html#a87970dc9c75edeeab8ac03eb63452baf">LL_Change_List</a> (<a class="el" href="struct__node.html">NODE</a> **SrcList, <a class="el" href="struct__node.html">NODE</a> **DestList, <a class="el" href="struct__node.html">NODE</a> *node, <a class="el" href="struct__node.html">NODE</a> **s_tmp, <a class="el" href="struct__node.html">NODE</a> **d_tmp)</td></tr>
-<tr class="memdesc:a87970dc9c75edeeab8ac03eb63452baf"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function disconnects the node from the source linked list and then connects it to the destination linked list.  <a href="LibLL_8c.html#a87970dc9c75edeeab8ac03eb63452baf">More...</a><br /></td></tr>
+<tr class="memdesc:a87970dc9c75edeeab8ac03eb63452baf"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function disconnects the node from the source linked list and then connects it to the end of destination linked list.  <a href="LibLL_8c.html#a87970dc9c75edeeab8ac03eb63452baf">More...</a><br /></td></tr>
 <tr class="separator:a87970dc9c75edeeab8ac03eb63452baf"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a84a82de5aa962aa5de7c2239dff19a16"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="LibLL_8c.html#a84a82de5aa962aa5de7c2239dff19a16">LL_Change_List_Insert</a> (<a class="el" href="struct__node.html">NODE</a> **SrcList, <a class="el" href="struct__node.html">NODE</a> *insert_after, <a class="el" href="struct__node.html">NODE</a> *node, <a class="el" href="struct__node.html">NODE</a> **s_tmp, <a class="el" href="struct__node.html">NODE</a> **d_tmp)</td></tr>
-<tr class="memdesc:a84a82de5aa962aa5de7c2239dff19a16"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function disconnects the node from the source linked list and then connects it to the destination linked list.  <a href="LibLL_8c.html#a84a82de5aa962aa5de7c2239dff19a16">More...</a><br /></td></tr>
+<tr class="memdesc:a84a82de5aa962aa5de7c2239dff19a16"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function disconnects the node from the source linked list and then inserts it to the destination linked list.  <a href="LibLL_8c.html#a84a82de5aa962aa5de7c2239dff19a16">More...</a><br /></td></tr>
 <tr class="separator:a84a82de5aa962aa5de7c2239dff19a16"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2659814c359a3f001fdc7701e5515bbb"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="LibLL_8c.html#a2659814c359a3f001fdc7701e5515bbb">LL_Clear_List</a> (<a class="el" href="struct__node.html">NODE</a> **List)</td></tr>
 <tr class="memdesc:a2659814c359a3f001fdc7701e5515bbb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function disconnects all nodes from the linked list and than free the memory.  <a href="LibLL_8c.html#a2659814c359a3f001fdc7701e5515bbb">More...</a><br /></td></tr>
@@ -194,11 +194,13 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Function disconnects the node from the source linked list and then connects it to the destination linked list. </p>
+<p>Function disconnects the node from the source linked list and then connects it to the end of destination linked list. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">SrcList</td><td>- The Pointer to pointer to the source linked list. </td></tr>
-    <tr><td class="paramname">DstList</td><td>- The Pointer to pointer to the destination linked list. \sl_tmp - Global pointer to pointer uses for iterate the source linked list. \dl_tmp - Global pointer to pointer uses for iterate the destination linked list. Each linked list should have its own tmp. </td></tr>
+    <tr><td class="paramname">DstList</td><td>- The Pointer to pointer to the destination linked list. </td></tr>
+    <tr><td class="paramname">sl_tmp</td><td>- Global pointer to pointer uses for iterate the source linked list. </td></tr>
+    <tr><td class="paramname">dl_tmp</td><td>- Global pointer to pointer uses for iterate the destination linked list. Each linked list should have its own tmp. </td></tr>
     <tr><td class="paramname">node</td><td>- The pointer. </td></tr>
   </table>
   </dd>
@@ -235,13 +237,13 @@ Variables</h2></td></tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype"><a class="el" href="struct__node.html">NODE</a> **&#160;</td>
-          <td class="paramname"><em>s_tmp</em>, </td>
+          <td class="paramname"><em>sl_tmp</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype"><a class="el" href="struct__node.html">NODE</a> **&#160;</td>
-          <td class="paramname"><em>d_tmp</em>&#160;</td>
+          <td class="paramname"><em>dl_tmp</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -251,11 +253,14 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Function disconnects the node from the source linked list and then connects it to the destination linked list. </p>
+<p>Function disconnects the node from the source linked list and then inserts it to the destination linked list. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
+    <tr><td class="paramname">SrcList</td><td>- The Pointer to pointer to the source linked list. </td></tr>
     <tr><td class="paramname">insert_after</td><td>- The Pointer to node in the destination list after which the node will insert. </td></tr>
-    <tr><td class="paramname">DstList</td><td>- The Pointer to pointer to the destination linked list. \sl_tmp - Global pointer to pointer uses for iterate the source linked list. \dl_tmp - Global pointer to pointer uses for iterate the destination linked list. Each linked list should have its own tmp. </td></tr>
+    <tr><td class="paramname">node</td><td>- Global pointer to pointer uses for iterate the source linked list. </td></tr>
+    <tr><td class="paramname">sl_tmp</td><td>- Global pointer to pointer uses for iterate the source linked list. </td></tr>
+    <tr><td class="paramname">dl_tmp</td><td>- Global pointer to pointer uses for iterate the destination linked list. Each linked list should have its own tmp. </td></tr>
     <tr><td class="paramname">node</td><td>- The pointer. </td></tr>
   </table>
   </dd>
