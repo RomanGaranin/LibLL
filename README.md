@@ -7,7 +7,7 @@ The project is in progress ...
 
 A basic linked list designed for creating more complex linked lists.
 
-https://owlsurf.github.io/LibLL/
+[Genarated Documentation](https://owlsurf.github.io/LibLL/)
 
 ## Contents:
 * Connecting node to the end of the linked list.
