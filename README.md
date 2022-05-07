@@ -1,7 +1,7 @@
 Linked List Library
 ============
 ## Status:
-[![CodeFactor](https://www.codefactor.io/repository/github/romangaranin/libll/badge)](https://www.codefactor.io/repository/github/romangaranin/libll)
+[![CodeFactor](https://www.codefactor.io/repository/github/owlsurf/libll/badge)](https://www.codefactor.io/repository/github/owlsurf/libll)
 ## Brief:
 The project is in progress ...
 
