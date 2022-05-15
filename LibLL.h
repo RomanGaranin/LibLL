@@ -145,7 +145,7 @@ NODE* LL_Find(NODE* start_node, enum dir direction, bool (*pCheckSign)(void* obj
 *	\param pAction - Pointer to function that will call for each node in the linked list.
 					 This function should receive a pointer to the current node as a parameter.
 *	\param tmp -     Global pointer to pointer uses for iterate the linked list.
-*					 Each linked list should have its own tempore node .
+*					 Each linked list should have its own temporary node .
 *	\return - no.
 */
 void LL_ForEach(NODE** list, NODE* (*pAction)(NODE* node), NODE** tmp);
