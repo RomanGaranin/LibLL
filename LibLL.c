@@ -268,17 +268,3 @@ void LL_ForEach(NODE** list, NODE* (*pAction)(NODE* node), NODE** tmp)
         } while ((*tmp != *list) && (*list != (NODE *)&Stub));
 	return;
 }
-
-void PrintList(NODE* list_to_print)
-{
-	NODE* node = list_to_print;
-	NODE* next;
-	uint16_t cnt = 0;
-	do {
-		next = node->next;
-		node = next;
-		cnt++;
-        } while (next != list_to_print);
-	DEBUG_PRINT("\r\n\r\n");
-	return;
-}
