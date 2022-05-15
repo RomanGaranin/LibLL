@@ -150,13 +150,6 @@ NODE* LL_Find(NODE* start_node, enum dir direction, bool (*pCheckSign)(void* obj
 */
 void LL_ForEach(NODE** list, NODE* (*pAction)(NODE* node), NODE** tmp);
 
-/**
-*	\brief Function prints all list to standart output.
-*	\param list_to_print - Pointer to list for print.
-*	\return - no.
-*/
-void PrintList(NODE* list_to_print);
-
 #define LIST_FOREACH(l, list)\
 		for(l = (list)->next; l != (list); l = l->next)
 
@@ -168,4 +161,3 @@ void PrintList(NODE* list_to_print);
 #endif
 
 #endif // !LIBLL_H
-
