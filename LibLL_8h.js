@@ -2,6 +2,7 @@ var LibLL_8h =
 [
     [ "_node", "struct__node.html", "struct__node" ],
     [ "mCREATE_LIST", "LibLL_8h.html#acb779a9c93788ab264eb4e4c7e26b0a8", null ],
+    [ "NODE", "LibLL_8h.html#a5f14e6a5184581501c20bdc6013732eb", null ],
     [ "dir", "LibLL_8h.html#a4ca269cf93df1b512b52174c1a256fe5", [
       [ "Next", "LibLL_8h.html#a4ca269cf93df1b512b52174c1a256fe5ab6505f468e0e75bc3fdc7f47c22384a4", null ],
       [ "Prev", "LibLL_8h.html#a4ca269cf93df1b512b52174c1a256fe5a1e53e1b0579d90747849792893484470", null ]
