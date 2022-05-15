@@ -150,12 +150,6 @@ NODE* LL_Find(NODE* start_node, enum dir direction, bool (*pCheckSign)(void* obj
 */
 void LL_ForEach(NODE** list, NODE* (*pAction)(NODE* node), NODE** tmp);
 
-#define LIST_FOREACH(l, list)\
-		for(l = (list)->next; l != (list); l = l->next)
-
-#define	list_for_each_safe(p, n, head)					\
-	for (p = (head)->next, n = p->next; p != (head); p = n, n = p->next)
-
 #ifdef __cplusplus
 }
 #endif
