@@ -43,12 +43,13 @@ extern const struct stub_node Stub;
 	(NODE *)node->next = (NODE*)node;\
 	(NODE *)node->prev = (NODE*)node;
 
+/*! A NODE type for linked list*/ 
+typedef struct _node
+{	
 /**
 *	\struct
 *	\brief Base node struct.
 */
-typedef struct _node
-{
 	struct _node* next;  /**< The pointer to the next node */
 	struct _node* prev;  /**< The pointer to the previous node */
 }NODE;
