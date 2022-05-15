@@ -3,7 +3,7 @@ var indexSectionsWithContent =
   0: "_dlmnps",
   1: "_s",
   2: "l",
-  3: "lp",
+  3: "l",
   4: "nps",
   5: "d",
   6: "m",
