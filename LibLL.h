@@ -46,10 +46,6 @@ extern const struct stub_node Stub;
 /*! A NODE type for linked list*/ 
 typedef struct _node
 {	
-/**
-*	\struct
-*	\brief Base node struct.
-*/
 	struct _node* next;  /**< The pointer to the next node */
 	struct _node* prev;  /**< The pointer to the previous node */
 }NODE;
