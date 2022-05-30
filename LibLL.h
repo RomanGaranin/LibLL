@@ -131,7 +131,7 @@ enum dir { Next = 0, Prev };
 *	\brief Function finds the node in the linked list by the check signs function.
 *	\param start_node - The pointer to the node from which starts the search.
 *	\param direction - The direction for searching.
-*	\param CheckSign - The pointer to the check signs function.
+*	\param pCheckSign - The pointer to the check signs function.
 *	\param ... - The sequence of parameters that passes to the check signs function.
 *	\return Pointer to the finded node.
 */
