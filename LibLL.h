@@ -40,8 +40,8 @@ extern const struct stub_node Stub;
 
 
 #define mINIT_NODE(node)\
-	(NODE *)node->next = (NODE*)node;\
-	(NODE *)node->prev = (NODE*)node;
+	node->next = node;\
+	node->prev = node;
 
 /*! A NODE type for linked list*/ 
 typedef struct _node
@@ -49,7 +49,6 @@ typedef struct _node
 	struct _node* next;  /**< The pointer to the next node */
 	struct _node* prev;  /**< The pointer to the previous node */
 }NODE;
-
 
 /**
 *	\brief Function connects the node to the end of the linked list.
