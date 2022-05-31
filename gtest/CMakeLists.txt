@@ -2,14 +2,30 @@ cmake_minimum_required(VERSION 3.21.2)
 
 project(TestLibLL)
 
-# Locate GTest
-find_package(GTest REQUIRED)
-include_directories(${GTEST_INCLUDE_DIRS})
+set(CMAKE_CXX_STANDARD 11)
+
+include(FetchContent)
+FetchContent_Declare(
+	  googletest
+	  URL https://github.com/google/googletest/archive/609281088cfefc76f9d0ce82e1ff6c30cc3591e5.zip
+	  )
+
+set(gtest_force_shared_crt ON CACHE BOOL "" FORCE)
+FetchContent_MakeAvailable(googletest)  
+
 include_directories(../)
+add_library(LibLL STATIC ../LibLL.c)
 
-# Link runTests with what we want to test and the GTest and pthread library
-add_executable(runtest test.cpp)
-add_library(LibLL STATIC ../LibLL.c) 
-target_link_libraries(runtest LibLL ${GTEST_LIBRARIES} pthread)
+enable_testing()
+add_executable(
+	  runtest
+	  test.cpp
+	  )
+target_link_libraries(
+	      runtest
+	      LibLL
+	      gtest_main
+	      )
 
-add_test(NAME gtests COMMAND ./build/runtest)
+include(GoogleTest)
+gtest_discover_tests(runtest)
