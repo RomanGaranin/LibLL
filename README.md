@@ -11,15 +11,15 @@ A basic linked list designed for creating more complex linked lists.
 [Documentation](https://owlsurf.github.io/LibLL/)
 
 ## Contents:
-* Connecting node to the end of the linked list.
-* Inserting node to the linked list.
-* Disconnecting node from the linked list.
-* Disconnecting the first node from the linked list.
-* Replace node from one linked list to the end of another linked list.
-* Replace node from one linked list to another linked list (Disconnect from source list and insert to destination list).
-* Find node in the list.
-* Foreach list.
-* Removing List (freeing memory).
+* [Connecting node to the end of the linked list.](https://owlsurf.github.io/LibLL/LibLL_8c.html#a8274f49f06aa1cf53309da647eb4b06f)
+* [Inserting node to the linked list.](https://owlsurf.github.io/LibLL/LibLL_8c.html#a0d58c85ad363abb9b05062ab5e48c1cf)
+* [Disconnecting node from the linked list.](https://owlsurf.github.io/LibLL/LibLL_8c.html#a4dace3d699f8e0e8eccc721ef5b64c21)
+* [Disconnecting the first node from the linked list.](https://owlsurf.github.io/LibLL/LibLL_8c.html#a6a39a1c6328eb13c0c6166fb13d1e43c)
+* [Replace node from one linked list to the end of another linked list.](https://owlsurf.github.io/LibLL/LibLL_8c.html#a87970dc9c75edeeab8ac03eb63452baf)
+* [Replace node from one linked list to another linked list.](https://owlsurf.github.io/LibLL/LibLL_8c.html#a84a82de5aa962aa5de7c2239dff19a16) (Disconnect from source list and insert to destination list).
+* [Find node in the list.](https://owlsurf.github.io/LibLL/LibLL_8c.html#ab9dbdec177ff191a766d28a90e2d9ba4)
+* [Foreach list.](https://owlsurf.github.io/LibLL/LibLL_8c.html#a22eddbec2ce1ca0eac1d7385558044e6)
+* [Removing List](https://owlsurf.github.io/LibLL/LibLL_8c.html#a2659814c359a3f001fdc7701e5515bbb) Only for lists created dinamicaly!
 
 NOTES: 
 Connecting - doesn't mean creating the node in memory. User have to create the node befor connecting.
