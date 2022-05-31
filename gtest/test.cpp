@@ -4,7 +4,6 @@
 
 TEST(LinkedList, Creaete)
 {
-
 	mCREATE_LIST(test_list, test_tmp);
 	ASSERT_EQ(test_list, (NODE*)&Stub);
        	ASSERT_EQ(test_list->next, test_list);
@@ -49,7 +48,6 @@ TEST(LinkedList, ConnectFirstSecond)
 	ASSERT_EQ(f->prev, s);
 	ASSERT_EQ(s->next, f);
 	ASSERT_EQ(s->prev, f);
-
 }
 
 TEST(LinkedList, ThreeNodesDinamicaly)
@@ -131,5 +129,4 @@ TEST(LinkedList, Insertion)
 	ASSERT_EQ(test_list, (NODE*)&Stub);
 
 	free(f);free(s);free(t);
-
 }
