@@ -2,7 +2,7 @@
 
 #include "LibLL.h"
 
-TEST(LinkedList, Creaete)
+TEST(ListCreate, CreaeteWithMacro)
 {
 	mCREATE_LIST(test_list, test_tmp);
 	ASSERT_EQ(test_list, (NODE*)&Stub);
@@ -10,7 +10,7 @@ TEST(LinkedList, Creaete)
 	ASSERT_EQ(test_list->prev, test_list);	
 }
 
-TEST(LinkedList, ConnectOne)
+TEST(Connect, OneStaticNode)
 {
 	NODE first;
 	NODE* f = &first;
@@ -25,7 +25,7 @@ TEST(LinkedList, ConnectOne)
 	ASSERT_EQ(test_list->prev, test_list);
 }
 
-TEST(LinkedList, ConnectFirstSecond)
+TEST(Connect, TwoStaticNodes)
 {
 	NODE first;
 	NODE second;
@@ -50,7 +50,7 @@ TEST(LinkedList, ConnectFirstSecond)
 	ASSERT_EQ(s->prev, f);
 }
 
-TEST(LinkedList, ThreeNodesDinamicaly)
+TEST(Connect, ThreeDynamicNodes)
 {
 	NODE* f = (NODE*)malloc(sizeof(NODE));
 	NODE* s = (NODE*)malloc(sizeof(NODE));
@@ -91,7 +91,7 @@ TEST(LinkedList, ThreeNodesDinamicaly)
 	free(f);free(s);free(t);
 }
 
-TEST(LinkedList, Insertion)
+TEST(InsertOneDynamicNode, InsertBeetwenDynamicTwo)
 {
 	NODE* f = (NODE*)malloc(sizeof(NODE));
 	NODE* s = (NODE*)malloc(sizeof(NODE));
@@ -129,4 +129,33 @@ TEST(LinkedList, Insertion)
 	ASSERT_EQ(test_list, (NODE*)&Stub);
 
 	free(f);free(s);free(t);
+}
+
+TEST(InsertTwoDynamicNodes, InsertBeetwenToDynamicNodes)
+{
+	NODE* first = (NODE*)malloc(sizeof(NODE));
+	NODE* second = (NODE*)malloc(sizeof(NODE));
+
+	NODE* third = (NODE*)malloc(sizeof(NODE));
+	NODE* fours = (NODE*)malloc(sizeof(NODE));
+
+	mCREATE_LIST(test_list1, test_tmp);
+
+	LL_Connect(&test_list1, first, &test_tmp);
+	LL_Connect(&test_list1, second, &test_tmp);
+
+	LL_Insert(first, third, &test_tmp);
+	LL_Insert(third, fours, &test_tmp);
+	
+	ASSERT_EQ(first->next, third);
+	ASSERT_EQ(third->prev, first);
+	ASSERT_EQ(third->next, fours);
+	ASSERT_EQ(fours->prev, third);
+	ASSERT_EQ(fours->next, second);
+	ASSERT_EQ(second->prev, fours);
+
+	ASSERT_EQ(first->prev, second);
+	ASSERT_EQ(second->next, first);
+
+	free(first);free(second);free(third);free(fours);
 }
