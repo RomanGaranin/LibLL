@@ -181,3 +181,25 @@ TEST(InsertLast, InsertAfterTwoDynamicNodes)
 
 	free(first);free(second);free(third);
 }
+
+TEST(Disconnect, DisconnectMiddle)
+{
+	NODE* first = (NODE*)malloc(sizeof(NODE));
+	NODE* second = (NODE*)malloc(sizeof(NODE));
+	NODE* third = (NODE*)malloc(sizeof(NODE));
+
+	mCREATE_LIST(test_list, test_tmp);
+
+	LL_Connect(&test_list, first, &test_tmp);
+	LL_Connect(&test_list, second, &test_tmp);
+	LL_Connect(&test_list, third, &test_tmp);
+
+	LL_Disconnect(&test_list, second, &test_tmp);
+
+	ASSERT_EQ(first->next, third);
+	ASSERT_EQ(third->prev, first);
+	ASSERT_EQ(first->prev, third);
+	ASSERT_EQ(third->next, first);
+
+	free(first);free(second);free(third);
+}
