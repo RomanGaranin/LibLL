@@ -139,10 +139,10 @@ TEST(InsertTwoDynamicNodes, InsertBeetwenToDynamicNodes)
 	NODE* third = (NODE*)malloc(sizeof(NODE));
 	NODE* fours = (NODE*)malloc(sizeof(NODE));
 
-	mCREATE_LIST(test_list1, test_tmp);
+	mCREATE_LIST(test_list, test_tmp);
 
-	LL_Connect(&test_list1, first, &test_tmp);
-	LL_Connect(&test_list1, second, &test_tmp);
+	LL_Connect(&test_list, first, &test_tmp);
+	LL_Connect(&test_list, second, &test_tmp);
 
 	LL_Insert(first, third, &test_tmp);
 	LL_Insert(third, fours, &test_tmp);
@@ -158,4 +158,26 @@ TEST(InsertTwoDynamicNodes, InsertBeetwenToDynamicNodes)
 	ASSERT_EQ(second->next, first);
 
 	free(first);free(second);free(third);free(fours);
+}
+
+TEST(InsertFirst, InsertAfterTwoDynamicNodes)
+{
+	NODE* first = (NODE*)malloc(sizeof(NODE));
+	NODE* second = (NODE*)malloc(sizeof(NODE));
+
+	NODE* third = (NODE*)malloc(sizeof(NODE));
+
+	mCREATE_LIST(test_list, test_tmp);
+
+	LL_Connect(&test_list, first, &test_tmp);
+	LL_Connect(&test_list, second, &test_tmp);
+
+	LL_Insert(second, third, &test_tmp);
+	
+	ASSERT_EQ(third->next, first);
+	ASSERT_EQ(third->prev, second);
+	ASSERT_EQ(first->prev, third);
+
+
+	free(first);free(second);free(third);
 }
