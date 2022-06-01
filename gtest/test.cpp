@@ -160,7 +160,7 @@ TEST(InsertTwoDynamicNodes, InsertBeetwenToDynamicNodes)
 	free(first);free(second);free(third);free(fours);
 }
 
-TEST(InsertFirst, InsertAfterTwoDynamicNodes)
+TEST(InsertLast, InsertAfterTwoDynamicNodes)
 {
 	NODE* first = (NODE*)malloc(sizeof(NODE));
 	NODE* second = (NODE*)malloc(sizeof(NODE));
