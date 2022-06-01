@@ -2,7 +2,7 @@ Linked List Library
 ============
 ## Status:
 [![CodeFactor](https://www.codefactor.io/repository/github/owlsurf/libll/badge)](https://www.codefactor.io/repository/github/owlsurf/libll)
-[![CMakeGoogletest](https://github.com/OwlSurf/LibLL/actions/workflows/cmake_google_test.yml/badge.svg)](https://github.com/OwlSurf/LibLL/actions/workflows/cmake_google_test.yml)
+[![CMakeGoogletest](https://github.com/OwlSurf/LibLL/actions/workflows/cmake.yml/badge.svg)](https://github.com/OwlSurf/LibLL/actions/workflows/cmake.yml)
 ## Brief:
 The project is in progress ...
 
