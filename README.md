@@ -8,7 +8,7 @@ The project is in progress ...
 
 A basic linked list designed for creating more complex linked lists.
 
-[Documentation](https://owlsurf.github.io/LibLL/)
+[Documentation](https://owlsurf.github.io/LibLL/) (It is not beautiful yet.. Need to customize doxygen settings)
 
 ## Contents:
 * [Connecting node to the end of the linked list.](https://owlsurf.github.io/LibLL/LibLL_8c.html#a8274f49f06aa1cf53309da647eb4b06f)
@@ -43,7 +43,7 @@ Implementatoin of this library assumes:
 - Each list have its own pointer that point to the first element of list;
 - Each list have its temporary pointer for safe management;
 - If the list is empty its pointer will point to a stub node. A stub node implemented by this library; 
-## How to buid test.
+## How to build tests.
 For tests [googletest framewok](https://github.com/google/googletest) uses. 	
 
 Needed environment:
@@ -60,7 +60,7 @@ For Run test type:
 
 "cd gtest/build/; ctest; cd ../../" or "./gtest/build/runtests"
 
-## House(sketch): 
+## How to use(sketch): 
 1) Create your own data type based on node type. Wherein the node type should be in the head of created data type.
 2) Create a pointer to your linked. It should point to stub node defined in library.
 3) Create a temporary pointer. It will use for safe management of linked list.
