@@ -45,6 +45,7 @@ Implementatoin of this library assumes:
 - If the list is empty its pointer will point to a stub node. A stub node implemented by this library; 
 ## How to buid test.
 For tests [googletest framewok](https://github.com/google/googletest) uses. 	
+
 Needed environment:
 - cmake;
 - gcc;
@@ -52,19 +53,12 @@ Needed environment:
 - libgtest-dev;
 
 For build tests type:
-1) cmake -S gtest/ -B gtest/build;
-2) cmake --build gtest/build; 
-
-or 
-
-   make -C gtest/build/;
+1) "cmake -S gtest/ -B gtest/build"
+2) "cmake --build gtest/build" or "make -C gtest/build/"
 
 For Run test type:
-1) cd gtest/build/; ctest; cd ../../ 
 
-or 
-
-   ./gtest/build/runtests
+"cd gtest/build/; ctest; cd ../../" or "./gtest/build/runtests"
 
 ## House(sketch): 
 1) Create your own data type based on node type. Wherein the node type should be in the head of created data type.
