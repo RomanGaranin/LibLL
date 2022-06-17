@@ -16,7 +16,7 @@ A basic linked list designed for creating more complex linked lists.
 * [Disconnecting node from the linked list.](https://owlsurf.github.io/LibLL/LibLL_8c.html#a4dace3d699f8e0e8eccc721ef5b64c21)
 * [Disconnecting the first node from the linked list.](https://owlsurf.github.io/LibLL/LibLL_8c.html#a6a39a1c6328eb13c0c6166fb13d1e43c)
 * [Replace node from one linked list to the end of another linked list.](https://owlsurf.github.io/LibLL/LibLL_8c.html#a87970dc9c75edeeab8ac03eb63452baf)
-* [Replace node from one linked list to another linked list.](https://owlsurf.github.io/LibLL/LibLL_8c.html#a84a82de5aa962aa5de7c2239dff19a16) (Disconnect from source list and insert to destination list).
+* [Replace node from one linked list to another linked list.](https://owlsurf.github.io/LibLL/LibLL_8c.html#a84a82de5aa962aa5de7c2239dff19a16)
 * [Find node in the list.](https://owlsurf.github.io/LibLL/LibLL_8c.html#ab9dbdec177ff191a766d28a90e2d9ba4)
 * [Foreach list.](https://owlsurf.github.io/LibLL/LibLL_8c.html#a22eddbec2ce1ca0eac1d7385558044e6)
 * [Removing List](https://owlsurf.github.io/LibLL/LibLL_8c.html#a2659814c359a3f001fdc7701e5515bbb) Only for lists created dinamicaly!
@@ -43,7 +43,30 @@ Implementatoin of this library assumes:
 - Each list have its own pointer that point to the first element of list;
 - Each list have its temporary pointer for safe management;
 - If the list is empty its pointer will point to a stub node. A stub node implemented by this library; 
-## How to use(sketch): 
+## How to buid test.
+For tests [googletest framewok](https://github.com/google/googletest) uses. 	
+Needed environment:
+- cmake;
+- gcc;
+- g++;
+- libgtest-dev;
+
+For build tests type:
+1) cmake -S gtest/ -B gtest/build;
+2) cmake --build gtest/build; 
+
+or 
+
+   make -C gtest/build/;
+
+For Run test type:
+1) cd gtest/build/; ctest; cd ../../ 
+
+or 
+
+   ./gtest/build/runtests
+
+## House(sketch): 
 1) Create your own data type based on node type. Wherein the node type should be in the head of created data type.
 2) Create a pointer to your linked. It should point to stub node defined in library.
 3) Create a temporary pointer. It will use for safe management of linked list.
