@@ -44,7 +44,7 @@ Implementatoin of this library assumes:
 - Each list have its temporary pointer for safe management;
 - If the list is empty its pointer will point to a stub node. A stub node implemented by this library; 
 ## How to build tests.
-For tests [googletest framewok](https://github.com/google/googletest) uses. 	
+For tests [googletest framework](https://github.com/google/googletest) uses. 	
 
 Needed environment:
 - cmake;
