@@ -111,7 +111,7 @@ Contents:</h1>
 <li><a href="https://owlsurf.github.io/LibLL/LibLL_8c.html#a4dace3d699f8e0e8eccc721ef5b64c21">Disconnecting node from the linked list.</a></li>
 <li><a href="https://owlsurf.github.io/LibLL/LibLL_8c.html#a6a39a1c6328eb13c0c6166fb13d1e43c">Disconnecting the first node from the linked list.</a></li>
 <li><a href="https://owlsurf.github.io/LibLL/LibLL_8c.html#a87970dc9c75edeeab8ac03eb63452baf">Replace node from one linked list to the end of another linked list.</a></li>
-<li><a href="https://owlsurf.github.io/LibLL/LibLL_8c.html#a84a82de5aa962aa5de7c2239dff19a16">Replace node from one linked list to another linked list.</a> (Disconnect from source list and insert to destination list).</li>
+<li><a href="https://owlsurf.github.io/LibLL/LibLL_8c.html#a84a82de5aa962aa5de7c2239dff19a16">Replace node from one linked list to another linked list.</a></li>
 <li><a href="https://owlsurf.github.io/LibLL/LibLL_8c.html#ab9dbdec177ff191a766d28a90e2d9ba4">Find node in the list.</a></li>
 <li><a href="https://owlsurf.github.io/LibLL/LibLL_8c.html#a22eddbec2ce1ca0eac1d7385558044e6">Foreach list.</a></li>
 <li><a href="https://owlsurf.github.io/LibLL/LibLL_8c.html#a2659814c359a3f001fdc7701e5515bbb">Removing List</a> Only for lists created dinamicaly!</li>
@@ -137,7 +137,22 @@ Description:</h1>
 <li>If the list is empty its pointer will point to a stub node. A stub node implemented by this library; </li>
 </ul>
 <h1><a class="anchor" id="autotoc_md5"></a>
-How to use(sketch):</h1>
+How to buid test.</h1>
+<p >For tests <a href="https://github.com/google/googletest">googletest framewok</a> uses. <br  />
+ Needed environment:</p><ul>
+<li>cmake;</li>
+<li>gcc;</li>
+<li>g++;</li>
+<li>libgtest-dev;</li>
+</ul>
+<p >For build tests type: 1) cmake -S gtest/ -B gtest/build; 2) cmake &ndash;build gtest/build;</p>
+<p >or</p>
+<p >make -C gtest/build/;</p>
+<p >For Run test type: 1) cd gtest/build/; ctest; cd ../../</p>
+<p >or</p>
+<p >./gtest/build/runtests</p>
+<h1><a class="anchor" id="autotoc_md6"></a>
+House(sketch):</h1>
 <p >1) Create your own data type based on node type. Wherein the node type should be in the head of created data type. 2) Create a pointer to your linked. It should point to stub node defined in library. 3) Create a temporary pointer. It will use for safe management of linked list. 4) Create a nodes using data type you created for your linked list. 5) Manage linked list using the library, before any manipulation cast your data types to node data type. </p>
 </div></div><!-- contents -->
 </div><!-- PageDoc -->

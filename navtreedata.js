@@ -31,7 +31,8 @@ var NAVTREE =
       [ "Contents:", "md_README.html#autotoc_md2", null ],
       [ "Terms and definitions:", "md_README.html#autotoc_md3", null ],
       [ "Description:", "md_README.html#autotoc_md4", null ],
-      [ "How to use(sketch):", "md_README.html#autotoc_md5", null ]
+      [ "How to buid test.", "md_README.html#autotoc_md5", null ],
+      [ "House(sketch):", "md_README.html#autotoc_md6", null ]
     ] ],
     [ "Classes", "annotated.html", [
       [ "Class List", "annotated.html", "annotated_dup" ],
