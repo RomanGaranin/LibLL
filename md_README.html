@@ -139,18 +139,16 @@ Description:</h1>
 <h1><a class="anchor" id="autotoc_md5"></a>
 How to buid test.</h1>
 <p >For tests <a href="https://github.com/google/googletest">googletest framewok</a> uses. <br  />
- Needed environment:</p><ul>
+</p>
+<p >Needed environment:</p><ul>
 <li>cmake;</li>
 <li>gcc;</li>
 <li>g++;</li>
 <li>libgtest-dev;</li>
 </ul>
-<p >For build tests type: 1) cmake -S gtest/ -B gtest/build; 2) cmake &ndash;build gtest/build;</p>
-<p >or</p>
-<p >make -C gtest/build/;</p>
-<p >For Run test type: 1) cd gtest/build/; ctest; cd ../../</p>
-<p >or</p>
-<p >./gtest/build/runtests</p>
+<p >For build tests type: 1) "cmake -S gtest/ -B gtest/build" 2) "cmake --build gtest/build" or "make -C gtest/build/"</p>
+<p >For Run test type:</p>
+<p >"cd gtest/build/; ctest; cd ../../" or "./gtest/build/runtests"</p>
 <h1><a class="anchor" id="autotoc_md6"></a>
 House(sketch):</h1>
 <p >1) Create your own data type based on node type. Wherein the node type should be in the head of created data type. 2) Create a pointer to your linked. It should point to stub node defined in library. 3) Create a temporary pointer. It will use for safe management of linked list. 4) Create a nodes using data type you created for your linked list. 5) Manage linked list using the library, before any manipulation cast your data types to node data type. </p>
