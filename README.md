@@ -53,12 +53,16 @@ Needed environment:
 - libgtest-dev;
 
 For build tests type:
-1) "cmake -S gtest/ -B gtest/build"
-2) "cmake --build gtest/build" or "make -C gtest/build/"
+
+    cmake -S gtest/ -B gtest/build 
+    cmake --build gtest/build
+    make -C gtest/build/
 
 For Run test type:
 
-"cd gtest/build/; ctest; cd ../../" or "./gtest/build/runtests"
+    cd gtest/build/; ctest; cd ../../
+    or 
+    ./gtest/build/runtests
 
 ## How to use(sketch): 
 1) Create your own data type based on node type. Wherein the node type should be in the head of created data type.
