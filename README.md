@@ -22,7 +22,7 @@ A basic linked list designed for creating more complex linked lists.
 * [Removing List](https://owlsurf.github.io/LibLL/LibLL_8c.html#a2659814c359a3f001fdc7701e5515bbb) Only for lists created dinamicaly!
 
 NOTES: 
-Connecting - doesn't mean creating the node in memory. User have to create the node befor connecting.
+Connecting - doesn't mean creating the node in memory. User have to create the node before connecting.
 Disconneting - doesn't mean deleting the node from memory.
 
 ## Terms and definitions:

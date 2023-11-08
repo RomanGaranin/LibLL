@@ -1,16 +1,17 @@
 /**
-*	\file         LibLL.c
-*	\brief        Linked list library implementation.
-*	\abbreviations:
-*		LL - Linked List
-* 
-*	\author       Roman Garanin
+* \file    LibLL.c
+* \brief   Linked list library implementation.
+* \description:	
+*    Abbreviations:
+*    LL - Linked list.
+*	
+* \author    Roman Garanin
+* \copyright (c) Roman Garanin
 */
 
 #include "LibLL.h"
 
-//#define PRINT_DEBUG
-#ifdef PRINT_DEBUG
+#ifdef DEBUG
 #define DEBUG_PRINT(...); printf(__VA_ARGS__);
 #else
 #define DEBUG_PRINT(...);
