@@ -131,10 +131,17 @@ void LL_Disconnect(NODE** List, NODE* node, NODE** tmp)
 void LL_Disconnect_First(NODE** List, NODE** deleted_node, NODE** tmp)
 {
 	if (NULL == List) {
+		*deleted_node = NULL;
 		return;
 	}
 	if (NULL == *List) {
+		*deleted_node = NULL;
 		return;
+	}
+	if ( *List == (NODE*)&Stub ) {
+		*deleted_node = NULL;
+		return;
+
 	}
 	if ((*List)->next == *List)	{				// We have only one node
 		*deleted_node = *List;
