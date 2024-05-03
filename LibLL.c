@@ -1,12 +1,12 @@
 /**
 * \file    LibLL.c
 * \brief   Linked list library implementation.
-* \description:	
-*    Abbreviations:
-*    LL - Linked list.
+*	
+* Abbreviations:
+* LL - Linked list.
 *	
 * \author    Roman Garanin
-* \copyright (c) Roman Garanin
+* \copyright Roman Garanin
 */
 
 #include "LibLL.h"
