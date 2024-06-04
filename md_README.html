@@ -102,8 +102,13 @@ Status:</h1>
 Brief:</h1>
 <p >The project is in progress ...</p>
 <p >A basic linked list designed for creating more complex linked lists.</p>
+<hr  />
+ <h1><a class="anchor" id="autotoc_md3"></a>
+title: Simple sample</h1>
+<p >stateDiagram-v2 [*] --&gt; Still Still --&gt; [*]</p>
+<p >Still --&gt; Moving Moving --&gt; Still Moving --&gt; Crash Crash --&gt; [*]</p>
 <p ><a href="https://owlsurf.github.io/LibLL/">Documentation</a> (It is not beautiful yet.. Need to customize doxygen settings)</p>
-<h1><a class="anchor" id="autotoc_md2"></a>
+<h1><a class="anchor" id="autotoc_md4"></a>
 Contents:</h1>
 <ul>
 <li><a href="https://owlsurf.github.io/LibLL/LibLL_8c.html#a8274f49f06aa1cf53309da647eb4b06f">Connecting node to the end of the linked list.</a></li>
@@ -117,9 +122,9 @@ Contents:</h1>
 <li><a href="https://owlsurf.github.io/LibLL/LibLL_8c.html#a2659814c359a3f001fdc7701e5515bbb">Removing List</a> Only for lists created dinamicaly!</li>
 </ul>
 <p >NOTES: Connecting - doesn't mean creating the node in memory. User have to create the node before connecting. Disconneting - doesn't mean deleting the node from memory.</p>
-<h1><a class="anchor" id="autotoc_md3"></a>
+<h1><a class="anchor" id="autotoc_md5"></a>
 Terms and definitions:</h1>
-<h1><a class="anchor" id="autotoc_md4"></a>
+<h1><a class="anchor" id="autotoc_md6"></a>
 Description:</h1>
 <p >This is a simple library for creating and managing a linked lists written in C.</p>
 <p >The main element of linked list - node. The node is just a struct that contains two pointers only:</p>
@@ -136,7 +141,7 @@ Description:</h1>
 <li>Each list have its temporary pointer for safe management;</li>
 <li>If the list is empty its pointer will point to a stub node. A stub node implemented by this library; </li>
 </ul>
-<h1><a class="anchor" id="autotoc_md5"></a>
+<h1><a class="anchor" id="autotoc_md7"></a>
 How to build tests.</h1>
 <p >For tests <a href="https://github.com/google/googletest">googletest framework</a> uses. <br  />
 </p>
@@ -152,7 +157,7 @@ make -C gtest/build/
 </pre><p> For Run test type: </p><pre class="fragment">cd gtest/build/; ctest; cd ../../
 or 
 ./gtest/build/runtests
-</pre> <h1><a class="anchor" id="autotoc_md6"></a>
+</pre> <h1><a class="anchor" id="autotoc_md8"></a>
 How to use(sketch):</h1>
 <p >1) Create your own data type based on node type. Wherein the node type should be in the head of created data type.</p>
 <p >Example: </p><div class="fragment"><div class="line"><span class="keyword">typedef</span> <span class="keyword">struct </span>obj {</div>
