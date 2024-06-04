@@ -75,7 +75,7 @@ typedef struct obj {
     void (*action)();
 } OBJ;
 ```
-2) Create a pointer to your linked. It should point to stub node defined in library.
+2) Create a pointer to your linked list. It should point to stub node defined in library.
 3) Create a temporary pointer. It will use for safe management of linked list.
 
 You can use mCREATE_LIST macro.
