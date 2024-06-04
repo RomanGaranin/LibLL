@@ -66,10 +66,63 @@ For Run test type:
 
 ## How to use(sketch): 
 1) Create your own data type based on node type. Wherein the node type should be in the head of created data type.
+
+Example:
+```C
+typedef struct obj {
+    NODE node;         
+    uint16_t id;       
+    void (*action)();
+} OBJ;
+```
 2) Create a pointer to your linked. It should point to stub node defined in library.
 3) Create a temporary pointer. It will use for safe management of linked list.
+
+You can use mCREATE_LIST macro.
+
+Example: 
+```C
+    mCREATE_LIST(ObjList, ObjListTmp);
+```
+It will create two initialised pointers:
+```C
+   	NODE* ObjList = (NODE*)&Stub;
+	NODE* ObjListTmp = (NODE*)&Stub;
+```
+
 4) Create a nodes using data type you created for your linked list.
+
+Example: 
+```C
+OBJ * obj1 = malloc(sizeof(OBJ));
+obj1->id  = 1;
+obj1->action = some_real_function1;
+
+OBJ * obj2 = malloc(sizeof(OBJ));
+obj2->id  = 2;
+obj2->action = some_real_function2;
+```
+
 5) Manage linked list using the library, before any manipulation cast your data types to node data type.
+
+Example:
+```C
+LL_Connect(&ObjList, (NODE*)obj1, &ObjListTmp);
+LL_Connect(&ObjList, (NODE*)obj2, &ObjListTmp);
+
+NODE* node = Objlist;
+do {
+	ObjListTmp = node->next;
+	node->action();
+	node = ObjListTmp;
+    } while ((ObjListTmp != ObjList));
+
+LL_Disconnect(&ObjList, (NODE*)obj1, &ObjListTmp);
+LL_Disconnect(&ObjList, (NODE*)obj2, &ObjListTmp);
+
+free(obj1);
+free(obj2);
+```
 
 
 
