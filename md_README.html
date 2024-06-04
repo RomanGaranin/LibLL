@@ -154,8 +154,48 @@ or
 ./gtest/build/runtests
 </pre> <h1><a class="anchor" id="autotoc_md6"></a>
 How to use(sketch):</h1>
-<p >1) Create your own data type based on node type. Wherein the node type should be in the head of created data type. 2) Create a pointer to your linked. It should point to stub node defined in library. 3) Create a temporary pointer. It will use for safe management of linked list. 4) Create a nodes using data type you created for your linked list. 5) Manage linked list using the library, before any manipulation cast your data types to node data type. </p>
-</div></div><!-- contents -->
+<p >1) Create your own data type based on node type. Wherein the node type should be in the head of created data type.</p>
+<p >Example: </p><div class="fragment"><div class="line"><span class="keyword">typedef</span> <span class="keyword">struct </span>obj {</div>
+<div class="line">    <a class="code hl_struct" href="struct__node.html">NODE</a> node;         </div>
+<div class="line">    uint16_t id;       </div>
+<div class="line">    void (*action)();</div>
+<div class="line">} OBJ;</div>
+<div class="ttc" id="astruct__node_html"><div class="ttname"><a href="struct__node.html">_node</a></div><div class="ttdef"><b>Definition:</b> LibLL.h:48</div></div>
+</div><!-- fragment --><p> 2) Create a pointer to your linked. It should point to stub node defined in library. 3) Create a temporary pointer. It will use for safe management of linked list.</p>
+<p >You can use mCREATE_LIST macro.</p>
+<p >Example: </p><div class="fragment"><div class="line"><a class="code hl_define" href="LibLL_8h.html#acb779a9c93788ab264eb4e4c7e26b0a8">mCREATE_LIST</a>(ObjList, ObjListTmp);</div>
+<div class="ttc" id="aLibLL_8h_html_acb779a9c93788ab264eb4e4c7e26b0a8"><div class="ttname"><a href="LibLL_8h.html#acb779a9c93788ab264eb4e4c7e26b0a8">mCREATE_LIST</a></div><div class="ttdeci">#define mCREATE_LIST(ListName, ListTmp)</div><div class="ttdoc">Macro for declaration and initialisation a new linked list pointer.</div><div class="ttdef"><b>Definition:</b> LibLL.h:37</div></div>
+</div><!-- fragment --><p> It will create two initialised pointers: </p><div class="fragment"><div class="line"><a class="code hl_struct" href="struct__node.html">NODE</a>* ObjList = (<a class="code hl_struct" href="struct__node.html">NODE</a>*)&amp;<a class="code hl_variable" href="LibLL_8c.html#aeaf49036eb987d79667ca0e3bfda1dd5">Stub</a>;</div>
+<div class="line"><a class="code hl_struct" href="struct__node.html">NODE</a>* ObjListTmp = (<a class="code hl_struct" href="struct__node.html">NODE</a>*)&amp;<a class="code hl_variable" href="LibLL_8c.html#aeaf49036eb987d79667ca0e3bfda1dd5">Stub</a>;</div>
+<div class="ttc" id="aLibLL_8c_html_aeaf49036eb987d79667ca0e3bfda1dd5"><div class="ttname"><a href="LibLL_8c.html#aeaf49036eb987d79667ca0e3bfda1dd5">Stub</a></div><div class="ttdeci">const struct stub_node Stub</div><div class="ttdoc">Global Stub for all linked lists. This stub contain the NODE struct and a pointer to stub function.</div><div class="ttdef"><b>Definition:</b> LibLL.c:27</div></div>
+</div><!-- fragment --><p >4) Create a nodes using data type you created for your linked list.</p>
+<p >Example: </p><div class="fragment"><div class="line">OBJ * obj1 = malloc(<span class="keyword">sizeof</span>(OBJ));</div>
+<div class="line">obj1-&gt;id  = 1;</div>
+<div class="line">obj1-&gt;action = some_real_function1;</div>
+<div class="line"> </div>
+<div class="line">OBJ * obj2 = malloc(<span class="keyword">sizeof</span>(OBJ));</div>
+<div class="line">obj2-&gt;id  = 2;</div>
+<div class="line">obj2-&gt;action = some_real_function2;</div>
+</div><!-- fragment --><p >5) Manage linked list using the library, before any manipulation cast your data types to node data type.</p>
+<p >Example: </p><div class="fragment"><div class="line"><a class="code hl_function" href="LibLL_8c.html#a8274f49f06aa1cf53309da647eb4b06f">LL_Connect</a>(&amp;ObjList, (<a class="code hl_struct" href="struct__node.html">NODE</a>*)obj1, &amp;ObjListTmp);</div>
+<div class="line"><a class="code hl_function" href="LibLL_8c.html#a8274f49f06aa1cf53309da647eb4b06f">LL_Connect</a>(&amp;ObjList, (<a class="code hl_struct" href="struct__node.html">NODE</a>*)obj2, &amp;ObjListTmp);</div>
+<div class="line"> </div>
+<div class="line"><a class="code hl_struct" href="struct__node.html">NODE</a>* node = Objlist;</div>
+<div class="line"><span class="keywordflow">do</span> {</div>
+<div class="line">    ObjListTmp = node-&gt;<a class="code hl_variable" href="struct__node.html#a1cf2f32ddf62dd25aeefd2fa32701663">next</a>;</div>
+<div class="line">    node-&gt;action();</div>
+<div class="line">    node = ObjListTmp;</div>
+<div class="line">    } <span class="keywordflow">while</span> ((ObjListTmp != ObjList));</div>
+<div class="line"> </div>
+<div class="line"><a class="code hl_function" href="LibLL_8c.html#a4dace3d699f8e0e8eccc721ef5b64c21">LL_Disconnect</a>(&amp;ObjList, (<a class="code hl_struct" href="struct__node.html">NODE</a>*)obj1, &amp;ObjListTmp);</div>
+<div class="line"><a class="code hl_function" href="LibLL_8c.html#a4dace3d699f8e0e8eccc721ef5b64c21">LL_Disconnect</a>(&amp;ObjList, (<a class="code hl_struct" href="struct__node.html">NODE</a>*)obj2, &amp;ObjListTmp);</div>
+<div class="line"> </div>
+<div class="line">free(obj1);</div>
+<div class="line">free(obj2);</div>
+<div class="ttc" id="aLibLL_8c_html_a4dace3d699f8e0e8eccc721ef5b64c21"><div class="ttname"><a href="LibLL_8c.html#a4dace3d699f8e0e8eccc721ef5b64c21">LL_Disconnect</a></div><div class="ttdeci">void LL_Disconnect(NODE **List, NODE *node, NODE **tmp)</div><div class="ttdoc">Disconnects the node from linked list.</div><div class="ttdef"><b>Definition:</b> LibLL.c:94</div></div>
+<div class="ttc" id="aLibLL_8c_html_a8274f49f06aa1cf53309da647eb4b06f"><div class="ttname"><a href="LibLL_8c.html#a8274f49f06aa1cf53309da647eb4b06f">LL_Connect</a></div><div class="ttdeci">void LL_Connect(NODE **List, NODE *node, NODE **tmp)</div><div class="ttdoc">Connects the node to the end of the linked list.</div><div class="ttdef"><b>Definition:</b> LibLL.c:42</div></div>
+<div class="ttc" id="astruct__node_html_a1cf2f32ddf62dd25aeefd2fa32701663"><div class="ttname"><a href="struct__node.html#a1cf2f32ddf62dd25aeefd2fa32701663">_node::next</a></div><div class="ttdeci">struct _node * next</div><div class="ttdef"><b>Definition:</b> LibLL.h:49</div></div>
+</div><!-- fragment --> </div></div><!-- contents -->
 </div><!-- PageDoc -->
 </div><!-- doc-content -->
 <!-- start footer part -->
