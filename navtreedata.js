@@ -28,12 +28,11 @@ var NAVTREE =
     [ "Linked List Library", "md_README.html", [
       [ "Status:", "md_README.html#autotoc_md0", null ],
       [ "Brief:", "md_README.html#autotoc_md1", null ],
-      [ "title: Simple sample", "md_README.html#autotoc_md3", null ],
-      [ "Contents:", "md_README.html#autotoc_md4", null ],
-      [ "Terms and definitions:", "md_README.html#autotoc_md5", null ],
-      [ "Description:", "md_README.html#autotoc_md6", null ],
-      [ "How to build tests.", "md_README.html#autotoc_md7", null ],
-      [ "How to use(sketch):", "md_README.html#autotoc_md8", null ]
+      [ "Contents:", "md_README.html#autotoc_md2", null ],
+      [ "Terms and definitions:", "md_README.html#autotoc_md3", null ],
+      [ "Description:", "md_README.html#autotoc_md4", null ],
+      [ "How to build tests.", "md_README.html#autotoc_md5", null ],
+      [ "How to use(sketch):", "md_README.html#autotoc_md6", null ]
     ] ],
     [ "Data Structures", "annotated.html", [
       [ "Data Structures", "annotated.html", "annotated_dup" ],
