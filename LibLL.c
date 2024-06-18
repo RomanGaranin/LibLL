@@ -25,7 +25,7 @@ struct stub_node
 	void (*pStubAction)(NODE* node);
 };
 
-const struct stub_node Stub =
+struct stub_node Stub =
 {
 	.node =
 	{

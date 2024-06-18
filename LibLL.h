@@ -28,7 +28,7 @@ extern "C" {
 * \brief Global Stub for all linked lists.
 *        This stub contain the NODE struct and a pointer to stub function.
 */
-extern const struct stub_node Stub;
+extern struct stub_node Stub;
 
 /**
 *  \brief Macro for declaration and initialisation a new linked list pointer.
