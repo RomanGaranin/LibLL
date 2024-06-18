@@ -18,6 +18,7 @@
 #endif
 
 static void StubAction(NODE *node);
+static void StubEmptyAction(NODE *node);
 struct stub_node
 {
 	NODE node;
@@ -37,8 +38,13 @@ const struct stub_node Stub =
 static void StubAction(NODE* node)
 {
 	DEBUG_PRINT("List is empty ...\n");
+	Stub.pStubAction = StubEmptyAction;
 }
 
+static void StubAmptyAction(NODE* node)
+{
+	;
+}
 void LL_Connect(NODE** List, NODE* node, NODE** tmp)
 {
 	if (NULL == node) {
@@ -111,6 +117,7 @@ void LL_Disconnect(NODE** List, NODE* node, NODE** tmp)
 		if (node->next == *List) {				 // Only one node in the list.
 		    *tmp = (NODE*)&Stub;
 		    *List = (NODE*)&Stub;
+		    Stub.pStubAction = StubAction;
 		    return;
 		} else {  
 			(*List)->next->prev = (*List)->prev; // Connect next node (second in the list) to the last 
@@ -146,6 +153,7 @@ void LL_Disconnect_First(NODE** List, NODE** deleted_node, NODE** tmp)
 	if ((*List)->next == *List)	{				// We have only one node
 		*deleted_node = *List;
 		*List = (NODE*)&Stub;
+		Stub.pStubAction = StubAction;
 		return;
 	} else {
 		*deleted_node = *List;
