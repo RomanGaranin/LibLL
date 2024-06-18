@@ -41,7 +41,7 @@ static void StubAction(NODE* node)
 	Stub.pStubAction = StubEmptyAction;
 }
 
-static void StubAmptyAction(NODE* node)
+static void StubEmptyAction(NODE* node)
 {
 	;
 }
