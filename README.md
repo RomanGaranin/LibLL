@@ -83,7 +83,7 @@ Example:
 ```C
     mCREATE_LIST(ObjList, ObjListTmp);
 ```
-It will create two initialised pointers:
+It will create two initialized pointers:
 ```C
    	NODE* ObjList = (NODE*)&Stub;
 	NODE* ObjListTmp = (NODE*)&Stub;
