@@ -37,20 +37,22 @@ var NAVTREE =
     [ "Linked List Library", "md_description_ru.html", [
       [ "Статус:", "md_description_ru.html#autotoc_md7", null ],
       [ "Краткое описание:", "md_description_ru.html#autotoc_md8", null ],
-      [ "Содержание:", "md_description_ru.html#autotoc_md9", null ],
-      [ "Термины и определения:", "md_description_ru.html#autotoc_md10", null ],
-      [ "Описание:", "md_description_ru.html#autotoc_md11", null ],
-      [ "How to build tests.", "md_description_ru.html#autotoc_md12", null ],
-      [ "How to use(sketch):", "md_description_ru.html#autotoc_md13", null ]
+      [ "Содержание:", "md_description_ru.html#autotoc_md9", [
+        [ "Внимание!:", "md_description_ru.html#autotoc_md10", null ]
+      ] ],
+      [ "Термины и определения:", "md_description_ru.html#autotoc_md11", null ],
+      [ "Описание:", "md_description_ru.html#autotoc_md12", null ],
+      [ "Как собрать тесты.", "md_description_ru.html#autotoc_md13", null ],
+      [ "Как пользоваться:", "md_description_ru.html#autotoc_md14", null ]
     ] ],
     [ "Linked List Library", "md_README.html", [
-      [ "Status:", "md_README.html#autotoc_md14", null ],
-      [ "Brief:", "md_README.html#autotoc_md15", null ],
-      [ "Contents:", "md_README.html#autotoc_md16", null ],
-      [ "Terms and definitions:", "md_README.html#autotoc_md17", null ],
-      [ "Description:", "md_README.html#autotoc_md18", null ],
-      [ "How to build tests.", "md_README.html#autotoc_md19", null ],
-      [ "How to use(sketch):", "md_README.html#autotoc_md20", null ]
+      [ "Status:", "md_README.html#autotoc_md15", null ],
+      [ "Brief:", "md_README.html#autotoc_md16", null ],
+      [ "Contents:", "md_README.html#autotoc_md17", null ],
+      [ "Terms and definitions:", "md_README.html#autotoc_md18", null ],
+      [ "Description:", "md_README.html#autotoc_md19", null ],
+      [ "How to build tests.", "md_README.html#autotoc_md20", null ],
+      [ "How to use(sketch):", "md_README.html#autotoc_md21", null ]
     ] ],
     [ "Data Structures", "annotated.html", [
       [ "Data Structures", "annotated.html", "annotated_dup" ],

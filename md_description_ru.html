@@ -101,7 +101,7 @@ $(document).ready(function(){initNavTree('md_description_ru.html',''); initResiz
 <h1><a class="anchor" id="autotoc_md8"></a>
 Краткое описание:</h1>
 <p >Библиотека для создания связных списков и управления ими.</p>
-<p ><a href="https://owlsurf.github.io/LibLL/">Документация</a></p>
+<p ><a href="https://owlsurf.github.io/LibLL/">Документация</a> (Doxygen)</p>
 <h1><a class="anchor" id="autotoc_md9"></a>
 Содержание:</h1>
 <ul>
@@ -115,68 +115,71 @@ $(document).ready(function(){initNavTree('md_description_ru.html',''); initResiz
 <li><a href="https://owlsurf.github.io/LibLL/LibLL_8c.html#a22eddbec2ce1ca0eac1d7385558044e6">Перебор листа.</a></li>
 <li><a href="https://owlsurf.github.io/LibLL/LibLL_8c.html#a2659814c359a3f001fdc7701e5515bbb">Удаление листа</a> Только для листов созданных динамически.</li>
 </ul>
-<p >Внимание: Добавление -не ознаяает создание узла в памяти.Пользователю необходимо создать узел перед добавлением. Отключение - Не означает удаление узла из памяти.</p>
-<h1><a class="anchor" id="autotoc_md10"></a>
-Термины и определения:</h1>
+<h2><a class="anchor" id="autotoc_md10"></a>
+Внимание!:</h2>
+<p >Добавление - не ознаяает создание узла в памяти.Пользователю необходимо создать узел перед добавлением.</p>
+<p >Отключение - Не означает удаление узла из памяти.</p>
 <h1><a class="anchor" id="autotoc_md11"></a>
-Описание:</h1>
-<p >This is a simple library for creating and managing a linked lists written in C.</p>
-<p >The main element of linked list - node. The node is just a struct that contains two pointers only:</p>
-<ul>
-<li>"next" - pointer to the next node.</li>
-<li>"prev" - pointer to the previous node.</li>
-</ul>
-<p >Implementatoin of this library assumes:</p><ul>
-<li>node can be created statically and dynamically;</li>
-<li>Nodes can exists independently from any lists;</li>
-<li>Independent node have to point to itself by both pointers;</li>
-<li>The list is closed. It means that the "next" pointer of the last node points to the first node of the list, and the "prev" pointer of the first node points to the last node of the list;</li>
-<li>Each list have its own pointer that point to the first element of list;</li>
-<li>Each list have its temporary pointer for safe management;</li>
-<li>If the list is empty its pointer will point to a stub node. A stub node implemented by this library; </li>
-</ul>
+Термины и определения:</h1>
 <h1><a class="anchor" id="autotoc_md12"></a>
-How to build tests.</h1>
-<p >For tests <a href="https://github.com/google/googletest">googletest framework</a> uses. <br  />
+Описание:</h1>
+<p >Это простая библиотека для создания и управления связными списками написанная на C.</p>
+<p >Основной элемент связного списка - узел. Узел это просто структура которая содержит два указателя:</p>
+<ul>
+<li>"next" - Указатель на следующий узел в списке.</li>
+<li>"prev" - Указатель на предыдущий указатель в списке.</li>
+</ul>
+<p >Реализация данной библиотеки предполагает:</p><ul>
+<li>Узел может быть создан как динамически так и статически;</li>
+<li>Узлы могут существовать не зависимо от связного списка;</li>
+<li>Указатели независимых узлов указыват на этот же узел т.е. узел вне списка указывает сам на себя;</li>
+<li>Связный список замкнутый. Это означает, что указатель next последнего узла указывает на превый узел, а указатель prev первого узла указывает на последний узел;</li>
+<li>Каждый список имеет свой собственный указатель, который всегда указывает на первый узел списка;</li>
+<li>Каждый список имеет свой отдельный дополнительный указатель для безопасного управления списком;</li>
+<li>Если список пустой, то указатель списка указывает на узел-заглушку который реализован в библиотеке; </li>
+</ul>
+<h1><a class="anchor" id="autotoc_md13"></a>
+Как собрать тесты.</h1>
+<p >Для покрытия тестами используется <a href="https://github.com/google/googletest">googletest framework</a>. <br  />
 </p>
-<p >Needed environment:</p><ul>
+<p >Для сборки нужны следующие программы:</p><ul>
 <li>cmake;</li>
 <li>gcc;</li>
 <li>g++;</li>
 <li>libgtest-dev;</li>
 </ul>
-<p >For build tests type: </p><pre class="fragment">cmake -S gtest/ -B gtest/build 
+<p >Чтобы собрать тесты наберите в командной строку: </p><pre class="fragment">cmake -S gtest/ -B gtest/build 
 cmake --build gtest/build
 make -C gtest/build/
-</pre><p> For Run test type: </p><pre class="fragment">cd gtest/build/; ctest; cd ../../
+</pre><p> Для запуска тестов наберите в командной строке: </p><pre class="fragment">cd gtest/build/; ctest; cd ../../
 or 
 ./gtest/build/runtests
-</pre> <h1><a class="anchor" id="autotoc_md13"></a>
-How to use(sketch):</h1>
-<p >1) Create your own data type based on node type. Wherein the node type should be in the head of created data type.</p>
-<p >Example: </p><div class="fragment"><div class="line"><span class="keyword">typedef</span> <span class="keyword">struct </span>obj {</div>
+</pre> <h1><a class="anchor" id="autotoc_md14"></a>
+Как пользоваться:</h1>
+<p >1) Создайте тип узла для нового списка на основего базового типа узла NODE. При этом тип NODE Должен быть первым в структуре нового типа узла.</p>
+<p >Пример: </p><div class="fragment"><div class="line"><span class="keyword">typedef</span> <span class="keyword">struct </span>obj {</div>
 <div class="line">    <a class="code hl_struct" href="struct__node.html">NODE</a> node;         </div>
 <div class="line">    uint16_t id;       </div>
 <div class="line">    void (*action)();</div>
 <div class="line">} OBJ;</div>
 <div class="ttc" id="astruct__node_html"><div class="ttname"><a href="struct__node.html">_node</a></div><div class="ttdef"><b>Definition:</b> LibLL.h:48</div></div>
-</div><!-- fragment --><p> 2) Create a pointer to your linked list. It should point to stub node defined in library. 3) Create a temporary pointer. It will use for safe management of linked list.</p>
-<p >You can use mCREATE_LIST macro.</p>
+</div><!-- fragment --><p> 2) Создайте указатель на связный список. Этот указатель должен указывать на узел заглушку определенную в библиотеке (NODE Stub). 3) Создайте дополнительный указатель для списка. Этот указатель будет использоваться для безопасного управления связным списком.</p>
+<p >Для этого можно использовать макрос mCREATE_LIST.</p>
 <p >Example: </p><div class="fragment"><div class="line"><a class="code hl_define" href="LibLL_8h.html#acb779a9c93788ab264eb4e4c7e26b0a8">mCREATE_LIST</a>(ObjList, ObjListTmp);</div>
 <div class="ttc" id="aLibLL_8h_html_acb779a9c93788ab264eb4e4c7e26b0a8"><div class="ttname"><a href="LibLL_8h.html#acb779a9c93788ab264eb4e4c7e26b0a8">mCREATE_LIST</a></div><div class="ttdeci">#define mCREATE_LIST(ListName, ListTmp)</div><div class="ttdoc">Macro for declaration and initialisation a new linked list pointer.</div><div class="ttdef"><b>Definition:</b> LibLL.h:37</div></div>
-</div><!-- fragment --><p> It will create two initialised pointers: </p><div class="fragment"><div class="line"><a class="code hl_struct" href="struct__node.html">NODE</a>* ObjList = (<a class="code hl_struct" href="struct__node.html">NODE</a>*)&amp;<a class="code hl_variable" href="LibLL_8c.html#a38c703bed199c9ad5b4c1f081f941e56">Stub</a>;</div>
+</div><!-- fragment --><p> Макрос развернется в код кооторый создает два указателя: </p><div class="fragment"><div class="line"><a class="code hl_struct" href="struct__node.html">NODE</a>* ObjList = (<a class="code hl_struct" href="struct__node.html">NODE</a>*)&amp;<a class="code hl_variable" href="LibLL_8c.html#a38c703bed199c9ad5b4c1f081f941e56">Stub</a>;</div>
 <div class="line"><a class="code hl_struct" href="struct__node.html">NODE</a>* ObjListTmp = (<a class="code hl_struct" href="struct__node.html">NODE</a>*)&amp;<a class="code hl_variable" href="LibLL_8c.html#a38c703bed199c9ad5b4c1f081f941e56">Stub</a>;</div>
 <div class="ttc" id="aLibLL_8c_html_a38c703bed199c9ad5b4c1f081f941e56"><div class="ttname"><a href="LibLL_8c.html#a38c703bed199c9ad5b4c1f081f941e56">Stub</a></div><div class="ttdeci">struct stub_node Stub</div><div class="ttdoc">Global Stub for all linked lists. This stub contain the NODE struct and a pointer to stub function.</div><div class="ttdef"><b>Definition:</b> LibLL.c:28</div></div>
-</div><!-- fragment --><p >4) Create a nodes using data type you created for your linked list.</p>
-<p >Example: </p><div class="fragment"><div class="line">OBJ * obj1 = malloc(<span class="keyword">sizeof</span>(OBJ));</div>
+</div><!-- fragment --><p >4) Создайте узлы на основе нового типа узла.</p>
+<p >Пример: </p><div class="fragment"><div class="line">OBJ * obj1 = malloc(<span class="keyword">sizeof</span>(OBJ));</div>
 <div class="line">obj1-&gt;id  = 1;</div>
 <div class="line">obj1-&gt;action = some_real_function1;</div>
 <div class="line"> </div>
 <div class="line">OBJ * obj2 = malloc(<span class="keyword">sizeof</span>(OBJ));</div>
 <div class="line">obj2-&gt;id  = 2;</div>
 <div class="line">obj2-&gt;action = some_real_function2;</div>
-</div><!-- fragment --><p >5) Manage linked list using the library, before any manipulation cast your data types to node data type.</p>
-<p >Example: </p><div class="fragment"><div class="line"><a class="code hl_function" href="LibLL_8c.html#a8274f49f06aa1cf53309da647eb4b06f">LL_Connect</a>(&amp;ObjList, (<a class="code hl_struct" href="struct__node.html">NODE</a>*)obj1, &amp;ObjListTmp);</div>
+</div><!-- fragment --><p >5) Управляейте списком с помощью функций библиотеки. Перед каждым действием приволдите тип узла к базовому типу узла NODE.</p>
+<p >Пример: </p><div class="fragment"><div class="line"><a class="code hl_function" href="LibLL_8c.html#a8274f49f06aa1cf53309da647eb4b06f">LL_Connect</a>(&amp;ObjList, (<a class="code hl_struct" href="struct__node.html">NODE</a>*)obj1, &amp;ObjListTmp);</div>
 <div class="line"><a class="code hl_function" href="LibLL_8c.html#a8274f49f06aa1cf53309da647eb4b06f">LL_Connect</a>(&amp;ObjList, (<a class="code hl_struct" href="struct__node.html">NODE</a>*)obj2, &amp;ObjListTmp);</div>
 <div class="line"> </div>
 <div class="line"><a class="code hl_struct" href="struct__node.html">NODE</a>* node = Objlist;</div>
