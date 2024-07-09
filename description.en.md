@@ -7,10 +7,6 @@ Linked List Library
 
 A basic linked list designed for creating more complex linked lists.
 
-[Description En](description.en.md) 
-
-[Описание Ru](description.en.md)
-
 [Documentation](https://owlsurf.github.io/LibLL/)
 
 ## Contents:
@@ -87,7 +83,7 @@ Example:
 ```C
     mCREATE_LIST(ObjList, ObjListTmp);
 ```
-It will create two initialized pointers:
+It will create two initialised pointers:
 ```C
    	NODE* ObjList = (NODE*)&Stub;
 	NODE* ObjListTmp = (NODE*)&Stub;

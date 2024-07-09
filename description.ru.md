@@ -1,36 +1,32 @@
 Linked List Library
 ============
-## Status:
+## Статус:
 [![CodeFactor](https://www.codefactor.io/repository/github/owlsurf/libll/badge)](https://www.codefactor.io/repository/github/owlsurf/libll)
 [![CMakeGoogletest](https://github.com/OwlSurf/LibLL/actions/workflows/cmake.yml/badge.svg)](https://github.com/OwlSurf/LibLL/actions/workflows/cmake.yml)
-## Brief:
+## Краткое описание:
 
-A basic linked list designed for creating more complex linked lists.
+Библиотека для создания связных списков и управления ими.
 
-[Description En](description.en.md) 
+[Документация](https://owlsurf.github.io/LibLL/)
 
-[Описание Ru](description.en.md)
+## Содержание:
+* [Добавление узла в конец связного списка.](https://owlsurf.github.io/LibLL/LibLL_8c.html#a8274f49f06aa1cf53309da647eb4b06f)
+* [Вставка узла в связный спмсок.](https://owlsurf.github.io/LibLL/LibLL_8c.html#a0d58c85ad363abb9b05062ab5e48c1cf)
+* [Отключение узла из связного списка.](https://owlsurf.github.io/LibLL/LibLL_8c.html#a4dace3d699f8e0e8eccc721ef5b64c21)
+* [Отключение первого узла от связного списка.](https://owlsurf.github.io/LibLL/LibLL_8c.html#a6a39a1c6328eb13c0c6166fb13d1e43c)
+* [Перемещение узла из одного связного списка в конец другого.](https://owlsurf.github.io/LibLL/LibLL_8c.html#a87970dc9c75edeeab8ac03eb63452baf)
+* [Перемещение узла из одного связного списка в другой.](https://owlsurf.github.io/LibLL/LibLL_8c.html#a84a82de5aa962aa5de7c2239dff19a16)
+* [Поиск узла в связном списко.](https://owlsurf.github.io/LibLL/LibLL_8c.html#ab9dbdec177ff191a766d28a90e2d9ba4)
+* [Перебор листа.](https://owlsurf.github.io/LibLL/LibLL_8c.html#a22eddbec2ce1ca0eac1d7385558044e6)
+* [Удаление листа](https://owlsurf.github.io/LibLL/LibLL_8c.html#a2659814c359a3f001fdc7701e5515bbb) Только для листов созданных динамически.
 
-[Documentation](https://owlsurf.github.io/LibLL/)
+Внимание: 
+Добавление -не ознаяает создание узла в памяти.Пользователю необходимо создать узел перед добавлением.
+Отключение  - Не означает удаление узла из памяти.
 
-## Contents:
-* [Connecting node to the end of the linked list.](https://owlsurf.github.io/LibLL/LibLL_8c.html#a8274f49f06aa1cf53309da647eb4b06f)
-* [Inserting node to the linked list.](https://owlsurf.github.io/LibLL/LibLL_8c.html#a0d58c85ad363abb9b05062ab5e48c1cf)
-* [Disconnecting node from the linked list.](https://owlsurf.github.io/LibLL/LibLL_8c.html#a4dace3d699f8e0e8eccc721ef5b64c21)
-* [Disconnecting the first node from the linked list.](https://owlsurf.github.io/LibLL/LibLL_8c.html#a6a39a1c6328eb13c0c6166fb13d1e43c)
-* [Replace node from one linked list to the end of another linked list.](https://owlsurf.github.io/LibLL/LibLL_8c.html#a87970dc9c75edeeab8ac03eb63452baf)
-* [Replace node from one linked list to another linked list.](https://owlsurf.github.io/LibLL/LibLL_8c.html#a84a82de5aa962aa5de7c2239dff19a16)
-* [Find node in the list.](https://owlsurf.github.io/LibLL/LibLL_8c.html#ab9dbdec177ff191a766d28a90e2d9ba4)
-* [Foreach list.](https://owlsurf.github.io/LibLL/LibLL_8c.html#a22eddbec2ce1ca0eac1d7385558044e6)
-* [Removing List](https://owlsurf.github.io/LibLL/LibLL_8c.html#a2659814c359a3f001fdc7701e5515bbb) Only for lists created dinamicaly!
+## Термины и определения:
 
-NOTES: 
-Connecting - doesn't mean creating the node in memory. User have to create the node before connecting.
-Disconneting - doesn't mean deleting the node from memory.
-
-## Terms and definitions:
-
-## Description:
+## Описание:
 This is a simple library for creating and managing a linked lists written in C.
 
 The main element of linked list - node. The node is just a struct that contains two pointers only:
@@ -87,7 +83,7 @@ Example:
 ```C
     mCREATE_LIST(ObjList, ObjListTmp);
 ```
-It will create two initialized pointers:
+It will create two initialised pointers:
 ```C
    	NODE* ObjList = (NODE*)&Stub;
 	NODE* ObjListTmp = (NODE*)&Stub;
