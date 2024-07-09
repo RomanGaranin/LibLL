@@ -11,12 +11,12 @@ Linked List Library
 
 ## Содержание:
 * [Добавление узла в конец связного списка.](https://owlsurf.github.io/LibLL/LibLL_8c.html#a8274f49f06aa1cf53309da647eb4b06f)
-* [Вставка узла в связный спмсок.](https://owlsurf.github.io/LibLL/LibLL_8c.html#a0d58c85ad363abb9b05062ab5e48c1cf)
+* [Вставка узла в связный список.](https://owlsurf.github.io/LibLL/LibLL_8c.html#a0d58c85ad363abb9b05062ab5e48c1cf)
 * [Отключение узла из связного списка.](https://owlsurf.github.io/LibLL/LibLL_8c.html#a4dace3d699f8e0e8eccc721ef5b64c21)
 * [Отключение первого узла от связного списка.](https://owlsurf.github.io/LibLL/LibLL_8c.html#a6a39a1c6328eb13c0c6166fb13d1e43c)
 * [Перемещение узла из одного связного списка в конец другого.](https://owlsurf.github.io/LibLL/LibLL_8c.html#a87970dc9c75edeeab8ac03eb63452baf)
 * [Перемещение узла из одного связного списка в другой.](https://owlsurf.github.io/LibLL/LibLL_8c.html#a84a82de5aa962aa5de7c2239dff19a16)
-* [Поиск узла в связном списко.](https://owlsurf.github.io/LibLL/LibLL_8c.html#ab9dbdec177ff191a766d28a90e2d9ba4)
+* [Поиск узла в связном списке.](https://owlsurf.github.io/LibLL/LibLL_8c.html#ab9dbdec177ff191a766d28a90e2d9ba4)
 * [Перебор листа.](https://owlsurf.github.io/LibLL/LibLL_8c.html#a22eddbec2ce1ca0eac1d7385558044e6)
 * [Удаление листа](https://owlsurf.github.io/LibLL/LibLL_8c.html#a2659814c359a3f001fdc7701e5515bbb) Только для листов созданных динамически.
 
