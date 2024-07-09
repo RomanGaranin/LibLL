@@ -25,14 +25,32 @@
 var NAVTREE =
 [
   [ "Linked List Library", "index.html", [
+    [ "Linked List Library", "md_description_en.html", [
+      [ "Status:", "md_description_en.html#autotoc_md0", null ],
+      [ "Brief:", "md_description_en.html#autotoc_md1", null ],
+      [ "Contents:", "md_description_en.html#autotoc_md2", null ],
+      [ "Terms and definitions:", "md_description_en.html#autotoc_md3", null ],
+      [ "Description:", "md_description_en.html#autotoc_md4", null ],
+      [ "How to build tests.", "md_description_en.html#autotoc_md5", null ],
+      [ "How to use(sketch):", "md_description_en.html#autotoc_md6", null ]
+    ] ],
+    [ "Linked List Library", "md_description_ru.html", [
+      [ "Статус:", "md_description_ru.html#autotoc_md7", null ],
+      [ "Краткое описание:", "md_description_ru.html#autotoc_md8", null ],
+      [ "Содержание:", "md_description_ru.html#autotoc_md9", null ],
+      [ "Термины и определения:", "md_description_ru.html#autotoc_md10", null ],
+      [ "Описание:", "md_description_ru.html#autotoc_md11", null ],
+      [ "How to build tests.", "md_description_ru.html#autotoc_md12", null ],
+      [ "How to use(sketch):", "md_description_ru.html#autotoc_md13", null ]
+    ] ],
     [ "Linked List Library", "md_README.html", [
-      [ "Status:", "md_README.html#autotoc_md0", null ],
-      [ "Brief:", "md_README.html#autotoc_md1", null ],
-      [ "Contents:", "md_README.html#autotoc_md2", null ],
-      [ "Terms and definitions:", "md_README.html#autotoc_md3", null ],
-      [ "Description:", "md_README.html#autotoc_md4", null ],
-      [ "How to build tests.", "md_README.html#autotoc_md5", null ],
-      [ "How to use(sketch):", "md_README.html#autotoc_md6", null ]
+      [ "Status:", "md_README.html#autotoc_md14", null ],
+      [ "Brief:", "md_README.html#autotoc_md15", null ],
+      [ "Contents:", "md_README.html#autotoc_md16", null ],
+      [ "Terms and definitions:", "md_README.html#autotoc_md17", null ],
+      [ "Description:", "md_README.html#autotoc_md18", null ],
+      [ "How to build tests.", "md_README.html#autotoc_md19", null ],
+      [ "How to use(sketch):", "md_README.html#autotoc_md20", null ]
     ] ],
     [ "Data Structures", "annotated.html", [
       [ "Data Structures", "annotated.html", "annotated_dup" ],
