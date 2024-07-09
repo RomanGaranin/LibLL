@@ -7,7 +7,7 @@ Linked List Library
 
 Библиотека для создания связных списков и управления ими.
 
-[Документация](https://owlsurf.github.io/LibLL/)
+[Документация](https://owlsurf.github.io/LibLL/) (Doxygen)
 
 ## Содержание:
 * [Добавление узла в конец связного списка.](https://owlsurf.github.io/LibLL/LibLL_8c.html#a8274f49f06aa1cf53309da647eb4b06f)
@@ -20,53 +20,54 @@ Linked List Library
 * [Перебор листа.](https://owlsurf.github.io/LibLL/LibLL_8c.html#a22eddbec2ce1ca0eac1d7385558044e6)
 * [Удаление листа](https://owlsurf.github.io/LibLL/LibLL_8c.html#a2659814c359a3f001fdc7701e5515bbb) Только для листов созданных динамически.
 
-Внимание: 
-Добавление -не ознаяает создание узла в памяти.Пользователю необходимо создать узел перед добавлением.
-Отключение  - Не означает удаление узла из памяти.
+### Внимание!: 
+Добавление - не ознаяает создание узла в памяти.Пользователю необходимо создать узел перед добавлением.
+
+Отключение - Не означает удаление узла из памяти.
 
 ## Термины и определения:
 
 ## Описание:
-This is a simple library for creating and managing a linked lists written in C.
+Это простая библиотека для создания и управления связными списками написанная на C.
 
-The main element of linked list - node. The node is just a struct that contains two pointers only:
+Основной элемент связного списка - узел. Узел это просто структура которая содержит два указателя:
 
-- "next" - pointer to the next node.
-- "prev" - pointer to the previous node.
+- "next" - Указатель на следующий узел в списке.
+- "prev" - Указатель на предыдущий указатель в списке.
 
-Implementatoin of this library assumes:
-- node can be created statically and dynamically;
-- Nodes can exists independently from any lists; 
-- Independent node have to point to itself by both pointers;
-- The list is closed. It means that the "next" pointer of the last node points to the first node of the list,  and the "prev" pointer of the first node points to the last node of the list;
-- Each list have its own pointer that point to the first element of list;
-- Each list have its temporary pointer for safe management;
-- If the list is empty its pointer will point to a stub node. A stub node implemented by this library; 
-## How to build tests.
-For tests [googletest framework](https://github.com/google/googletest) uses. 	
+Реализация данной библиотеки предполагает:
+- Узел может быть создан как динамически так и статически;
+- Узлы могут существовать не зависимо от связного списка; 
+- Указатели независимых узлов указыват на этот же узел т.е. узел вне списка указывает сам на себя;
+- Связный список замкнутый. Это означает, что указатель next последнего узла указывает на превый узел, а указатель prev первого узла указывает на последний узел;
+- Каждый список имеет свой собственный указатель, который всегда указывает на первый узел списка;
+- Каждый список имеет свой отдельный дополнительный указатель для безопасного управления списком;
+- Если список пустой, то указатель списка указывает на узел-заглушку который реализован в библиотеке; 
+## Как собрать тесты.
+Для покрытия тестами используется  [googletest framework](https://github.com/google/googletest). 	
 
-Needed environment:
+Для сборки нужны следующие программы:
 - cmake;
 - gcc;
 - g++;
 - libgtest-dev;
 
-For build tests type:
+Чтобы собрать тесты наберите в командной строку:
 
     cmake -S gtest/ -B gtest/build 
     cmake --build gtest/build
     make -C gtest/build/
 
-For Run test type:
+Для запуска тестов наберите в командной строке:
 
     cd gtest/build/; ctest; cd ../../
     or 
     ./gtest/build/runtests
 
-## How to use(sketch): 
-1) Create your own data type based on node type. Wherein the node type should be in the head of created data type.
+## Как пользоваться:
+1) Создайте тип узла для нового списка на основего базового типа узла NODE. При этом тип NODE Должен быть первым в структуре нового типа узла.
 
-Example:
+Пример:
 ```C
 typedef struct obj {
     NODE node;         
@@ -74,24 +75,24 @@ typedef struct obj {
     void (*action)();
 } OBJ;
 ```
-2) Create a pointer to your linked list. It should point to stub node defined in library.
-3) Create a temporary pointer. It will use for safe management of linked list.
+2) Создайте указатель на связный список. Этот указатель должен указывать на узел заглушку определенную в библиотеке (NODE Stub).
+3) Создайте дополнительный указатель для списка. Этот указатель будет использоваться для безопасного управления связным списком.
 
-You can use mCREATE_LIST macro.
+Для этого можно использовать макрос mCREATE_LIST.
 
 Example: 
 ```C
     mCREATE_LIST(ObjList, ObjListTmp);
 ```
-It will create two initialised pointers:
+Макрос развернется в код кооторый создает два указателя:
 ```C
    	NODE* ObjList = (NODE*)&Stub;
 	NODE* ObjListTmp = (NODE*)&Stub;
 ```
 
-4) Create a nodes using data type you created for your linked list.
+4) Создайте узлы на основе нового типа узла.
 
-Example: 
+Пример: 
 ```C
 OBJ * obj1 = malloc(sizeof(OBJ));
 obj1->id  = 1;
@@ -102,9 +103,9 @@ obj2->id  = 2;
 obj2->action = some_real_function2;
 ```
 
-5) Manage linked list using the library, before any manipulation cast your data types to node data type.
+5) Управляейте списком с помощью функций библиотеки. Перед каждым действием приволдите тип узла к базовому типу узла NODE. 
 
-Example:
+Пример:
 ```C
 LL_Connect(&ObjList, (NODE*)obj1, &ObjListTmp);
 LL_Connect(&ObjList, (NODE*)obj2, &ObjListTmp);
