@@ -47,12 +47,7 @@ var NAVTREE =
     ] ],
     [ "Linked List Library", "md_README.html", [
       [ "Status:", "md_README.html#autotoc_md15", null ],
-      [ "Brief:", "md_README.html#autotoc_md16", null ],
-      [ "Contents:", "md_README.html#autotoc_md17", null ],
-      [ "Terms and definitions:", "md_README.html#autotoc_md18", null ],
-      [ "Description:", "md_README.html#autotoc_md19", null ],
-      [ "How to build tests.", "md_README.html#autotoc_md20", null ],
-      [ "How to use(sketch):", "md_README.html#autotoc_md21", null ]
+      [ "Brief:", "md_README.html#autotoc_md16", null ]
     ] ],
     [ "Data Structures", "annotated.html", [
       [ "Data Structures", "annotated.html", "annotated_dup" ],
